@@ -1,0 +1,315 @@
+/* Datepicker */
+
+.datepicker.datepicker-dropdown,
+.datepicker.datepicker-inline {
+	padding: 0 25px;
+	width: 30%;
+	max-width: 500px;
+	min-width: 250px;
+	.datepicker-days {
+		table.table-condensed {
+			thead {
+				tr {
+					th {
+						text-align: center;
+						padding: .5rem 0;
+						&.prev {
+							color: color(gray);
+							padding-bottom: 1rem;
+							padding-top: 1rem;
+							text-align: left;
+						}
+						&.datepicker-switch {
+							color: color(gray);
+							padding-bottom: 1rem;
+							padding-top: 1rem;
+							font-size: 1rem;
+							font-weight: 600;
+						}
+						&.next {
+							color:grey;
+							padding-bottom: 1rem;
+							padding-top: 1rem;
+							text-align: right;
+						}
+						&.dow {
+							font-weight: normal;
+							color: color(gray);
+							font-size: .875rem;
+							font-weight: initial;
+							&:first-child {
+								text-align: left;
+							}
+							&:last-child {
+								text-align: right;
+							}
+						}
+					}
+				}
+			}
+			tbody {
+				position: relative;
+				top: 13px;
+				td {
+					text-align: center;
+					&.day {
+						font-size: .9375rem;
+						padding: .5rem 0;
+						color: color(gray);
+						&:hover {
+							background: $white;
+						}
+						&.active {
+							color:#fff;
+							background:transparent;
+							position: relative;
+							z-index: 1;
+							&:before {
+								content: "";
+								width: 38px;
+								height: 38px;
+								background: $success;
+								@include border-radius(100%);
+								display: block;
+								margin: auto;
+								vertical-align: middle;
+								position: absolute;
+								top: 1px;
+								z-index: -1;
+								left: 0;
+								right: 0;
+							}
+						}
+						&.today {
+							color:#fff;
+							background:transparent;
+							position: relative;
+							z-index: 1;
+							&:before {
+								content: "";
+								width: 38px;
+								height: 38px;
+								background: $info;
+								@include border-radius(100%);
+								display: block;
+								margin: auto;
+								vertical-align: middle;
+								position: absolute;
+								top: 1px;
+								z-index: -1;
+								left: 0;
+								right: 0;
+							}
+						}
+					}
+					&.old.day {
+						color: darken(color(gray-lightest),4.5%);
+					}
+
+					&.range-start,
+					&.range-end {
+					  background: transparent;
+					  position: relative;
+						&::before {
+							content: "";
+							width: 28px;
+							height: 28px;
+							background: rgba(theme-color(success), .2);
+							border-radius: 4px;
+							display: block;
+							margin: auto;
+							vertical-align: middle;
+							position: absolute;
+							top: 6px;
+							z-index: -1;
+							left: 0;
+							right: 0;
+						}
+					}
+					&.range {
+						position: relative;
+						background: transparent;
+						&::before {
+							content: "";
+							width: 28px;
+							height: 28px;
+							background: #eee;
+							border-radius: 4px;
+							display: block;
+							margin: auto;
+							vertical-align: middle;
+							position: absolute;
+							top: 6px;
+							z-index: -1;
+							left: 0;
+							right: 0;
+						}
+					}
+
+				}
+			}
+		}
+	}
+	.datepicker-days,
+	.datepicker-months,
+	.datepicker-years,
+	.datepicker-decades,
+	.datepicker-centuries {
+		padding: .8rem .7rem;		
+		table.table-condensed {
+			width: 100%;
+		}
+	}
+}
+.datepicker.datepicker-inline{
+	width:100%;
+	max-width: 100%;
+	min-width: 250px;
+	thead{
+		tr{
+			th{
+				&.prev{
+					color:grey;
+					padding-bottom:0.5rem;
+					padding-top:0.5rem;
+				}
+				&.datepicker-switch{
+					color: $primary;
+					padding-bottom:0.5rem;
+					padding-top:0.5rem;
+				}
+				&.next{
+					color:grey;
+					padding-bottom:0.5rem;
+					padding-top:0.5rem;
+				}
+			}
+		}
+	}
+}
+.datepicker {
+	> div {
+		display: initial;
+	}
+}
+.datepicker-custom {
+	width: 100%;
+	padding: 0;
+	.datepicker {
+		&.datepicker-inline {
+			display: block;
+			padding: 0;
+			height: 100%;
+			.datepicker-days {
+				display: block;
+				.table-condensed {
+					tbody {
+						tr {
+							td {
+								padding: 1rem;
+								@media (max-width: 991px) {
+									padding: 1rem .5rem;
+								}
+								text-align: center;
+								&.day {
+									&.today {
+										&:before {
+											background-color: $success;
+											top: 6px;
+										}
+									}
+									&.active {
+										&:before {
+											background-color: $warning;
+											top: 6px;
+										}
+									}
+									&:first-child {
+										padding-left: 2.5rem;
+										@media (max-width: 991px) {
+											padding-left: .5rem;
+										}
+										&.today,
+										&.active {
+											&:before {
+												left: 1.5rem;
+												@media (max-width: 991px) {
+													left: .25rem;
+												}
+											}
+										}
+									}
+									&:last-child {
+										padding-right: 2.5rem;
+										@media (max-width: 991px) {
+											padding-right: .5rem;
+										}
+										&.today,
+										&.active {
+											&:before {
+												right: 1.5rem;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			.datepicker-days,
+			.datepicker-months,
+			.datepicker-years,
+			.datepicker-decades,
+			.datepicker-centuries {
+				height: 100%;
+				padding: 0 0 1rem 0;				
+				.table-condensed {
+					height: 100%;
+					thead {
+						background: $success;
+						tr {
+							th {
+								&.next,
+								&.prev,
+								&.datepicker-switch,
+								&.dow {
+									background: transparent;
+									border-radius: 0;
+									color: $white;
+									padding: 2rem 1rem;
+									@media (max-width: 991px) {
+										padding: 2rem .5rem;
+									}
+									font-weight: $font-weight-bold;
+									&:first-child {
+										padding-left: 2.5rem;
+										@media (max-width: 991px) {
+											padding-left: .5rem;
+										}
+									}
+									&:last-child {
+										padding-right: 2.5rem;
+										@media (max-width: 991px) {
+											padding-right: .5rem;
+										}
+									}
+								}
+								&.datepicker-switch {
+									font-size: 2rem;
+									@media (max-width: 991px) {
+										font-size: 1rem;
+									}
+								}
+								&.next,
+								&.prev {
+									font-size: 1.5rem;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

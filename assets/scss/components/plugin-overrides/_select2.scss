@@ -1,0 +1,64 @@
+/* Select2 */
+
+.select2-container--default {
+  .select2-results__option--highlighted[aria-selected] {
+    background: $primary;
+  }
+  .select2-selection--single,
+  .select2-dropdown,
+  .select2-selection--multiple {
+    border-color: $border-color;
+    background: $content-bg;
+    .select2-search__field {
+      border-color: $border-color;
+    }
+  }
+  .select2-selection--single {
+    height: auto;
+    @extend .form-control;
+    .select2-search__field {
+      @extend .form-control;
+    }
+    .select2-selection__rendered {
+      color: $white;
+      line-height: 14px;
+    }
+  }
+  .select2-dropdown {
+    font-size: .8125rem;
+  }
+  &.select2-container--focus {
+    .select2-selection--multiple {
+      border-color: $border-color;
+    }
+  }
+  .select2-selection--multiple {
+    .select2-selection__choice {
+      color: color(white);
+      border: 0;
+      border-radius: 3px;
+      padding: 6px;
+      font-size: .625rem;
+      font-family: inherit;
+      line-height: 1;
+      .select2-selection__choice__remove {
+        color: color(white);
+      }
+      &:nth-child(5n+1) {
+        background: $primary;
+      }
+      &:nth-child(5n+2) {
+        background: $success;
+      }
+      &:nth-child(5n+3) {
+        background: $info;
+      }
+      &:nth-child(5n+4) {
+        background: $danger;
+      }
+      &:nth-child(5n+5) {
+        background: $warning;
+      }
+    }
+  }
+}

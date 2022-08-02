@@ -1,0 +1,95 @@
+// ###############################################
+// CroSass - SASS Crossbrowser Library
+// Author:  Alex Chizhov
+// Verison: 0.1.1
+// Date:    23.01.2015
+// GitHub:  https://github.com/alexchizhovcom/CroSass
+// Website: http://alexchizhov.com
+// ###############################################
+
+
+// IMPORT global variables
+@import 'lib/global';
+
+
+// IMPORT functions
+@import 'lib/functions';
+
+
+// IMPORT : Box-sizing
+@import 'lib/boxsizing';
+
+// IMPORT : Border-radius
+@import 'lib/borderradius';
+
+// IMPORT: Transitions
+@import 'lib/transitions';
+
+
+
+// clear:both
+@mixin clear{
+  display: block;
+  content: '';
+  clear: both;
+}
+
+
+
+
+
+
+
+
+
+
+// Font-size convertion px & em
+@mixin font_size($size){
+  font-size: $size+px;
+  font-size: $size / 16+em;
+}
+
+
+// Crossbrowser opacity
+// $value =>  0-100
+@mixin opacity($value){
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$value})";
+  filter: alpha(opacity=#{$value}); // IE 5+
+  opacity: parseInt($value / 100);
+}
+
+
+
+
+
+
+
+
+
+
+// Transform crossbrowser
+// $function - 2D or 3D transformation to an element
+@mixin transform($function){
+  -webkit-transform: #{$function};
+  -moz-transform: #{$function};
+  -o-transform: #{$function};
+  -ms-transform: #{$function};
+  transform: #{$function};
+}
+
+
+// Converions
+
+
+
+
+
+
+
+@function pxem($px, $base:$font-size-base){
+  @return parseInt($px / $base)+em;
+}
+
+@function empx($em, $base:$font-size-base){
+  @return parseInt($em * $base)+px;
+}

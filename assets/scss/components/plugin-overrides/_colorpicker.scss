@@ -1,0 +1,21 @@
+/* Colorpicker */
+
+.asColorPicker-dropdown {
+  max-width: initial;
+}
+.asColorPicker-trigger{
+    height: auto;
+    border: 0;
+    span {
+      border-radius: 2px;
+      width: 35px;
+    }
+}
+
+.asColorPicker-input {
+  @extend .form-control;
+}
+
+.asColorPicker-wrap {
+  @extend .input-group;
+}

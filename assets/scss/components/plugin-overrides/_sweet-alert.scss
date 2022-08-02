@@ -1,0 +1,72 @@
+/* SweetAlert */
+
+.swal2-container {
+  z-index: 1500;
+}
+
+.swal2-modal {
+  min-height: 315px;
+  @extend .d-flex;
+  @include align-items(center);
+  @include justify-content(center);
+  @include flex-direction(column);
+  @include border-radius(10px);
+
+  .swal2-title {
+    font-size: 25px;
+    line-height: 1;
+    font-weight: $font-weight-medium;
+    color: $body-color;
+    font-weight: initial;
+    margin-bottom: 0;
+  }
+
+  .swal2-icon,
+  .swal2-success-ring {
+    margin-top: 0;
+    margin-bottom: 42px;
+  }
+
+  .swal2-buttonswrapper {
+    margin-top: 0;
+    padding: 0;
+
+    .swal2-styled {
+      @extend .btn;
+      margin-top: 0;
+      font-weight: initial;
+
+      &.swal2-confirm {
+        @extend .btn;
+        @extend .bg-success;
+        @extend .border-success;
+        font-weight: initial;
+        margin-top: 32px;
+      }
+
+      &.swal2-cancel {
+        @extend .btn;
+        margin-top: 32px;
+        border: 1px solid $border-color;
+        color: $white;
+        font-weight: initial;
+      }
+    }
+  }
+
+  .swal2-content {
+    font-size: $default-font-size;
+    font-weight: $font-weight-medium;
+    color: $body-color;
+    font-weight: initial;
+    margin-top: 11px;
+  }
+
+  .swal2-close {
+    font-size: 20px;
+  }
+
+  .swal2-success-ring {
+    left: -30px;
+  }
+}

@@ -1,0 +1,92 @@
+/* No-ui-slider */
+
+.noUi-target {
+  border: none;
+  box-shadow: none;
+  @include border-radius(0px);
+
+  .noUi-handle {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    box-shadow: none;
+    background: $content-bg;
+
+    &:before {
+      display: none;
+    }
+
+    &:after {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 100%;
+      left: 4px;
+      top: 4px;
+    }
+  }
+
+  &.noUi-horizontal {
+    height: 0.25rem;
+
+    .noUi-handle {
+      top: -8px;
+    }
+  }
+
+  &.noUi-vertical {
+    width: 0.25rem;
+    height: 156px;
+    display: inline-block;
+
+    .noUi-handle {
+      left: -7px;
+    }
+  }
+
+  .noUi-base {
+    box-shadow: none;
+    border: none;
+
+    .noUi-connect {
+      background: $primary;
+      box-shadow: none;
+    }
+
+    .noUi-origin {
+      background: $success;
+    }
+  }
+
+  .noUi-pips {
+
+    .noUi-marker-horizontal,
+    .noUi-marker-vertical {
+      background: $border-color;
+    }
+
+    .noUi-marker-horizontal {
+      height: 9px;
+      width: 1px;
+    }
+
+    .noUi-marker-vertical {
+      height: 1px;
+      width: 9px;
+    }
+
+    .noUi-value {
+      color: $white;
+      font-size: 0.94rem;
+      font-weight: $font-weight-bold;
+    }
+  }
+}
+
+/* Slider Color variations */
+@each $color,
+$value in $theme-colors {
+  .slider-#{$color} {
+    @include slider-color-variant($value);
+  }
+}

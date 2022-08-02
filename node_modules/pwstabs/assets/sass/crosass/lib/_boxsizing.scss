@@ -1,0 +1,18 @@
+// ###############################################
+// CroSass - SASS Crossbrowser Library
+// Author:  Alex Chizhov
+// Verison: 0.1.1
+// Date:    23.01.2015
+// GitHub:  https://github.com/alexchizhovcom/CroSass
+// Website: http://alexchizhov.com
+// ###############################################
+
+
+
+// Crossbrowser box-sizing
+// http://www.w3schools.com/cssref/css3_pr_box-sizing.asp
+@mixin boxsizing($value){
+  box-sizing: #{$value};
+  -webkit-box-sizing: #{$value};
+  -moz-box-sizing: #{$value};
+}

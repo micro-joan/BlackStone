@@ -1,0 +1,30 @@
+/* Switchery */
+
+.switchery {
+  width: 35px;
+  height: 21px;
+  border-radius: 11px;
+  >small {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.switchery-small {
+  width: 25px;
+  height: 13px;
+  >small {
+    width: 13px;
+    height: 13px;
+  }
+}
+
+.switchery-large {
+  width: 50px;
+  height: 28px;
+  border-radius: 14px;
+  >small {
+    width: 27px;
+    height: 27px;
+  }
+}

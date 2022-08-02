@@ -1,0 +1,243 @@
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font-size:100%;font-family:'Roboto Condensed',arial,helvetica,sans-serif;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1;background-color:#129793}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+
+
+.header{
+   width: 100%;
+   display: block;
+   text-align: center;
+   padding: 20px 0;
+   font-size: 15px;
+   color: #505050;
+   background-color: #fff;
+   margin-bottom: 30px;
+   box-sizing: border-box;
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+}
+.header h1{
+   font-size: 60px;
+   font-weight: bold;
+   color: #ff7260;
+   margin: 0 0 15px 0;
+   padding: 0;
+}
+.header a{
+   color: #ff7260;
+   font-size: 15px;
+   text-decoration: underline;
+}
+.header a:hover{
+   color: #505050;
+}
+
+.header p{
+   margin: 6px 0;
+   padding: 0;
+   font-size: 15px;
+   color: #505050;
+}
+.header p.header_buttons{
+   margin-top: 15px;
+}
+.header p.header_buttons a{
+   background-color: #ff7260;
+   color: #fff;
+   display: inline-block;
+   text-align: center;
+   padding: 10px 30px;
+   margin: 0 10px;
+   text-decoration: none;
+   text-transform: uppercase;
+}
+p.header_buttons a:hover{
+   background-color: #9bd7d5;
+}
+.content{
+   width: 940px;
+   display: block;
+   margin: 0 auto;
+}
+.content.demo_responsive{
+   width: 100%;
+   padding: 0 20px;
+   box-sizing: border-box;
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+}
+.content h2{
+   font-size: 40px;
+   font-weight: bold;
+   color: #fff;
+   margin-bottom: 30px;
+   margin-top: 30px;
+}
+.content h3{
+   font-size: 35px;
+   font-weight: 300;
+   color: #fff;
+   margin-bottom: 15px;
+   margin-top: 25px;
+}
+.content a{
+   color: #fff5c3;
+   text-decoration: underline;
+}
+.content a:hover{
+   color: #fff;
+   text-decoration: none;
+}
+.content code{
+   width: 100%;
+   background-color: #f0f0f0;
+   display: block;
+   padding: 20px;
+   color: #000;
+   letter-spacing: 0.5px;
+   font-size: 16px;
+   font-weight: normal;
+   margin: 15px 0 30px 0;
+   box-sizing: border-box;
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+}
+.content p{
+   color: #fff;
+   font-size: 17px;
+   margin: 15px 0;
+}
+.content strong{
+   font-weight: bold;
+   font-size: 17px;
+   color: #fff5c3;
+}
+.content code strong{
+   color: #000;
+}
+.content table{
+   background-color: #fff;
+   width: 100%;
+}
+.content table thead tr th{
+   border: 1px solid #505050;
+   padding: 8px;
+   font-size: 17px;
+   color: #ff7260;
+   font-weight: bold;
+}
+.content table tr:nth-child(even) td{
+   background-color: #f0f0f0;
+}
+.content .pws_example_mixed_content_block{
+   width: 900px;
+   position: relative;
+}
+.content .pws_example_mixed_content_block:after{
+   display: block;
+   content: '';
+   clear: both;
+}
+.content .pws_example_mixed_content_left{
+   width: 350px;
+   position: relative;
+   float: left;
+   display: block;
+}
+.content .pws_example_mixed_content_right{
+   width: 550px;
+   position: relative;
+   float: left;
+   display: block;
+   color: #505050;
+}
+.content .pws_example_mixed_content_right h3,
+.content .pws_example_mixed_content_right p{
+   margin: 0 0 15px 0;
+   color: #505050;
+}
+table tbody tr td{
+   border: 1px solid #505050;
+   padding: 8px;
+   font-size: 17px;
+   color: #505050;
+   font-weight: 300;
+}
+/* Demo colors */
+.content .pws_demo_colors{
+   display: block;
+   margin: 15px 0;
+}
+
+.content .pws_demo_colors_title{
+    color:#fff;
+    vertical-align:top;
+    display:inline-block;
+    width:120px;
+    height:30px;
+    
+    padding:6px 0 0 0;
+    
+    box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+}
+
+.content .pws_demo_colors a{
+   width: 30px;
+   height: 30px;
+   display: inline-block;
+   border: 3px solid #fff;
+   box-sizing: border-box;
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+}
+.content .pws_demo_colors a[data-demo-color="cyan"],
+.content .pws_demo_colors a[data-demo-color="dark_cyan"]{
+   background-color: #9bd7d5;
+}
+.content .pws_demo_colors a[data-demo-color="violet"],
+.content .pws_demo_colors a[data-demo-color="dark_violet"]{
+   background-color: #c72c66;
+}
+.content .pws_demo_colors a[data-demo-color="green"],
+.content .pws_demo_colors a[data-demo-color="dark_green"]{
+   background-color: #86c447;
+}
+.content .pws_demo_colors a[data-demo-color="yellow"],
+.content .pws_demo_colors a[data-demo-color="dark_yellow"]{
+   background-color: #fdb813;
+}
+.content .pws_demo_colors a[data-demo-color="gold"],
+.content .pws_demo_colors a[data-demo-color="dark_gold"]{
+   background-color: #f89827;
+}
+.content .pws_demo_colors a[data-demo-color="orange"],
+.content .pws_demo_colors a[data-demo-color="dark_orange"]{
+   background-color: #f15b42;
+}
+.content .pws_demo_colors a[data-demo-color="red"],
+.content .pws_demo_colors a[data-demo-color="dark_red"]{
+   background-color: #e41937;
+}
+.content .pws_demo_colors a[data-demo-color="purple"],
+.content .pws_demo_colors a[data-demo-color="dark_purple"]{
+   background-color: #672e8d;
+}
+.content .pws_demo_colors a[data-demo-color="grey"],
+.content .pws_demo_colors a[data-demo-color="dark_grey"]{
+   background-color: #4d4d4f;
+}
+.footer{
+   display: block;
+   padding: 30px 0 15px 0;
+   text-align: center;
+   color: #fff;
+   font-size: 15px;
+}
+.footer a{
+   color: #fff;
+   text-decoration: underline;
+   font-size: 15px;
+}
+.footer a:hover{
+   text-decoration: none;
+}

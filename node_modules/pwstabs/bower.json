@@ -1,0 +1,20 @@
+{
+    "name": "pwstabs",
+    "version": "1.3.0",
+    "authors": [
+        "Alex Chizhov <ac@alexchizhov.com>"
+    ],
+    "description": "PWS Tabs jQuery Plugin",
+    "main": "assets/jquery.pwstabs.js",
+    "moduleType": [
+        "globals"
+    ],
+    "keywords": [
+        "tabs",
+        "jquery",
+        "plugin",
+        "responsive"
+    ],
+    "license": "MIT",
+    "homepage": "http://alexchizhov.com/pwstabs"
+}

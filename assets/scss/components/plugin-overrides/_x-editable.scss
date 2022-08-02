@@ -1,0 +1,55 @@
+/* X-editable */
+
+.editable-form {
+  .editable {
+    color: $body-color;
+    font-size: .8125rem;
+  }
+  .editable-click {
+    border-color: $body-color;
+  }
+}
+.editable-container {
+  &.editable-inline {
+    max-width: 100%;
+    .editableform {
+      max-width: 100%;
+      .control-group {
+        max-width: 100%;
+        white-space: initial;
+        >div {
+          max-width: 100%;
+        }
+        .editable-input {
+          // max-width: 50%;
+          input,
+          textarea {
+            max-width: 100%;
+          }
+          .combodate {
+            .form-control {
+              padding-left: 0;
+              padding-right: 0;
+            }
+          }
+        }
+        .editable-buttons {
+          @media (max-width: 991px) {
+            display: block;
+            margin-top: 10px;
+          }
+          .editable-submit {
+            @extend .btn-outline-success;
+            @extend .btn-xs;
+            @extend .mt-1;
+          }
+          .editable-cancel {
+            @extend .btn-outline-secondary;
+            @extend .btn-xs;
+            @extend .mt-1;
+          }
+        }
+      }
+    }
+  }
+}

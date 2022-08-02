@@ -1,0 +1,24 @@
+
+// Sider color variations
+@mixin slider-color-variant($color) {
+	.noUi-base {
+		.noUi-connect {
+			background: $color;
+		}
+
+		.noUi-origin {
+			background: $color;
+
+			.noUi-handle {
+				&:after {
+					background: $color;
+				}
+
+				.noUi-tooltip {
+					background: $color;
+					color: $white;
+				}
+			}
+		}
+	}
+}

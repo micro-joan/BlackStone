@@ -1,0 +1,125 @@
+/* Avgrund Popup */
+
+.avgrund-popin {
+	position: absolute;
+	background: #fff;
+	padding: 37px 33px;
+	overflow: hidden;
+	visibility: hidden;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	top: 50%;
+	left: 50%;
+	z-index: 1000;
+	font-size: $default-font-size;
+	font-weight: normal;
+	font-weight: initial;
+	line-height: 1.85;
+	@include border-radius(10px);
+
+	-webkit-transform: scale(0.8);
+	-moz-transform: scale(0.8);
+	-ms-transform: scale(0.8);
+	-o-transform: scale(0.8);
+	transform: scale(0.8);
+	p{
+		font-size: $default-font-size;
+		font-weight: normal;
+		font-weight: initial;
+	}
+}
+
+.avgrund-overlay {
+	background: $modal-backdrop-bg;
+	width: 100%;
+	position: fixed;
+	top: 0px;
+	left: 0;
+  bottom: 0;
+  right: 0;
+	z-index: 101;
+	visibility: hidden;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+
+body.avgrund-ready,
+.avgrund-ready .avgrund-popin,
+.avgrund-ready .avgrund-overlay {
+	-webkit-transform-origin: 50% 50%;
+	-moz-transform-origin: 50% 50%;
+	-ms-transform-origin: 50% 50%;
+	-o-transform-origin: 50% 50%;
+	transform-origin: 50% 50%;
+
+	-webkit-transition: 0.3s all ease-out;
+	-moz-transition: 0.3s all ease-out;
+	-ms-transition: 0.3s all ease-out;
+	-o-transition: 0.3s all ease-out;
+	transition: 0.3s all ease-out;
+}
+
+body.avgrund-active {
+	overflow: hidden;
+}
+
+.avgrund-active .avgrund-popin {
+	visibility: visible;
+	opacity: 1;
+	filter: alpha(opacity=100);
+
+	-webkit-transform: scale(1.1);
+	-moz-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	-o-transform: scale(1.1);
+	transform: scale(1.1);
+}
+
+.avgrund-active .avgrund-overlay {
+	visibility: visible;
+	opacity: .5;
+	filter: alpha(opacity=50);
+	height: 20000px;
+}
+
+.avgrund-popin.stack {
+	-webkit-transform: scale(1.5);
+	-moz-transform: scale(1.5);
+	-ms-transform: scale(1.5);
+	-o-transform: scale(1.5);
+	transform: scale(1.5);
+}
+
+.avgrund-active .avgrund-popin.stack {
+	-webkit-transform: scale(1.1);
+	-moz-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	-o-transform: scale(1.1);
+	transform: scale(1.1);
+}
+
+.avgrund-active .avgrund-blur {
+}
+
+/* Optional close button styles */
+.avgrund-close {
+	display: block;
+	color:#fff;
+  background: $body-color;
+	font-size: 10px;
+	text-decoration: none;
+	text-transform: uppercase;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	height: 17px;
+	width: 17px;
+	text-align:center;
+	line-height: 16px;
+
+  @include border-radius(50px);
+  &:hover{
+    color: #fff;
+    text-decoration:none;
+  }
+}

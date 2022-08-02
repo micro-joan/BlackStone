@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<?php
+
+include("control_sesion/seguridad.php");
+include("functions/traductor.php");
+include("conexion.php");
+
+$section = "vulnerabilidades";
+
+$url = $_SERVER["REQUEST_URI"];
+$urlArray = explode('=', $url);
+$id_url = $urlArray[1];
+
+?>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>BlackStone - <?php echo lang("Companies");?></title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="assets/vendors/jvectormap/jquery-jvectormap.css">
+    <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.theme.default.min.css">
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="assets/images/faces/black-stone-transaprent.png" />
+  </head>
+
+  <body class="sidebar-icon-only">
+
+
+    <div class="container-scroller">
+
+    <?php
+      include("nav.php");
+    ?>
+      
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        
+        <!-- partial:partials/_navbar.html -->
+        <nav class="navbar p-0 fixed-top d-flex flex-row">
+          <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+            <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
+          </div>
+          <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+              <span class="mdi mdi-menu"></span>
+            </button>
+            <ul class="navbar-nav w-100">
+              <li class="nav-item w-100">
+                <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+                  <input type="text" class="form-control" placeholder="<?php echo lang("Search Reports"); ?>">
+                </form>
+              </li>
+            </ul>
+            <ul class="navbar-nav navbar-nav-right">
+              <li class="nav-item dropdown border-left">
+                <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="mdi mdi-email"></i>
+                  <span class="count bg-success"></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
+                  <h6 class="p-3 mb-0"><?php echo lang("Messages");?></h6>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item preview-item" href="https://microjoan.com/" target="_blank">
+                    <div class="preview-thumbnail">
+                      <img src="assets/images/faces/microjoan.png" href="https://microjoan.com/" alt="image" class="rounded-circle profile-pic">
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="preview-subject ellipsis mb-1">MicroJoan</p>
+                      <p class="text-muted mb-0">  <?php echo lang("Now");?> </p>
+                    </div>
+                  </a>
+                  <a class="dropdown-item preview-item" href="future_news.php" target="_blank">
+                    <div class="preview-thumbnail">
+                      <img src="assets/images/faces/news.png" href="future_news.php" alt="image" class="rounded-circle profile-pic">
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="preview-subject ellipsis mb-1">System</p>
+                      <p class="text-muted mb-0">  <?php echo lang("Now");?> </p>
+                    </div>
+                  </a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
+                  <div class="navbar-profile">
+                    <img class="img-xs rounded-circle" src="assets/images/faces/black-stone.png" alt="">
+                    <p class="mb-0 d-none d-sm-block navbar-profile-name">BlackStone</p>
+                    <i class="mdi mdi-menu-down d-none d-sm-block"></i>
+                  </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
+                  <h6 class="p-3 mb-0"><?php echo lang("Profile");?></h6>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item preview-item" href="editar_perfil.php">
+                    <div class="preview-thumbnail">
+                      <div class="preview-icon bg-dark rounded-circle">
+                        <i class="mdi mdi-settings text-success"></i>
+                      </div>
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="preview-subject mb-1"><?php echo lang("Settings"); ?></p>
+                    </div>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item preview-item" href="cerrar_sesion.php">
+                    <div class="preview-thumbnail">
+                      <div class="preview-icon bg-dark rounded-circle">
+                        <i class="mdi mdi-logout text-danger"></i>
+                      </div>
+                    </div>
+                    <div class="preview-item-content">
+                      <p class="preview-subject mb-1"><?php echo lang("Log out"); ?></p>
+                    </div>
+                  </a>
+              </li>
+            </ul>
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+              <span class="mdi mdi-format-line-spacing"></span>
+            </button>
+          </div>
+        </nav>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+
+          <?php
+
+              $sentencia_tokens = "select * from tokens where id=1";    
+              $consulta_tokens = mysqli_query($conexion, $sentencia_tokens) or die("Error de Consulta tokens");
+
+              //vamos a recorrer la consulta y guardar los datos 
+              while($fila= mysqli_fetch_array($consulta_tokens)){
+                $token_pwned=$fila['haveibeenpwned'];
+                $token_hunter=$fila['hunter'];
+              }
+
+              $sentencia = "select * from empresas where id=".$id_url;    
+              $consulta = mysqli_query($conexion, $sentencia) or die("Error de Consulta");
+
+              //vamos a recorrer la consulta y guardar los datos 
+              while($fila= mysqli_fetch_array($consulta)){
+                $id=$fila['id'];
+                $nombre=$fila['nombre'];
+                $web=$fila['web'];
+
+              }
+            ?>  
+
+            <div class="page-header">
+              <h3 class="page-title"> <?php echo lang("Edit company"); echo " '".$nombre."'"?> </h3>
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="clientes.php"><?php echo lang("Companies");?></a></li>
+                  <li class="breadcrumb-item active" aria-current="page"><?php echo lang("Edit company");?></li>
+                </ol>
+              </nav>
+            </div>  
+
+            <div class="row">
+              <div class="col-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+
+                    <form class="form-sample" form action="" method="post">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label"><?php echo lang("Name");?></label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control" id="nombre" name="nombre" placeholder="<?php echo lang("Name");?>" value="<?php echo $nombre?>" style="color:white;">
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Web</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control" id="web" name="web" placeholder="Web" value="<?php echo $web?>" style="color:white;">
+                            </div>
+                          </div>
+                        </div>
+                        
+                      </div>
+                      <button type="submit" name="submit" class="btn btn-primary me-2"><?php echo lang("Save"); ?></button>
+                    </form>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                  <h4 class="card-title"><?php echo lang("Owner data") ?></h4>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th><?php echo lang("Name and surname") ?></th>
+                            <th><?php echo lang("Email") ?></th>
+                            <th><center><?php echo lang("Linkedin") ?></center></th>
+                            <th><center><?php echo lang("Twitter") ?></center></th>
+                            <th><center><?php echo lang("Phone") ?></center></th>
+                            <th><center><?php echo lang("Organization") ?></center></th>
+                          </tr>
+                        </thead>
+                        <?php 
+                    
+                            $url = 'https://api.hunter.io/v2/domain-search?domain='.$web.'&api_key='.$token_hunter;
+
+                            $curl = curl_init($url);
+                            curl_setopt($curl, CURLOPT_URL, $url);
+                            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+                            $headers = array(
+                              "Content-Type: application/json",
+                              "User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64; rv:17.0) Gecko/20100101 Firefox/17.0"
+                            );
+
+                            curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+                            //for debug only!
+                            curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+                            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+                            $resp = curl_exec($curl);
+                            curl_close($curl);
+
+                            $array_subdominios = json_decode($resp, true);
+
+                            $contador = 0;
+
+
+                            foreach ($array_subdominios as $value1) {
+
+                                $emails = $value1['emails'];
+                                $id_consulta_hunter = $value1[0]['id'];
+                              
+                                if($id_consulta_hunter == "too_many_requests"){
+                                  echo "<script>alert('".lang("You have reached the search limit on your hunter.io plan")."')</script>";
+                                }
+               
+                                foreach ($emails as $value_emails) {
+  
+                                  if($contador == 0){
+                                    $email = $value_emails['value'];
+                                    $nombre = $value_emails['first_name'];
+                                    $apellidos = $value_emails['last_name'];
+                                    $linkedin_url = $value_emails['linkedin'];
+                                    $twitter_url = $value_emails['twitter'];
+                                    $telefono = $value_emails['phone_number'];
+                                    $organizacion = $value1['organization'];
+    
+                                    if($linkedin_url > ''){
+                                      $linkedin = "<center><a href='".$linkedin_url."' target='_blank'><i class='mdi mdi-linkedin-box fs-2'></a></i></center>";
+                                    }else{
+                                      $linkedin = "<center>?</center>";
+                                    }
+
+                                    if($twitter_url > ''){
+                                      $twitter = "<center><a href='https://twitter.com/".$twitter_url."' target='_blank'><i class='mdi mdi-twitter-box fs-2'></a></i></center>";
+
+                                    }else{
+                                      $twitter = "<center>?</center>";
+                                    }
+
+                                    if($telefono > ''){
+                                    }else{
+                                      $telefono = "<center>?</center>";
+                                    }
+
+                                    if($organizacion > ''){
+                                    }else{
+                                      $organizacion = "<center>?</center>";
+                                    }
+
+                                    if($email > ''){
+                                    
+                                      //COMPROBAMOS SI EL CORREO ESTÁ LIKEADO CON HAVE BE PWNED
+                                      $url = 'https://haveibeenpwned.com/api/v3/breachedaccount/'.$email;
+
+                                      $curl = curl_init($url);
+                                      curl_setopt($curl, CURLOPT_URL, $url);
+                                      curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+                                      $headers = array(
+                                        "hibp-api-key: ".$token_pwned,
+                                        "Content-Type: application/json",
+                                        "User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64; rv:17.0) Gecko/20100101 Firefox/17.0"
+                                      );
+                                      curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+                                      //for debug only!
+                                      curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+                                      curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+                                      $resp = curl_exec($curl);
+                                      curl_close($curl);
+
+                                      if($resp > '' && $key_api_value > ''){
+                                        $correo = $email." <span style='color: #ffab00;'>pwned!</span>";
+                                      }else{
+                                        $correo = $email;
+                                      }
+                                      
+                                    }else{
+                                      $correo = "<center>?</center>";
+                                    }
+
+                              
+                                    echo "<tbody>
+                                            <tr>
+                                              <td>".$nombre." ".$apellidos."</td>
+                                              <td>".$correo."</td>
+                                              <td>".$linkedin."</td>
+                                              <td>".$twitter."</td>
+                                              <td>".$telefono."</td>
+                                              <td><center>".$organizacion."</center></td>
+                                            </tr>
+                                          </tbody>";
+
+                                    $contador = 1;
+                                }
+                              }
+                            }
+                        ?>
+                        
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+            <div class="row">
+              <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title"><?php echo lang("Links and subdomains") ?></h4>
+                    <div class="table-responsive" style="overflow:scroll; height:500px; background-color:#191c24; overflow-x:hidden !important;">
+                      <table class="table" style="background-color:#191c24;">
+                        <thead>
+                          <tr>
+                            <th><?php echo lang("Domain") ?></th>
+                            <th><center>Link</center></th>
+                          </tr>
+                        </thead>
+                        <?php 
+                    
+                            
+                            $url = 'https://api.hunter.io/v2/domain-search?domain='.$web.'&api_key='.$token_hunter;
+
+                            $curl = curl_init($url);
+                            curl_setopt($curl, CURLOPT_URL, $url);
+                            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+                            $headers = array(
+                              "Content-Type: application/json",
+                              "User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64; rv:17.0) Gecko/20100101 Firefox/17.0"
+                            );
+                            curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+                            //for debug only!
+                            curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+                            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+                            $resp = curl_exec($curl);
+                            curl_close($curl);
+
+                            $array_subdominios = json_decode($resp, true);
+
+                            foreach ($array_subdominios as $value1) {
+
+                              $emails = $value1['emails'];
+                              
+                              foreach ($emails as $value_emails) {
+
+                                $sources = $value_emails['sources'];
+
+                                  foreach ($sources as $value_sources) {
+
+                                    $domain = $value_sources['uri'];
+
+                                    echo "<tbody>
+                                            <tr>
+                                              <td>".substr($domain, 0, 40)."</td>
+                                              <td><center><a href=".$domain." target='_blank'><i class='mdi mdi-link'></i></a></center></td>
+                                            </tr>
+                                          </tbody>";
+                                  }
+                              }
+                            }
+                        ?>
+                        
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title"><?php echo lang("Employee emails") ?></h4>
+                    <div class="table-responsive" style="overflow:scroll; height:500px; background-color:#191c24; overflow-x:hidden !important;">
+                    <table class="table" style="background-color:#191c24;">
+                        <thead>
+                          <tr>
+                            <th><?php echo lang("Email") ?></th>
+                          </tr>
+                        </thead>
+                        <?php 
+                    
+                            $url = 'https://api.hunter.io/v2/domain-search?domain='.$web.'&api_key='.$token_hunter;
+
+                            $curl = curl_init($url);
+                            curl_setopt($curl, CURLOPT_URL, $url);
+                            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+                            $headers = array(
+                              "Content-Type: application/json",
+                              "User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64; rv:17.0) Gecko/20100101 Firefox/17.0"
+                            );
+
+                            curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+                            //for debug only!
+                            curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+                            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+                            $resp = curl_exec($curl);
+                            curl_close($curl);
+
+                            $array_subdominios = json_decode($resp, true);
+
+                            foreach ($array_subdominios as $value1) {
+
+                                $emails = $value1['emails'];
+                                
+                                foreach ($emails as $value_emails) {
+  
+                                  $email = $value_emails['value'];
+                                  
+
+                                  echo "<tbody>
+                                          <tr>
+                                            <td>".$email."</td>
+                                          </tr>
+                                        </tbody>";
+                              }
+                            }
+                        ?>
+                        
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+
+            <?php
+    
+            if (isset($_POST['submit'])){
+              $nombre = $_POST['nombre'];
+              $web = $_POST['web'];
+              
+              
+              $sentencia = "UPDATE `empresas` SET `nombre`='$nombre',`web`='$web' WHERE id=".$id_url.";";
+
+              $consulta = mysqli_query($conexion, $sentencia)or die("Error de consulta");
+
+              if (mysqli_affected_rows($conexion)!=0) {
+                  echo '<script type="text/JavaScript"> location.reload(); </script>';
+              }
+            }
+            ?>
+
+          <!-- content-wrapper ends -->
+          <!-- partial:partials/_footer.html -->
+          <footer class="footer">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> <?php echo lang("Free Hacking reporting tool from ");?> <a href="https://microjoan.com/" target="_blank">MicroJoan</a></span>
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="assets/vendors/chart.js/Chart.min.js"></script>
+    <script src="assets/vendors/progressbar.js/progressbar.min.js"></script>
+    <script src="assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
+    <script src="assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
+    <script src="assets/js/jquery.cookie.js" type="text/javascript"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="assets/js/off-canvas.js"></script>
+    <script src="assets/js/hoverable-collapse.js"></script>
+    <script src="assets/js/misc.js"></script>
+    <script src="assets/js/settings.js"></script>
+    <script src="assets/js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="assets/js/dashboard.js"></script>
+    <!-- End custom js for this page -->
+
+    <script>
+      // Write on keyup event of keyword input element
+      $(document).ready(function(){
+      $("#busqueda").keyup(function(){
+      _this = this;
+      // Show only matching TR, hide rest of them
+      $.each($("#tabla_listado_cve tbody tr"), function() {
+
+          if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+          $(this).hide();
+          else
+              $(this).show();
+            });
+        });
+      });
+      </script>
+  </body>
+</html>

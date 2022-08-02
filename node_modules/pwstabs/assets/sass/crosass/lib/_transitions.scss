@@ -1,0 +1,86 @@
+// ###############################################
+// CroSass - SASS Crossbrowser Library
+// Author:  Alex Chizhov
+// Verison: 0.1.0
+// Date:    23.01.2015
+// GitHub:  https://github.com/alexchizhovcom/CroSass
+// Website: http://alexchizhov.com
+// ###############################################
+
+
+
+
+// Transition crossbrowser
+// $property  - Specifies the name of the CSS property the transition effect is for
+// $duration  - Specifies how many seconds or milliseconds the transition effect takes to complete
+// $timing    - Specifies the speed curve of the transition effect
+// $delay    - Defines when the transition effect will start
+@mixin transition($property, $duration, $timing, $delay){
+  -webkit-transition: #{$property} #{$duration} #{$timing} #{$delay};
+  -moz-transition: #{$property} #{$duration} #{$timing} #{$delay};
+  -ms-transition: #{$property} #{$duration} #{$timing} #{$delay};
+  -o-transition: #{$property} #{$duration} #{$timing} #{$delay};
+  transition: #{$property} #{$duration} #{$timing} #{$delay};
+}
+
+
+
+// Transition-delay crossbrowser
+// $delay - Defines when the transition effect will start
+@mixin transition_delay($delay){
+  -webkit-transition-delay: #{$delay};
+  -moz-transition-delay: #{$delay};
+  -ms-transition-delay: #{$delay};
+  -o-transition-delay: #{$delay};
+  transition-delay: #{$delay};
+}
+
+
+
+// Transition-duration crossbrowser
+// http://www.w3schools.com/cssref/css3_pr_transition-duration.asp
+// $time - Specifies how many seconds or milliseconds a transition effect takes to complete.
+@mixin transition_duration($time){
+  -webkit-transition-duration: #{$time};
+  -moz-transition-duration: #{$time};
+  -ms-transition-duration: #{$time};
+  -o-transition-duration: #{$time};
+  transition-duration: #{$time};
+}
+
+
+
+// Transition-property crossbrowser
+// http://www.w3schools.com/cssref/css3_pr_transition-property.asp
+// $property - Defines a comma separated list of CSS property names the transition effect is for (none / all / property / initial / inherited)
+@mixin transition_property($property){
+  -webkit-transition-property: #{$property};
+  -moz-transition-property: #{$property};
+  -ms-transition-property: #{$property};
+  -o-transition-property: #{$property};
+  transition-property: #{$property};
+}
+
+
+
+// transition-timing-function
+// http://www.w3schools.com/cssref/css3_pr_transition-timing-function.asp
+// $function - specifies the speed curve of the transition effect
+@mixin transition_timing($function){
+  -webkit-transition-timing-function: #{$function};
+  -moz-transition-timing-function: #{$function};
+  -ms-transition-timing-function: #{$function};
+  -o-transition-timing-function: #{$function};
+  transition-timing-function: #{$function};
+}
+
+
+
+// transition : none
+@mixin transition_none{
+  -webkit-transition: none;
+  -moz-transition: none;
+  -ms-transition: none;
+  -o-transition: none;
+  transition: none;
+}

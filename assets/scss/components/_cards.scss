@@ -1,0 +1,96 @@
+/* Cards */
+
+.card {
+  border-radius: $card-border-radius;
+  .card-body {
+    padding: $card-padding-y $card-padding-x;
+    + .card-body {
+      padding-top: 1rem;
+    }
+  }
+  .card-title {
+    color: $card-title-color;
+    margin-bottom: 1.125rem;
+    text-transform: capitalize;
+  }
+  .card-subtitle {
+    @extend .text-gray;
+    font-weight: normal;
+    margin-top: 0.625rem;
+    margin-bottom: 0.625rem;
+  
+  }
+  .card-description {
+    color: $card-description-color;
+    font-weight: $font-weight-light;
+  }
+  &.card-outline-success {
+		border: 1px solid $success;
+	}
+	&.card-outline-primary {
+		border: 1px solid $primary;
+	}
+	&.card-outline-warning {
+		border: 1px solid $warning;
+	}
+	&.card-outline-danger {
+		border: 1px solid $danger;
+	}
+	&.card-rounded {
+		@include border-radius(5px);
+	}
+
+  &.card-faded {
+    background: #b5b0b2;
+    border-color: #b5b0b2;
+  }
+  &.card-circle-progress {
+    color: $white;
+    text-align: center;
+  }
+  &.card-img-holder {
+    position: relative;
+    .card-img-absolute {
+      position: absolute;
+      top:0;
+      right: 0;
+      height: 100%;
+    }
+  }
+  &.corona-gradient-card {
+    background-image: linear-gradient(to left, #d41459, #911a6c);
+    border-radius: 6px;
+    .gradient-corona-img {
+      height: 85px;
+      @media (max-width: 576px) {
+        height: auto;
+        min-height: 50px;
+        max-height: 85px;
+      }
+    }
+    @media (max-width: 576px) {
+     h4 {
+       font-size: 0.75rem;
+     }
+    }
+  }
+}
+
+@media (min-width: 576px) {
+  .card-columns {
+    column-count: 3;
+    column-gap: 1.25rem;
+    orphans: 1;
+    widows: 1;
+    .card {
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 0.75rem;
+    }
+  }
+}
+@each $color, $value in $theme-colors {
+  .card-inverse-#{$color} {
+    @include card-inverse-variant(rgba($value, .2), theme-color-level($value, 1), theme-color-level($value, 3));
+  }
+}

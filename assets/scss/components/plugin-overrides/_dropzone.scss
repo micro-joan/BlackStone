@@ -1,0 +1,35 @@
+/* Dropzone */
+
+.dropzone {
+  border: 1px solid $border-color;
+  min-height: 200px;
+  background: transparent;
+  .dz-message {
+    text-align: center;
+    width: 100%;
+    span {
+      font-size: .8125rem;
+      color: $body-color;
+    }
+  }
+  .dz-preview {
+    margin: 5px;
+    .dz-image {
+      width: 63px;
+      height: 63px;
+      border-radius: 6px;
+    }
+    .dz-error-message {
+      top: 80px;
+      left: -35px;
+    }
+    .dz-success-mark,
+    .dz-error-mark {
+      margin-left: -17px;
+      svg {
+        width: 35px;
+        height: 35px;
+      }
+    }
+  }
+}

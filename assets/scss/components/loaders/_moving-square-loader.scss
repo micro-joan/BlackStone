@@ -1,0 +1,36 @@
+/* Moving square loader */
+
+.moving-square-loader {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    position: relative;
+    margin: 0 auto;
+}
+.moving-square-loader:before{
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: calc(50% - 10px);
+    left: 0px;
+    background-color: rgba($danger, .7);
+    animation: rotatemove 1s infinite;
+  }
+  
+  @keyframes rotatemove{
+    0%{
+      -webkit-transform: scale(1) translateX(0px);
+      -ms-transform: scale(1) translateX(0px);
+      -o-transform: scale(1) translateX(0px);
+      transform: scale(1) translateX(0px);
+    }
+  
+    100%{
+      -webkit-transform: scale(2) translateX(45px);
+      -ms-transform: scale(2) translateX(45px);
+      -o-transform: scale(2) translateX(45px);
+      transform: scale(2) translateX(45px);
+    }
+  }
+  

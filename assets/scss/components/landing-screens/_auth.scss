@@ -1,0 +1,128 @@
+/* Auth */
+
+.auth {
+	&.login-bg {
+		background: url("../images/auth/Login_bg.jpg");
+		background-size: cover;
+	}
+	.login-half-bg {
+		background: url("../images/auth/login-bg.jpg");
+		background-size: cover;
+	}
+	&.register-half-bg {
+		background: url("../images/auth/Login_bg2.jpg");
+		background-size: cover;
+	}
+	&.lock-full-bg {
+		background: url("../images/auth/lockscreen-bg.jpg");
+		background-size: cover;
+	}
+	.lock-profile-img {
+		width: 90px;
+		height: 90px;
+		border-radius: 100%;
+	}
+	.auth-form-dark {
+		background: rgba($black, .6);
+		color: $white;
+		.form-control {
+			border-color: rgba($white, .2);
+			color: $white;
+			@include input-placeholder{
+				color: $white;
+			}
+		}
+	}
+	.auth-form-light {
+		background: $white;
+		select {
+			color: $input-placeholder-color;
+		}
+		.input-group {
+			.form-control {
+				&:focus,
+				&:active {
+					border-color: $border-color;
+				}
+			}
+		}
+	}
+	.auth-form-transparent {
+		background: transparent;
+		.form-control,
+		.input-group-text {
+			border-color: $secondary;
+			&:focus,
+			&:active {
+				border-color: $secondary;
+			}
+		}
+		select {
+			outline-color: $secondary;
+		}
+	}
+	&.auth-img-bg {
+		padding: 0;
+		.auth-form-transparent {
+			@media (min-width:768px) {
+				width: 55%;
+				margin: auto;
+			}
+		}
+	}
+	.brand-logo {
+		margin-bottom: 2rem;
+		img {
+			width: 150px;
+		}
+	}
+	form {
+		.auth-form-btn {
+			height: 50px;
+			line-height: 1.5;
+		}
+		.auth-link {
+			font-size: $default-font-size;
+			&:hover {
+				color: initial;
+			}
+		}
+	}
+	button {
+		font-size: $default-font-size;
+		&.enter-btn {
+			height: 45px;
+			margin-bottom: 28px;
+		}
+	}
+	.forgot-pass {
+		font-size: $default-font-size;
+		text-align: right;
+	}
+	.sign-up {
+		font-size: $default-font-size;
+		text-align: center;
+		margin-top: 30px;
+		margin-bottom: 0;
+
+		a {
+			color: $primary;
+		}
+	}
+	&.login-2,
+	&.option-2 {
+		padding: 0;
+		.card {
+			height: 100vh;
+		}
+	}
+	.terms {
+		font-size: $default-font-size;
+		text-align: center;
+		margin-top: 23px;
+		margin-bottom: 0;
+		a {
+			text-decoration: underline;
+		}
+	}
+}

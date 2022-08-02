@@ -1,0 +1,78 @@
+{
+  "_from": "tfunk@^4.0.0",
+  "_id": "tfunk@4.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-eJQ0dGfDIzWNiFNYFVjJ+Ezl/GmwHaFTBTjrtqNPW0S7cuVDBrZrmzUz6VkMeCR4DZFqhd4YtLwsw3i2wYHswQ==",
+  "_location": "/tfunk",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "tfunk@^4.0.0",
+    "name": "tfunk",
+    "escapedName": "tfunk",
+    "rawSpec": "^4.0.0",
+    "saveSpec": null,
+    "fetchSpec": "^4.0.0"
+  },
+  "_requiredBy": [
+    "/eazy-logger"
+  ],
+  "_resolved": "https://registry.npmjs.org/tfunk/-/tfunk-4.0.0.tgz",
+  "_shasum": "de9399feaf2060901d590b7faad80fcd5443077e",
+  "_spec": "tfunk@^4.0.0",
+  "_where": "/Users/jyothish/Documents/corona-free-dark-bootstrap-admin-template/template/node_modules/eazy-logger",
+  "author": {
+    "name": "Shane Osbourne"
+  },
+  "bugs": {
+    "url": "https://github.com/shakyShane/tfunk/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "dlv": "^1.1.3"
+  },
+  "deprecated": false,
+  "description": "Multi-colour console output from chalk with added awesome",
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "jshint": "^2.6.0",
+    "mocha": "^8.2.0",
+    "pegjs": "^0.8.0"
+  },
+  "files": [
+    "index.js",
+    "lib"
+  ],
+  "homepage": "https://github.com/shakyShane/tfunk#readme",
+  "keywords": [
+    "color",
+    "colour",
+    "colors",
+    "terminal",
+    "console",
+    "cli",
+    "string",
+    "styles",
+    "formatting",
+    "rgb",
+    "shell",
+    "xterm",
+    "log",
+    "logging",
+    "command-line",
+    "text"
+  ],
+  "license": "MIT",
+  "name": "tfunk",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shakyShane/tfunk.git"
+  },
+  "scripts": {
+    "lint": "jshint test/*.js index.js",
+    "test": "npm run lint && mocha"
+  },
+  "version": "4.0.0"
+}

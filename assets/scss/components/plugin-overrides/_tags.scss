@@ -1,0 +1,18 @@
+/* Tags */
+
+div.tagsinput {
+  padding: 15px 15px 10px;
+  border-color: $border-color;
+  span.tag {
+    background: $primary;
+    border: 0;
+    color: color(white);
+    padding: 6px 14px;
+    font-size: .8125rem;
+    font-family: inherit;
+    line-height: 1;
+    a {
+      color: color(white);
+    }
+  }
+}

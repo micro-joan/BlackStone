@@ -1,0 +1,143 @@
+/* Pws-tabs */
+
+.pws_tabs_container {
+	ul.pws_tabs_controll {
+		border-bottom: 1px solid $primary;
+		li {
+      &:first-child {
+        a {
+          @include border-radius(5px 0px 0px 0px);
+        }
+      }
+      &:last-child {
+        a {
+          border-right: 1px solid $primary;
+          @include border-radius(0px 5px 0px 0px);
+        }
+      }
+			a {
+				border: 1px solid $primary;
+				border-bottom: none;
+        border-right: none;
+				background: #fff;
+				color: $primary;
+				padding: 0.6em 1.3em;
+        margin-right: 0;
+
+				&:hover {
+					background: #fff;
+					color: $primary;
+				}
+
+				&.pws_tab_active {
+					background: $primary;
+					color: #fff;
+				}
+			}
+		}
+	}
+
+	.demo-tabs {
+		border: 1px solid $primary;
+		@include border-radius(0px 5px 5px 5px);
+		overflow: hidden;
+		background: color(white-smoke);
+		margin-bottom: 45px;
+		padding-top: 3.5rem;
+
+		.CodeMirror {
+			margin-bottom: 20px;
+		}
+	}
+  // Styles for vertical Tab
+  &.pws_tabs_vertical {
+    .pws_tabs_controll {
+      border-right: none;
+			border-bottom:none;
+      li {
+        &:first-child {
+          a {
+            @include border-radius(5px 0px 0px 0px);
+          }
+        }
+        &:last-child {
+          a {
+            border-bottom: 1px solid $primary;
+            @include border-radius(0px 0px 0px 5px);
+            border-right: 0px;
+          }
+        }
+        a {
+          @include border-radius(0px);
+          border: 1px solid $primary;
+          border-right: none;
+          border-bottom: none;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+  // Styles for vertical Tab
+
+  // Styles for horizontal Tab
+  &.pws_tabs_horizontal_bottom {
+    .pws_tabs_list {
+      margin-bottom: 0;
+    }
+    .pws_tabs_controll {
+			border-top: 1px solid $primary;
+      border-right: none;
+			border-bottom: none;
+      li {
+        &:first-child {
+          a {
+            @include border-radius(0px 0px 0px 5px);
+          }
+        }
+        &:last-child {
+          a {
+            @include border-radius(0px 0px 5px 0px);
+            border-right: 1px solid $primary;
+          }
+        }
+        a {
+          @include border-radius(0px);
+          border: 1px solid $primary;
+          border-top: none;
+          border-right: none;
+          margin-right: 0;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+  // Styles for vertical Tab
+
+  // Styles for RTL Tab
+  &.pws_tabs_rtl {
+    .pws_tabs_controll {
+  		li {
+        &:first-child {
+          a {
+            @include border-radius(0px 5px 0px 0px);
+            border-right: 1px solid $primary;
+          }
+        }
+        &:last-child {
+          a {
+            border-right: none;
+            @include border-radius(5px 0px 0px 0px);
+          }
+        }
+  			a {
+  				border: 1px solid $primary;
+  				border-bottom: none;
+          border-right: none;
+          margin-right: 0;
+          margin-left: 0;
+  			}
+  		}
+  	}
+  }
+  // Styles for RTL Tab
+}

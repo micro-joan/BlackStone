@@ -1,0 +1,11 @@
+/* Quill Editor */
+
+.quill-container {
+  height: 300px;
+}
+.ql-toolbar,
+.quill-container {
+  &.ql-snow {
+    border-color: $border-color;
+  }
+}

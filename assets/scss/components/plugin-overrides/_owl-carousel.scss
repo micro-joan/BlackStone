@@ -1,0 +1,91 @@
+/* Owl-carousel */
+
+.owl-carousel {
+    img {
+        border-radius: 4px;
+    }
+    &.full-width {
+        .owl-nav {
+            position: absolute;
+            top: 30%;
+            width: 100%;
+            margin-top: 0;
+            .owl-prev,
+            .owl-next {
+                background: transparent;
+                color: $white;
+                i {
+                    &:before {
+                        width: 60px;
+                        height: 60px;
+                        background: rgba($black, .5);
+                        border-radius: 100%;
+                        font-size: 1.875rem;
+                        font-weight: bold;
+                        line-height: 2;
+                    }
+                }
+            }
+            .owl-prev {
+                float: left;
+            }
+            .owl-next {
+                float: right;
+            }
+        }
+        .owl-dots {
+            margin-top: 1rem;
+        }
+    }
+    .item-video {
+        width: 200px;
+        height: 200px;
+    }
+    &.portfolio-carousel {
+        &.full-width {
+            .owl-nav {
+                top: auto;
+                bottom: 100%;
+                text-align: right;
+                .rtl & {
+                    text-align: left;
+                }
+                .owl-prev,
+                .owl-next {
+                    color: #a7afb7;
+                    margin: 0;
+                    padding: 0px 2px 14px 2px !important;
+                    @media (min-width: 768px) and (max-width: 1200px ) {
+                        padding: 0px 2px 19px 0px;
+                    }
+                    i {
+                        text-align: center;
+                        &:before {
+                            width: 32px;
+                            height: 32px;
+                            font-size: 1.25rem;
+                            font-weight: normal;
+                            line-height: 32px;
+                            @media (min-width: 768px) and (max-width: 1200px ) {
+                                width: 20px;
+                                height: 20px;
+                                font-size: .75rem;
+                                line-height: 20px;
+                            }
+                        }
+                    }
+                }
+                .owl-prev {
+                    float: none;
+                }
+                .owl-next {
+                    float: none;
+                }
+            }
+            .owl-dots {
+                margin-top: 1rem;
+            }
+        }
+    }
+}
+

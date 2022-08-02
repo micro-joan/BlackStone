@@ -1,0 +1,44 @@
+/* Colcade */
+
+* { box-sizing: border-box; }
+
+.grid {
+  border: 1px solid color(gray-light)est;
+}
+
+.grid:after {
+  display: block;
+  content: '';
+  clear: both;
+}
+
+.grid-col {
+  float: left;
+  width: 49%;
+  margin-right: 2%;
+  background: rgba(theme-color(primary), .2);
+}
+
+.grid-col--4 { margin-right: 0; }
+
+/* hide two middle */
+.grid-col--2, .grid-col--3 { display: none; }
+
+@media ( min-width: 768px ) {
+  .grid-col { width: 32%; }
+  .grid-col--2 { display: block; }
+}
+
+@media ( min-width: 1200px ) {
+  .grid-col { width: 23.5%; }
+  .grid-col--2, .grid-col--3 { display: block; }
+}
+
+.grid-item {
+  background: $primary;
+  margin-bottom: 20px;
+}
+
+.grid-item--a { height:  80px; }
+.grid-item--b { height: 140px; }
+.grid-item--c { height: 300px; }

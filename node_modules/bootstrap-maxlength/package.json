@@ -1,0 +1,76 @@
+{
+  "_from": "bootstrap-maxlength@^1.6.0",
+  "_id": "bootstrap-maxlength@1.10.1",
+  "_inBundle": false,
+  "_integrity": "sha512-VYQosg0ojUNq05PlZcTwETm0E0Aoe/cclRmCC27QrHk/sY0Q75PUvgHYujN0gb2CD3n2olJfPeqx3EGAqpKjww==",
+  "_location": "/bootstrap-maxlength",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "bootstrap-maxlength@^1.6.0",
+    "name": "bootstrap-maxlength",
+    "escapedName": "bootstrap-maxlength",
+    "rawSpec": "^1.6.0",
+    "saveSpec": null,
+    "fetchSpec": "^1.6.0"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/bootstrap-maxlength/-/bootstrap-maxlength-1.10.1.tgz",
+  "_shasum": "6b818f4397eed9302477d00f7d2f69fccf2b7740",
+  "_spec": "bootstrap-maxlength@^1.6.0",
+  "_where": "/Users/jyothish/Documents/corona-free-dark-bootstrap-admin-template/template",
+  "author": {
+    "name": "Maurizio Napoleoni @mimonap"
+  },
+  "bugs": {
+    "url": "https://github.com/mimo84/bootstrap-maxlength/issues"
+  },
+  "bundleDependencies": false,
+  "contributors": [
+    {
+      "name": "Maurizio Napoleoni @mimonap"
+    },
+    {
+      "name": "djibe @djibe"
+    }
+  ],
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "jquery": "^3.5.1",
+    "qunit": "^2.10.0"
+  },
+  "deprecated": false,
+  "description": "A visual feedback indicator for the MaxLength attribute",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "terser": "^4.6.13"
+  },
+  "homepage": "https://github.com/mimo84/bootstrap-maxlength",
+  "keywords": [
+    "form",
+    "maxlength",
+    "html5",
+    "input",
+    "feedback",
+    "jquery-plugin",
+    "jquery",
+    "bootstrap",
+    "bs"
+  ],
+  "license": "MIT",
+  "main": "dist/bootstrap-maxlength.js",
+  "name": "bootstrap-maxlength",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mimo84/bootstrap-maxlength.git"
+  },
+  "scripts": {
+    "dist": "terser src/bootstrap-maxlength.js -o dist/bootstrap-maxlength.js -b && terser src/bootstrap-maxlength.js -o dist/bootstrap-maxlength.min.js -c",
+    "test": "eslint \"src/**\" --report-unused-disable-directives"
+  },
+  "version": "1.10.1",
+  "version_short": "1.10"
+}

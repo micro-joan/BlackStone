@@ -1,0 +1,137 @@
+/* Full Calendar */
+
+.fc {
+  button {
+    @extend .btn;
+    @extend .btn-sm;
+    height: auto;
+    background-image: none;
+    text-shadow: none;
+    font-weight: normal;
+    background-color: $white;
+    border-color: $border-color;
+    text-transform: capitalize;
+    color: $fullcalendar-color;
+    .fc-icon-right-single-arrow,
+    .fc-icon-left-single-arrow {
+      &:after {
+        color: $fullcalendar-color;
+        font: normal normal normal 20px/1 "Material Design Icons";
+      }
+    }  
+    .fc-icon-right-single-arrow {
+      &:after {
+        content: "\F142";
+      }
+    }
+    .fc-icon-left-single-arrow {
+      &:after {
+        content: "\F141";
+      }
+    }
+  }
+  .fc-button-group {
+    @extend .btn-group;
+    .fc-button {
+      background-color: $white;
+      margin: 0;
+      &.fc-state-active {
+        color: $danger;        
+      }
+    }
+  }
+  .fc-header-toolbar {
+    margin-top: 2rem;
+    .fc-center {
+      h2 {
+        font-size: 1rem;        
+      }
+    }
+  }
+  .fc-widget-header {
+    border: 0;
+    table {
+      tr {
+        th {
+          border-width: 0 0 1px 0;
+          text-align: right;
+          padding: 1rem;
+          span {
+            font-size: 10px;
+            text-transform: uppercase;
+            color: $fullcalendar-color;
+            letter-spacing: 1px;
+          }
+        }
+      }
+    }
+  }
+  .fc-content-skeleton {
+    table {
+      tr {
+        td {
+          padding: .5rem;
+          font-size: .875rem;
+        }
+      }
+    }
+  }
+  .fc-event {
+    border: 0;
+    color: $white;
+    padding: .5rem;
+    &.fc-start {
+      background: $primary; 
+      border-radius: 4px;
+      border-left: 4px solid $primary;        
+    }
+    &.fc-not-start,
+    &.fc-not-end {
+      background: $danger;
+      border-left: 4px solid $danger;
+      padding-left: .5rem;
+    }
+    &.fc-not-end {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    .fc-title,
+    .fc-time {
+      color: $white;
+    }
+  }
+}
+
+.fc-external-events {
+  .fc-event {
+    background: $card-bg;
+    color: $body-color;
+    border-width: 0 0 0 4px;
+    padding: 16px;
+    border-radius: 0;
+    margin-bottom: 10px;
+    &:nth-child(1) {
+      border-color: $primary;
+    }
+    &:nth-child(2) {
+      border-color: $danger;
+    }
+    &:nth-child(3) {
+      border-color: $success;
+    }
+    &:nth-child(4) {
+      border-color: $info;
+    }
+    &:nth-child(4) {
+      border-color: $warning;
+    }
+  }
+}
+
+.fc-unthemed {
+  tbody {
+    td {
+      border-color: $border-color;
+    }
+  }
+}

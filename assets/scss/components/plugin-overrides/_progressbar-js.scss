@@ -1,0 +1,23 @@
+/* Progressbar-js */
+
+.progress-bar-js-line {
+  height: 6px;
+}
+
+.progressbar-js-circle {
+  width: 100%;
+  position: relative;
+}
+
+.demo-progress-circle {
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+.progress {
+  background-color: #2f323a;
+  border-radius: 0px;
+  .progress-bar {
+    border-radius: 0px;
+  }
+}

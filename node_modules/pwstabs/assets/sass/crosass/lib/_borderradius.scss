@@ -1,0 +1,34 @@
+// ###############################################
+// CroSass - SASS Crossbrowser Library
+// Author:  Alex Chizhov
+// Verison: 0.1.1
+// Date:    23.01.2015
+// GitHub:  https://github.com/alexchizhovcom/CroSass
+// Website: http://alexchizhov.com
+// ###############################################
+
+
+// Mixin for crossbrowser border-radius
+@mixin border_radius_and($color, $width, $size){
+  -webkit-border-radius: $size;
+  -khtml-border-radius: $size;
+  -moz-border-radius: $size;
+  border-radius: $size;
+  border: $width solid $color;
+}
+
+// border-radius All
+@mixin border_radius_all($size){
+  -webkit-border-radius: #{$size};
+  -khtml-border-radius: #{$size};
+  -moz-border-radius: #{$size};
+  border-radius: #{$size};
+}
+
+// border-radius Top Bottom
+@mixin border_radius($sizeTopLeft, $sizeTopRight, $sizeBottomLeft, $sizeBottomRight){
+  -webkit-border-radius: #{$sizeTopLeft} #{$sizeTopRight} #{$sizeBottomRight} #{$sizeBottomLeft};
+  -khtml-border-radius: #{$sizeTopLeft} #{$sizeTopRight} #{$sizeBottomRight} #{$sizeBottomLeft};
+  -moz-border-radius: #{$sizeTopLeft} #{$sizeTopRight} #{$sizeBottomRight} #{$sizeBottomLeft};
+  border-radius: #{$sizeTopLeft} #{$sizeTopRight} #{$sizeBottomRight} #{$sizeBottomLeft};
+}

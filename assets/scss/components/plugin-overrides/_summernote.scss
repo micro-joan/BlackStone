@@ -1,0 +1,10 @@
+/* Summernote Editor */
+
+.note-editor{
+  &.note-frame {
+    border: 1px solid $border-color;
+  }
+}
+.note-popover {
+  border: 1px solid $border-color;
+}

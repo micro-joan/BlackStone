@@ -1,0 +1,27 @@
+/* Jquery File Upload */
+
+.ajax-upload-dragdrop {
+  border-color: $border-color;
+  border-style: dotted;
+  max-width:100%;
+  span {
+    b {
+      font-size: .8125rem;
+      color: $body-color;
+      font-weight: initial; 
+    }
+  }
+  .ajax-file-upload {
+    background: $info;
+    box-shadow: none;
+    height: auto;
+    @extend .btn;
+  }
+}
+
+.ajax-file-upload-container {
+  min-height: 100px;
+  .ajax-file-upload-statusbar {
+    max-width: 100%;
+  }
+}

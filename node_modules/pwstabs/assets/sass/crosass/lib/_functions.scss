@@ -1,0 +1,15 @@
+// ###############################################
+// CroSass - SASS Crossbrowser Library
+// Author:  Alex Chizhov
+// Verison: 0.1.0
+// Date:    23.01.2015
+// GitHub:  https://github.com/alexchizhovcom/CroSass
+// Website: http://alexchizhov.com
+// ###############################################
+
+
+
+// parseInt function to pass an integer (remove units)
+@function parseInt($n) {
+  @return $n / ($n * 0 + 1);
+}

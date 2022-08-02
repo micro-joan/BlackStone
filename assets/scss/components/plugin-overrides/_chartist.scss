@@ -1,0 +1,162 @@
+/* Chartist */
+
+// Line Charts Starts
+// Data -1
+
+.ct-series-a .ct-line {
+  stroke: lighten($blue, 15);
+  stroke-width: 3px;
+  stroke-dasharray: 10px 20px;
+}
+
+.ct-series-a .ct-point {
+  stroke: lighten($blue, 1);
+  stroke-width: 10px;
+  stroke-linecap: round;
+}
+// Data -2
+
+.ct-series-b .ct-line {
+  stroke: lighten($green, 15);
+  stroke-width: 3px;
+  stroke-dasharray: 10px 20px;
+}
+
+.ct-series-b .ct-point {
+  stroke: lighten($green, 1);
+  stroke-width: 10px;
+  stroke-linecap: round;
+}
+// Data -3
+
+.ct-series-c .ct-line {
+  stroke: lighten($orange, 15);
+  stroke-width: 3px;
+  stroke-dasharray: 10px 20px;
+}
+
+.ct-series-c .ct-point {
+  stroke: lighten($orange, 1);
+  stroke-width: 10px;
+  stroke-linecap: round;
+}
+// Line Charts Ends
+// Bar Charts Starts
+// Data -1
+
+.ct-series-a .ct-bar {
+  stroke: lighten($blue, 15);
+  stroke-width: 20px;
+  stroke-dasharray: 0;
+  stroke-linecap: squre;
+}
+// Data -2
+
+.ct-series-b .ct-bar {
+  stroke: lighten($green, 15);
+  stroke-width: 20px;
+  stroke-dasharray: 0;
+  stroke-linecap: squre;
+}
+// Data -3
+
+.ct-series-c .ct-bar {
+  stroke: lighten($orange, 15);
+  stroke-width: 20px;
+  stroke-dasharray: 0;
+  stroke-linecap: squre;
+}
+// Data -4
+
+.ct-series-d .ct-bar {
+  stroke: lighten($red, 15);
+  stroke-width: 20px;
+  stroke-dasharray: 0;
+  stroke-linecap: squre;
+}
+// Bar Charts Ends
+// Pie Chart Starts
+// Data -1
+.ct-series-a .ct-slice-pie {
+  fill: lighten($blue, 15);
+  stroke-width: 4px;
+}
+// Data -2
+
+.ct-series-b .ct-slice-pie {
+  fill: lighten($green, 15);
+  stroke-width: 4px;
+}
+// Data 3
+
+.ct-series-c .ct-slice-pie {
+  fill: lighten($red, 15);
+  stroke-width: 4px;
+}
+// Data -4
+
+.ct-series-d .ct-slice-pie {
+  fill: lighten($orange, 15);
+  stroke-width: 4px;
+}
+// Pie Chart Starts
+// Donut chart Starts
+// Data -1
+.ct-series-a .ct-slice-donut-solid {
+  fill: lighten($blue, 15);
+}
+
+// Data -2
+.ct-series-b .ct-slice-donut-solid {
+  fill: lighten($green, 15);
+}
+
+// Data -3
+.ct-series-c .ct-slice-donut-solid {
+  fill: lighten($red, 15);
+}
+
+// Data -d
+.ct-series-a .ct-slice-donut-solid {
+  fill: lighten($orange, 15);
+}
+
+// E-commerce Dashboard Chart
+#ct-chart-dash-barChart {
+  // Data -1
+  .ct-series-a .ct-bar {
+    stroke: lighten($red, 10);
+    stroke-width: 20px;
+    stroke-dasharray: 0;
+    stroke-linecap: squre;
+  }
+  // Data -2
+  .ct-series-b .ct-bar {
+    stroke: lighten($blue, 10);
+    stroke-width: 20px;
+    stroke-dasharray: 0;
+    stroke-linecap: squre;
+  }
+  // Data -3
+  .ct-series-c .ct-bar {
+    stroke: lighten($blue, 15);
+    stroke-width: 20px;
+    stroke-dasharray: 0;
+    stroke-linecap: squre;
+  }
+  // Data -4
+  .ct-series-d .ct-bar {
+    stroke: lighten($blue, 20);
+    stroke-width: 20px;
+    stroke-dasharray: 0;
+    stroke-linecap: squre;
+  }
+}
+
+.ct-grid {
+  stroke: rgba(255, 255, 255, 0.2);
+}
+
+.ct-labels span {
+  color: #d9e9ff;
+}

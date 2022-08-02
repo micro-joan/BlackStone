@@ -1,0 +1,12 @@
+/* CodeMirror */
+
+.CodeMirror {
+  font-size: $default-font-size;
+  font-weight: normal;
+  height: auto;
+  text-align: left;
+  min-height: auto;
+}
+.CodeMirror-scroll {
+  min-height: auto;
+}

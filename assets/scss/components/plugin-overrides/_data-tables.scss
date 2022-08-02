@@ -1,0 +1,57 @@
+/* Data Tables */
+
+.dataTables_wrapper {
+  padding-left: 0;
+  padding-right: 0;
+  label {
+    font-size: .8125rem;
+  }
+  select {
+    @extend .form-control;
+    padding: .4rem;
+  }
+  .dataTables_length {
+    select {
+      min-width: 65px;
+      margin-left: .25rem;
+      margin-right: .25rem;
+    }
+  }
+  .dataTable {
+    .btn {
+      padding: 0.1rem 1rem;
+      vertical-align: top;
+    }
+    thead {
+      th {
+        border-bottom-width: 0;
+      }
+      .sorting,
+      .sorting_asc,
+      .sorting_desc,
+      .sorting_asc_disabled,
+      .sorting_desc_disabled {
+        &:before,
+        &:after {
+          line-height: 2.5;
+          font-family: Material Design Icons;
+          font-size: .65rem;
+        }
+        &:before {
+          content: "\F05D";
+          right: 1.2em;
+        }
+        &:after {
+          content: "\F045";
+          right: 0.2em;
+        }
+      }
+    }
+  }
+  .dataTables_paginate {
+    margin-top: 20px;
+  }
+  .dataTables_info {
+    font-size: $default-font-size;
+  }
+}

@@ -1,0 +1,60 @@
+/* Dropify */
+
+.dropify-wrapper{
+	border: 2px dashed $border-color;
+	background: transparent;
+	@include border-radius(7px);
+	&:hover{
+		background-size: 30px 30px;
+		background-image: -webkit-linear-gradient(135deg, #2e2f32 25%, transparent 25%, transparent 50%, #2e2f32 50%, #2e2f32 75%, transparent 75%, transparent);
+		background-image: linear-gradient(135deg, #2e2f32 25%, transparent 25%, transparent 50%, #2e2f32 50%, #2e2f32 75%, transparent 75%, transparent);
+		-webkit-animation: stripes 2s linear infinite;
+		animation: stripes 2s linear infinite;
+	}
+	.dropify-message{
+		span.file-icon{
+			&:before {
+				display: inline-block;
+				font: normal normal normal 24px/1 "Material Design Icons";
+				font-size: inherit;
+				text-rendering: auto;
+				line-height: inherit;
+				-webkit-font-smoothing: antialiased;
+				content: '\F552';
+				color: $body-color;
+				font-size: 1.25rem;
+			}
+	    }
+	    p{
+			font-size: .8125rem;
+			color: $body-color;
+	    }
+	}
+	.dropify-preview{
+		.dropify-infos{
+			background: rgba(255,255,255,.9);
+			.dropify-infos-inner{
+				.dropify-filename{
+					color: $primary;
+					font-size: 20px;
+					font-weight: 400;
+				}
+				.dropify-infos-message{
+					color :#333;
+					font-weight:500;
+				}
+			}
+		}
+		.dropify-render{
+			img{
+				opacity: 0.7;
+			}
+		}
+	}
+	.dropify-clear{
+	    background: #fff;
+	    border: none;
+	    font-weight: 700;
+	    color: color(gray);
+	}
+}

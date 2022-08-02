@@ -1,0 +1,4 @@
+default:
+    - 'sass'
+    - 'autoprefixer'
+    - 'watch'

@@ -1,0 +1,83 @@
+/* Rating */
+
+.br-theme-fontawesome-stars,
+.br-theme-css-stars {
+  .br-widget {
+    a {
+      font-size: 20px;
+      &:after{
+        color: lighten(black, 30%);
+      }
+      &.br-selected,
+      &.br-active {
+        &:after {
+          color:  $warning;
+        }
+      }
+    }
+  }
+}
+
+.br-theme-bars-1to10,
+.br-theme-bars-movie,
+.br-theme-bars-pill,
+.br-theme-bars-reversed,
+.br-theme-bars-horizontal {
+  .br-widget {
+    a {
+      background-color: lighten(black, 30%);
+      color:  $warning;
+      &.br-selected,
+      &.br-active {
+        background-color: $warning;
+      }
+    }
+  }
+}
+
+.br-theme-bars-square {
+  .br-widget {
+    a {
+      border-color: lighten(black, 30%);
+      color: $text-muted;
+      background: transparent;
+      &.br-selected,
+      &.br-active {
+        color: $warning;
+        border-color: $warning;
+      }
+    }
+  }
+}
+
+.br-theme-bars-movie,
+.br-theme-bars-reversed,
+.br-theme-bars-1to10,
+.br-theme-bars-horizontal {
+  .br-widget {
+    .br-current-rating {
+      color: $body-color;
+      font-size: $default-font-size;
+      font-weight: initial;
+    }
+  }
+}
+
+.br-theme-bars-1to10 {
+  height: 26px;
+  .br-widget {
+    height: 24px;
+    .br-current-rating {
+      line-height: 1;
+    }
+  }
+}
+
+.br-theme-bars-pill {
+  .br-widget {
+    a {
+     line-height: 2.5;
+     color: $text-muted;
+    }
+  }
+}

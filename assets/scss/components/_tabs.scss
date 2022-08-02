@@ -1,0 +1,135 @@
+.nav-tabs {
+	.nav-link {
+		background: $nav-tabs-link-bg;
+		color: $nav-tabs-link-color;
+		border-radius: 0;
+		border: 1px solid $border-color;
+		padding: .75rem 1.5rem;
+		@media (max-width: 576px) {
+			padding: 0.3rem 0.5rem;
+		}
+	}
+	.nav-item {
+		&:first-child {
+			.nav-link {
+				border-radius: 4px 0 0 0;
+			}	
+		}
+		&:last-child {
+			.nav-link {
+				border-radius: 0 4px 0 0;
+			}
+		}
+	}
+	&.nav-tabs-vertical {
+		@extend .flex-column;
+		border-bottom: 0;
+		.nav-link {
+			&.active {
+				border-bottom-color: $border-color;
+			}
+		}
+		.nav-item {
+			&:first-child {
+				.nav-link {
+					border-radius: 4px 4px 0 0;
+				}	
+			}
+			&:last-child {
+				.nav-link {
+					border-radius: 0 0 4px 4px;
+				}
+			}
+		}
+	}
+	&.nav-tabs-vertical-custom {
+		@extend .nav-tabs-vertical;
+		background: $primary;
+		border-radius: 4px;
+		.nav-link {
+			background: transparent;
+			border-color: rgba($white, .2);
+			color: darken($primary, 30%);
+			font-weight: $font-weight-bold;
+			padding: 1.75rem;
+			&.active {
+				color: $white;
+				border-color: rgba($white, .2);
+			}
+		}
+	}
+}
+
+.nav-pills {
+	border-bottom: 1px solid $border-color;
+	padding-bottom: 1rem;
+	.nav-link {
+		border: 1px solid $border-color;
+		padding: .5rem 1.5rem;
+		@media (max-width: 576px) {
+			padding: 0.3rem 0.5rem;
+		}
+	}
+	.nav-item {
+		margin-right: 1rem;
+		@media (max-width: 576px) {
+		margin-right: 0.5rem;
+		font-size: 0.675;
+		}
+	}
+	&.nav-pills-vertical {
+		@extend .flex-column;
+		border-bottom: 0;
+		.nav-item {
+			margin-right: 0;
+			margin-bottom: 1rem;
+		}
+	}
+	&.nav-pills-custom {
+		border-bottom: 0;
+		.nav-link {
+			border-radius: 20px;
+			padding: .5rem 2.5rem;
+			@media (max-width: 576px) {
+				padding: .3rem .5rem;
+			}
+			background: $nav-pills-custom-bg;
+			color: $black;
+			&.active {
+				background: $danger;
+				color: $white;
+			}
+		}
+	}
+}
+
+/* gradient pills */
+@each $color, $value in $theme-colors {
+  .nav-pills-#{$color} {
+    .nav-link {
+			color: $value;
+			&.active {
+				background: theme-color($color);
+			}
+		}
+  }
+}
+
+
+.tab-content {
+	border: 1px solid $border-color;
+	border-top: 0;
+	padding: 2rem 1rem;
+	text-align: justify;
+	&.tab-content-vertical {
+		border-top: 1px solid $border-color;
+	}
+	&.tab-content-vertical-custom {
+		border: 0;
+		padding-top: 0;
+	}
+	&.tab-content-custom-pill {
+		border: 0;
+		padding-left: 0;
+	}
+}
