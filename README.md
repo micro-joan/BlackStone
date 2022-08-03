@@ -36,7 +36,7 @@ employee emails...
 <li>First we must download an Apache server to host the tool, in my case I use Mamp (I recommend following these steps): https://www.mamp.info/en/downloads/</li>
 <li>We will download the content of this repository and we will have 2 folders (BlackStone and BBDD)</li>
 <li>Once the server starts we will go to c://MAMP/htdocs and paste all the contents of the downloaded folder "BlackStone"</li>
-<li>For the application to work we will have to import the database, we will go to our browser and write "localhost/phpMyAdmin/"</li>
+<li>For the application to work we will have to import the database, we will go to our browser and write "localhost/phpMyAdmin/", you have the database connection file in the folder BlackStone/conexion.php</li>
 <li>We will create a database called blackstone and import the data from the downloaded BBDD folder</li>
 <li>Log in to BlackStone with the username and password "blackstone"</li>
 </ul>
