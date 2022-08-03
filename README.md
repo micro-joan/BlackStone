@@ -44,7 +44,7 @@ employee emails...
 
 # Use
 
-Primero debes ir a ajustes de perfil y añadir los tokens de Hunter.io y haveibeenpwned.com:
+First you need to go to profile settings and add Hunter.io and haveibeenpwned.com tokens:
 
 ![Untitled Project](https://user-images.githubusercontent.com/55983491/182502047-36e2b125-de44-463f-8c74-9b8b2cab14e4.gif)
 
@@ -53,7 +53,7 @@ to customer details and we can see the following information:
 
 
 <div align="center">
-  !!THE USE OF THIS APPLICATION IS FOR PROFESSIONAL USE, THE AUTHOR IS NOT RESPONSIBLE FOR A MISUSE EMPLOYED!!
+  THE USE OF THIS APPLICATION IS FOR PROFESSIONAL USE, THE AUTHOR IS NOT RESPONSIBLE FOR A MISUSE EMPLOYED
 </div>
 <br>
 <ul>
@@ -73,8 +73,7 @@ in the report:
 
 ![Untitled Project](https://user-images.githubusercontent.com/55983491/182503343-c1990024-83f2-4c4b-b524-08719d775cac.gif)
 
-Por último, generaremos el informe apretando en el botón "overview report", y posteriormente guardaremos la página que se genera como ".mht", luego lo abriremos con
-Word para poder trabajar en el informe generado:
+Finally, we will generate the report by clicking on the "overview report" button, and later we will save the page that is generated as ".mht", then we will open it with Word to be able to work on the generated report:
 
 ![Untitled Project](https://user-images.githubusercontent.com/55983491/182504065-2a55fac4-b961-4cd8-8d38-1f02c98123fb.gif)
 
