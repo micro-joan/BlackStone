@@ -5,7 +5,7 @@
 
 Mi website: https://microjoan.com <br>
 Use and installation video: https://youtu.be/qasPlaaYxiU <br>
-Buy me a beer: https://www.buymeacoffee.com/microjoan
+Buy me a coffee: https://www.buymeacoffee.com/microjoan
 
 </div>
 <hr>
