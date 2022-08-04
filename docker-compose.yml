@@ -7,9 +7,6 @@ services:
   www:
     image: tuxed/php:8.0.1
     env_file: .env
-    expose: 
-      - '80'
-      - '443'
     volumes:
       - ./BlackStone/:/var/www/html/
       - ./conf/php.ini:/usr/local/etc/php/php.ini
