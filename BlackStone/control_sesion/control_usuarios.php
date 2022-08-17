@@ -17,7 +17,7 @@ while($fila= mysqli_fetch_array($consulta)){
 
         $contra=$fila['contra'];
 
-}
+
     //comprobamos si el usuario exsite y si existe que tenga esa contraseña
     if(($contra == $password)){
         session_start();
@@ -28,5 +28,12 @@ while($fila= mysqli_fetch_array($consulta)){
         header("Location: ../index.php");
     }else {
         header("Location: ../login.php?err=si");
+    }
 }
+
+if($usuario == "" || $password == ""){
+
+    header("Location: ../login.php?err=si");
+}
+
 ?>      
