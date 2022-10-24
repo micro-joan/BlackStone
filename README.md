@@ -3,7 +3,7 @@
 
 ![Untitled Project](https://user-images.githubusercontent.com/55983491/182498046-639e515c-8de0-4804-959b-b53145e79109.gif)
 
-Mi website: https://microjoan.com <br>
+My website: https://microjoan.com <br>
 Use and installation video: https://youtu.be/qasPlaaYxiU <br>
 Buy me a coffee: https://www.buymeacoffee.com/microjoan
 
