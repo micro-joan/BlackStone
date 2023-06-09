@@ -138,28 +138,21 @@ $id_url = $urlArray[1];
 
           <?php
 
-              $sentencia_tokens = "select * from tokens where id=1";    
-              $consulta_tokens = mysqli_query($conexion, $sentencia_tokens) or die("Error de Consulta tokens");
-
-              //vamos a recorrer la consulta y guardar los datos 
-              while($fila= mysqli_fetch_array($consulta_tokens)){
-                $token_pwned=$fila['haveibeenpwned'];
-                $token_hunter=$fila['hunter'];
-              }
-
               $sentencia = "select * from empresas where id=".$id_url;    
               $consulta = mysqli_query($conexion, $sentencia) or die("Error de Consulta");
 
               //vamos a recorrer la consulta y guardar los datos 
               while($fila= mysqli_fetch_array($consulta)){
                 $id=$fila['id'];
-                $nombre=$fila['nombre'];
-                $web=$fila['web'];
-
+                $nombre=htmlspecialchars($fila['nombre'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                $web=htmlspecialchars($fila['web'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                $logo=htmlspecialchars($fila['logo'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                $logo_last=htmlspecialchars($fila['logo'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
               }
             ?>  
 
             <div class="page-header">
+              <?php echo $wich; ?>
               <h3 class="page-title"> <?php echo lang("Edit company"); echo " '".$nombre."'"?> </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -174,7 +167,7 @@ $id_url = $urlArray[1];
                 <div class="card">
                   <div class="card-body">
 
-                    <form class="form-sample" form action="" method="post">
+                    <form class="form-sample" form action="" method="post" enctype="multipart/form-data">
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group row">
@@ -193,6 +186,18 @@ $id_url = $urlArray[1];
                             </div>
                           </div>
                         </div>
+
+                        <div class="col-sm-12">
+                          <h2>Logo</h2>
+                            <div class="form-group">
+                                <img src="<?php echo $logo ?>" style="width:250px; border-radius: 15px;">
+                            </div>
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="form-group">
+                                <input id="imagen" name="imagen" size="30" type="file">
+                            </div>
+                        </div>
                         
                       </div>
                       <button type="submit" name="submit" class="btn btn-primary me-2"><?php echo lang("Save"); ?></button>
@@ -207,139 +212,55 @@ $id_url = $urlArray[1];
               <div class="col-12 grid-margin">
                 <div class="card">
                   <div class="card-body">
-                  <h4 class="card-title"><?php echo lang("Owner data") ?></h4>
+                  <h4 class="card-title"><?php echo lang("WHOIS") ?></h4>
                     <div class="table-responsive">
-                      <table class="table">
-                        <thead>
-                          <tr>
-                            <th><?php echo lang("Name and surname") ?></th>
-                            <th><?php echo lang("Email") ?></th>
-                            <th><center><?php echo lang("Linkedin") ?></center></th>
-                            <th><center><?php echo lang("Twitter") ?></center></th>
-                            <th><center><?php echo lang("Phone") ?></center></th>
-                            <th><center><?php echo lang("Organization") ?></center></th>
-                          </tr>
-                        </thead>
-                        <?php 
-                    
-                            $url = 'https://api.hunter.io/v2/domain-search?domain='.$web.'&api_key='.$token_hunter;
+                      
+                    <?php
 
-                            $curl = curl_init($url);
-                            curl_setopt($curl, CURLOPT_URL, $url);
-                            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                      function whois_query($domain) {
+                        $server = 'whois.verisign-grs.com'; // Servidor WHOIS para dominios .com
+                        $port = 43; // Puerto WHOIS predeterminado
 
-                            $headers = array(
-                              "Content-Type: application/json",
-                              "User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64; rv:17.0) Gecko/20100101 Firefox/17.0"
-                            );
+                        $socket = fsockopen($server, $port, $errno, $errstr, 30);
+                        if (!$socket) {
+                            die("$errstr ($errno)");
+                        }
 
-                            curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-                            //for debug only!
-                            curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-                            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+                        fputs($socket, $domain . "\r\n");
 
-                            $resp = curl_exec($curl);
-                            curl_close($curl);
+                        $response = '';
+                        while (!feof($socket)) {
+                            $response .= fgets($socket, 4096);
+                        }
 
-                            $array_subdominios = json_decode($resp, true);
+                        fclose($socket);
 
-                            $contador = 0;
+                        return $response;
+                      }
 
+                      // Ejemplo de uso
+                      $domain = $web;
+                      $whois_response = whois_query($domain);
 
-                            foreach ($array_subdominios as $value1) {
+                      // Expresión regular para buscar propiedades de WHOIS
+                      $property_regex = '/^([^:]+):\s+(.*)$/m';
 
-                                $emails = $value1['emails'];
-                                $id_consulta_hunter = $value1[0]['id'];
-                              
-                                if($id_consulta_hunter == "too_many_requests"){
-                                  echo "<script>alert('".lang("You have reached the search limit on your hunter.io plan")."')</script>";
-                                }
-               
-                                foreach ($emails as $value_emails) {
-  
-                                  if($contador == 0){
-                                    $email = $value_emails['value'];
-                                    $nombre = $value_emails['first_name'];
-                                    $apellidos = $value_emails['last_name'];
-                                    $linkedin_url = $value_emails['linkedin'];
-                                    $twitter_url = $value_emails['twitter'];
-                                    $telefono = $value_emails['phone_number'];
-                                    $organizacion = $value1['organization'];
-    
-                                    if($linkedin_url > ''){
-                                      $linkedin = "<center><a href='".$linkedin_url."' target='_blank'><i class='mdi mdi-linkedin-box fs-2'></a></i></center>";
-                                    }else{
-                                      $linkedin = "<center>?</center>";
-                                    }
+                      $properties = array();
 
-                                    if($twitter_url > ''){
-                                      $twitter = "<center><a href='https://twitter.com/".$twitter_url."' target='_blank'><i class='mdi mdi-twitter-box fs-2'></a></i></center>";
+                      if (preg_match_all($property_regex, $whois_response, $matches, PREG_SET_ORDER)) {
+                        foreach ($matches as $match) {
+                            $key = trim($match[1]);
+                            $value = trim($match[2]);
+                            $properties[$key] = $value;
+                        }
+                      }
 
-                                    }else{
-                                      $twitter = "<center>?</center>";
-                                    }
-
-                                    if($telefono > ''){
-                                    }else{
-                                      $telefono = "<center>?</center>";
-                                    }
-
-                                    if($organizacion > ''){
-                                    }else{
-                                      $organizacion = "<center>?</center>";
-                                    }
-
-                                    if($email > ''){
-                                    
-                                      //COMPROBAMOS SI EL CORREO ESTÁ LIKEADO CON HAVE BE PWNED
-                                      $url = 'https://haveibeenpwned.com/api/v3/breachedaccount/'.$email;
-
-                                      $curl = curl_init($url);
-                                      curl_setopt($curl, CURLOPT_URL, $url);
-                                      curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-                                      $headers = array(
-                                        "hibp-api-key: ".$token_pwned,
-                                        "Content-Type: application/json",
-                                        "User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64; rv:17.0) Gecko/20100101 Firefox/17.0"
-                                      );
-                                      curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-                                      //for debug only!
-                                      curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-                                      curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-
-                                      $resp = curl_exec($curl);
-                                      curl_close($curl);
-
-                                      if($resp > '' && $key_api_value > ''){
-                                        $correo = $email." <span style='color: #ffab00;'>pwned!</span>";
-                                      }else{
-                                        $correo = $email;
-                                      }
-                                      
-                                    }else{
-                                      $correo = "<center>?</center>";
-                                    }
-
-                              
-                                    echo "<tbody>
-                                            <tr>
-                                              <td>".$nombre." ".$apellidos."</td>
-                                              <td>".$correo."</td>
-                                              <td>".$linkedin."</td>
-                                              <td>".$twitter."</td>
-                                              <td>".$telefono."</td>
-                                              <td><center>".$organizacion."</center></td>
-                                            </tr>
-                                          </tbody>";
-
-                                    $contador = 1;
-                                }
-                              }
-                            }
-                        ?>
+                  
+                      foreach ($properties as $key => $value) {
+                        echo $key . ": " . $value . "<br>";
+                      }
+                    ?>
                         
-                      </table>
                     </div>
                   </div>
                 </div>
@@ -358,52 +279,24 @@ $id_url = $urlArray[1];
                             <th><?php echo lang("Domain") ?></th>
                             <th><center>Link</center></th>
                           </tr>
-                        </thead>
-                        <?php 
-                    
                             
-                            $url = 'https://api.hunter.io/v2/domain-search?domain='.$web.'&api_key='.$token_hunter;
+                          <?php
+                            $dominio = $web;
+                            $subdominios = array("www", "blog", "mail", "ftp", "intranet", "vpn", "old", "admin", "webmail", "ftp", "blog", "forums", "shop", "cdn", "pruebas", "demo", "*", "nginx", "apache");
 
-                            $curl = curl_init($url);
-                            curl_setopt($curl, CURLOPT_URL, $url);
-                            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-                            $headers = array(
-                              "Content-Type: application/json",
-                              "User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64; rv:17.0) Gecko/20100101 Firefox/17.0"
-                            );
-                            curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-                            //for debug only!
-                            curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-                            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-
-                            $resp = curl_exec($curl);
-                            curl_close($curl);
-
-                            $array_subdominios = json_decode($resp, true);
-
-                            foreach ($array_subdominios as $value1) {
-
-                              $emails = $value1['emails'];
-                              
-                              foreach ($emails as $value_emails) {
-
-                                $sources = $value_emails['sources'];
-
-                                  foreach ($sources as $value_sources) {
-
-                                    $domain = $value_sources['uri'];
-
-                                    echo "<tbody>
-                                            <tr>
-                                              <td>".substr($domain, 0, 40)."</td>
-                                              <td><center><a href=".$domain." target='_blank'><i class='mdi mdi-link'></i></a></center></td>
-                                            </tr>
-                                          </tbody>";
-                                  }
-                              }
+                            foreach($subdominios as $subdominio) {
+                                $host = $subdominio . "." . $dominio;
+                                $ip = gethostbyname($host);
+                                if($ip != $host) {
+                                    echo "<tr>";
+                                    echo "<th>".$subdominio.".".$web."</th>";
+                                    echo "<th><center><a href='http://".$subdominio.".".$web."' target='_blank'>link</a></center></th>";
+                                    echo "</tr>";
+                                }
                             }
-                        ?>
+                          ?>    
+                        
+                        </thead>
                         
                       </table>
                     </div>
@@ -414,53 +307,48 @@ $id_url = $urlArray[1];
               <div class="col-lg-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title"><?php echo lang("Employee emails") ?></h4>
+                    <h4 class="card-title"><?php echo lang("MX Records") ?></h4>
                     <div class="table-responsive" style="overflow:scroll; height:500px; background-color:#191c24; overflow-x:hidden !important;">
                     <table class="table" style="background-color:#191c24;">
                         <thead>
-                          <tr>
-                            <th><?php echo lang("Email") ?></th>
-                          </tr>
+                          
+                          <?php
+                          ?>
+
                         </thead>
                         <?php 
-                    
-                            $url = 'https://api.hunter.io/v2/domain-search?domain='.$web.'&api_key='.$token_hunter;
-
-                            $curl = curl_init($url);
-                            curl_setopt($curl, CURLOPT_URL, $url);
-                            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-                            $headers = array(
-                              "Content-Type: application/json",
-                              "User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64; rv:17.0) Gecko/20100101 Firefox/17.0"
-                            );
-
-                            curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-                            //for debug only!
-                            curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-                            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-
-                            $resp = curl_exec($curl);
-                            curl_close($curl);
-
-                            $array_subdominios = json_decode($resp, true);
-
-                            foreach ($array_subdominios as $value1) {
-
-                                $emails = $value1['emails'];
-                                
-                                foreach ($emails as $value_emails) {
-  
-                                  $email = $value_emails['value'];
+                            function obtenerCorreosTrabajadores($dominio) {
+                              $correos = array();
+                            
+                              // Verificar la existencia de registros MX para el dominio
+                              if (checkdnsrr($dominio, 'MX')) {
+                                // Obtener registros MX del dominio
+                                $mxRecords = dns_get_record($dominio, DNS_MX);
+                                foreach ($mxRecords as $mxRecord) {
+                                  $host = $mxRecord['target'];
                                   
-
-                                  echo "<tbody>
-                                          <tr>
-                                            <td>".$email."</td>
-                                          </tr>
-                                        </tbody>";
+                                  // Construir la dirección de correo de contacto
+                                  $correo = $host;
+                                  
+                                  $correos[] = $correo;
+                                }
                               }
+                            
+                              return $correos;
                             }
+                            
+                            // Ejemplo de uso
+                            $dominio = $dominio;
+                            $correos = obtenerCorreosTrabajadores($dominio);
+                            
+                            foreach ($correos as $correo) {
+                              echo "<tbody>
+                                      <tr>
+                                        <td>".$correo."</td>
+                                      </tr>
+                                    </tbody>";
+                            }
+                     
                         ?>
                         
                       </table>
@@ -474,13 +362,34 @@ $id_url = $urlArray[1];
             <?php
     
             if (isset($_POST['submit'])){
-              $nombre = $_POST['nombre'];
-              $web = $_POST['web'];
-              
-              
-              $sentencia = "UPDATE `empresas` SET `nombre`='$nombre',`web`='$web' WHERE id=".$id_url.";";
 
+              $nombre = htmlspecialchars($_POST['nombre'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+              $web = htmlspecialchars($_POST['web'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+              $nombre = $_POST['nombre'];
+              $nombre_img = $_FILES['imagen']['name'];
+
+              //si tenemos una foto ya insertada la eliminamos
+              if($logo_last > '' && $nombre_img > ''){
+                unlink($logo_last);
+              }
+
+              $directorio ='logos_clientes/';
+              move_uploaded_file($_FILES['imagen']['tmp_name'],$directorio.$nombre_img);
+
+              $logo = $directorio.$nombre_img;
+
+              //en el caso de que no se inserte una foto nueva que no se altere el parametro en la BBBDD
+              if($nombre_img == "" || $nombre_img == "null"){
+
+              $sentencia = "UPDATE `empresas` SET `nombre`='$nombre',`web`='$web' WHERE id=".$id_url.";";
               $consulta = mysqli_query($conexion, $sentencia)or die("Error de consulta");
+
+              }else{
+                $sentencia = "UPDATE `empresas` SET `nombre`='$nombre',`web`='$web', `logo`='$logo' WHERE id=".$id_url.";";
+                $consulta = mysqli_query($conexion, $sentencia)or die("Error de consulta");
+              }
+
+              
 
               if (mysqli_affected_rows($conexion)!=0) {
                   echo '<script type="text/JavaScript"> location.reload(); </script>';

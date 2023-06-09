@@ -2,7 +2,7 @@
 
 $host = "localhost";
 $user = "root";
-$pass = "root";
+$pass = "";
 $basedatos = "blackstone";
 $conexion = mysqli_connect($host, $user, $pass, $basedatos)
 or die("Error al conectar a la base de datos");

@@ -17,7 +17,7 @@ $id_url = $urlArray[1];
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>BlackStone - <?php echo lang("Companies");?></title>
+    <title>BlackStone - <?php echo lang("Customers");?></title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
@@ -151,7 +151,7 @@ $id_url = $urlArray[1];
                 <div class="card">
                   <div class="card-body">
 
-                    <form class="form-sample" form action="" method="post">
+                    <form class="form-sample" form action="" method="post" enctype="multipart/form-data">
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group row">
@@ -170,6 +170,14 @@ $id_url = $urlArray[1];
                             </div>
                           </div>
                         </div>
+                         <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            <h2>Logo</h2>
+                                <input id="imagen" name="imagen" size="30" type="file">
+                            </div>
+                        </div>
+                    </div>
                         
                       </div>
                       <button type="submit" name="submit" class="btn btn-primary me-2"><?php echo lang("Save"); ?></button>
@@ -184,8 +192,18 @@ $id_url = $urlArray[1];
             <?php
     
             if (isset($_POST['submit'])){
-              $nombre = $_POST['nombre'];
-              $web = $_POST['web'];
+              
+              /*error_reporting(E_ALL);
+              ini_set('display_errors', 1);*/
+
+              $nombre = htmlspecialchars($_POST['nombre'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+              $web = htmlspecialchars($_POST['web'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+              $nombre_img = $_FILES['imagen']['name'];
+
+              $directorio ='logos_clientes/';
+              move_uploaded_file($_FILES['imagen']['tmp_name'],$directorio.$nombre_img);
+
+              $logo = $directorio.$nombre_img;
               
               $ultimo_id = "SELECT * FROM `empresas` ORDER BY id DESC LIMIT 1";
               $consulta_ultimo_id = mysqli_query($conexion, $ultimo_id)or die("Error al conseguir el ultimo id");
@@ -195,8 +213,8 @@ $id_url = $urlArray[1];
               }
               $id = $id + 1;
               
-              $sentencia = "INSERT INTO `empresas`(`id`, `nombre`, `web`)";
-              $sentencia .=" VALUES ($id, '$nombre','$web')";
+              $sentencia = "INSERT INTO `empresas`(`id`, `nombre`, `web`, `logo`)";
+              $sentencia .=" VALUES ($id, '$nombre','$web', '$logo')";
 
               $consulta = mysqli_query($conexion, $sentencia)or die("Error de consulta");
 

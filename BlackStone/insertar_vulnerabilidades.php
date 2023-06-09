@@ -241,13 +241,14 @@ $id_url = $urlArray[1];
             <?php
     
             if (isset($_POST['submit'])){
-              $cve = $_POST['cve'];
-              $nivel = $_POST['nivel'];
-              $descripcion = $_POST['descripcion'];
-              $solucion = $_POST['solucion'];
-              $esfuerzo = $_POST['esfuerzo'];
-              $seccion_auditoria = $_POST['seccion_auditoria'];
-              $recomendacion = $_POST['recomendacion'];
+
+              $cve = htmlspecialchars($_POST['cve'], ENT_QUOTES | ENT_HTML5, 'UTF-8');       
+              $nivel = htmlspecialchars($_POST['nivel'], ENT_QUOTES | ENT_HTML5, 'UTF-8');      
+              $descripcion = htmlspecialchars($_POST['descripcion'], ENT_QUOTES | ENT_HTML5, 'UTF-8'); 
+              $solucion = htmlspecialchars($_POST['solucion'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+              $esfuerzo = htmlspecialchars($_POST['esfuerzo'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+              $seccion_auditoria = htmlspecialchars($_POST['seccion_auditoria'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+              $recomendacion = htmlspecialchars($_POST['recomendacion'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
 
               $ultimo_id = "SELECT * FROM `vulnerabilidades` ORDER BY id DESC LIMIT 1";
               $consulta_ultimo_id = mysqli_query($conexion, $ultimo_id)or die("Error al conseguir el ultimo id");

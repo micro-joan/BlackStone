@@ -65,45 +65,14 @@ $id_url = $urlArray[1];
               </nav>
             </div>
             
-            <?php
-                $sentencia = "select * from tokens";    
-                $consulta = mysqli_query($conexion, $sentencia) or die("Error de Consulta");
-
-                //vamos a recorrer la consulta y guardar los datos 
-                while($fila= mysqli_fetch_array($consulta)){
-                  $hunter=$fila['hunter'];
-                  $haveibeenpwned=$fila['haveibeenpwned'];
-                }
-            ?>    
+            
 
             <div class="row">
               
               <div class="col-12 grid-margin">
                 <div class="card">
                   <div class="card-body">
-                    <form class="form-sample" form action="" method="post">
-
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Hunter.io</label>
-                            <div class="col-sm-9">
-                              <input type="text" class="form-control" id="hunter" name="hunter" placeholder="Hunter.io" value="<?php echo $hunter?>" style="color:white;">
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Haveibeenpwned</label>
-                            <div class="col-sm-9">
-                              <input type="text" class="form-control" id="pwned" name="pwned" placeholder="HaveIbeenPwned" value="<?php echo $haveibeenpwned?>" style="color:white;">
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <button type="submit" name="submit" class="btn btn-primary me-2">Guardar</button>
-                    </form>
+                    <h1>Soon...</h1>
                   </div>
                 </div>
               </div>

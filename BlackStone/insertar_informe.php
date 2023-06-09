@@ -220,7 +220,7 @@ $id_url = $urlArray[1];
               }
 
               $id = $id + 1;
-              $nombre_doc = $_POST['nombre_doc'];
+              $nombre_doc = htmlspecialchars($_POST['nombre_doc'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
               $empresa = $_POST['empresa'];
               $fecha = $_POST['date'];
 

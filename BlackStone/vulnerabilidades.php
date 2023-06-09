@@ -178,7 +178,7 @@ $section = "vulnerabilidades";
                         while($fila= mysqli_fetch_array($consulta)){
                                 $id=$fila['id'];
                                 $cve=$fila['cve'];
-                                $descripcion=$fila['descripcion'];
+                                $descripcion=htmlspecialchars($fila['descripcion'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
                                 $nivel=$fila['nivel'];
 
                           if($nivel == 1){

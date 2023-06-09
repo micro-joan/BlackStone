@@ -178,17 +178,20 @@ $section = "client";
                         //vamos a recorrer la consulta y guardar los datos 
                         while($fila= mysqli_fetch_array($consulta)){
                                 $id=$fila['id'];
-                                $nombre=$fila['nombre'];
-                                $web=$fila['web'];
-                                $dominio_correo=$fila['dominio_correo'];
-                              
-                                $comprobar_url = explode('/', $web);
-                                $slash = $comprobar_url[1];
+                                $nombre=htmlspecialchars($fila['nombre'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                                $web=htmlspecialchars($fila['web'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                                $dominio_correo=htmlspecialchars($fila['descripcion'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                                $logo=$fila['logo'];
 
-                                if($slash > ''){
-                                  $logo_listado = "<img src='".$web."favicon.ico'>";
+                            
+                                if($logo > ''){
+                                  $logo_listado = "<img src='".$logo."'>";
                                 }else{
-                                  $logo_listado = "<img src='".$web."/favicon.ico'>";
+                                  $logo_listado = "<img src='logos_clientes/bksnologo.jpg'>";
+                                }
+
+                                if($logo == "logos_clientes/"){
+                                  $logo_listado = "<img src='logos_clientes/bksnologo.jpg'>";
                                 }
                          
                         ?>

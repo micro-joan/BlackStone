@@ -16,7 +16,7 @@ function lang($sentencia){
     if($sentencia == "Now" && $_SESSION['idioma'] == "ES"){ $sentencia = "Ahora";};
     if($sentencia == "Create New Report" && $_SESSION['idioma'] == "ES"){ $sentencia = "Crear Nuevo Informe";};
     if($sentencia == "Vulnerabilities" && $_SESSION['idioma'] == "ES"){ $sentencia = "Vulnerabilidades";};
-    if($sentencia == "Audited Client" && $_SESSION['idioma'] == "ES"){ $sentencia = "Empresas registradas";};
+    if($sentencia == "Audited Client" && $_SESSION['idioma'] == "ES"){ $sentencia = "Clientes registrados";};
     if($sentencia == "Auditors" && $_SESSION['idioma'] == "ES"){ $sentencia = "Auditores";};
     if($sentencia == "Reports" && $_SESSION['idioma'] == "ES"){ $sentencia = "Informes";};
     if($sentencia == "Report Vulnerabilities" && $_SESSION['idioma'] == "ES"){ $sentencia = "Vulnerabilidades reportadas";};
@@ -44,7 +44,7 @@ function lang($sentencia){
     if($sentencia == "Delete vulnerability" && $_SESSION['idioma'] == "ES"){ $sentencia = "Eliminar vulnerabilidad";};
     if($sentencia == "Vulnerability removed from the system" && $_SESSION['idioma'] == "ES"){ $sentencia = "Vulnerabilidad eliminada del sistema";};
     if($sentencia == "Return" && $_SESSION['idioma'] == "ES"){ $sentencia = "Volver";};
-    if($sentencia == "Companies" && $_SESSION['idioma'] == "ES"){ $sentencia = "Empresas";};
+    if($sentencia == "Customers" && $_SESSION['idioma'] == "ES"){ $sentencia = "Clientes";};
     if($sentencia == "List of companies" && $_SESSION['idioma'] == "ES"){ $sentencia = "Listado de empresas";};
     if($sentencia == "Search companies" && $_SESSION['idioma'] == "ES"){ $sentencia = "Buscar empresas";};
     if($sentencia == "Name" && $_SESSION['idioma'] == "ES"){ $sentencia = "Nombre";};
@@ -59,6 +59,7 @@ function lang($sentencia){
     if($sentencia == "Owner data" && $_SESSION['idioma'] == "ES"){ $sentencia = "Datos del propietario";};
     if($sentencia == "Organization" && $_SESSION['idioma'] == "ES"){ $sentencia = "Organización";};
     if($sentencia == "Employee emails" && $_SESSION['idioma'] == "ES"){ $sentencia = "Correos de empleados";};
+    if($sentencia == "MX Records" && $_SESSION['idioma'] == "ES"){ $sentencia = "Registros MX";};
     if($sentencia == "Edit profile" && $_SESSION['idioma'] == "ES"){ $sentencia = "Editar perfil";};
     if($sentencia == "You have reached the search limit on your hunter.io plan" && $_SESSION['idioma'] == "ES"){ $sentencia = "Ha alcanzado el límite de búsquedas en su plan de hunter.io";};
     if($sentencia == "Add client" && $_SESSION['idioma'] == "ES"){ $sentencia = "Añadir cliente";};

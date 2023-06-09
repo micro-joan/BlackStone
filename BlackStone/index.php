@@ -294,14 +294,16 @@ $section = "dashboard";
                                   $id=$fila3['id'];
                                   $nombre=$fila3['nombre'];
                                   $web=$fila3['web'];
+                                  $logo=$fila3['logo'];
                                 
-                                  $comprobar_url = explode('/', $web);
-                                  $slash = $comprobar_url[1];
-
-                                  if($slash > ''){
-                                    $logo_listado = "<img src='".$web."favicon.ico'>";
+                                  if($logo > ''){
+                                    $logo_listado = "<img src='".$logo."' style='border-radius:30px'>";
                                   }else{
-                                    $logo_listado = "<img src='".$web."/favicon.ico'>";
+                                    $logo_listado = "<img src='logos_clientes/bksnologo.jpg' style='border-radius:30px'>";
+                                  }
+
+                                  if($logo == "logos_clientes/"){
+                                    $logo_listado = "<img src='logos_clientes/bksnologo.jpg' style='border-radius:30px'>";
                                   }
 
                                   
@@ -318,8 +320,6 @@ $section = "dashboard";
                                     $vulns_separadas = explode($separador, $vulnerabilidades);//aqui obtenemos los id de cada una de las vulns del informe
                         
                                     foreach ($vulns_separadas as $vuln){//obtenemos el id de la vulnerabilidad
-
-                                      
 
                                       $cantidad_vulnerabilidades_informe ++;
                                       

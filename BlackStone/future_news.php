@@ -128,7 +128,7 @@ $id_url = $urlArray[1];
           <div class="content-wrapper">
 
             <div class="page-header">
-              <h3 class="page-title"> <?php echo lang("Implementaciones futuras"); ?> </h3>
+              <h3 class="page-title"> <?php echo lang("Seguimos mejorando BlackStone"); ?> </h3>
               <nav aria-label="breadcrumb">
               </nav>
             </div>  
@@ -137,26 +137,21 @@ $id_url = $urlArray[1];
               <div class="col-12 grid-margin">
                 <div class="card">
                   <div class="card-body">
-                    <h2>Futuras implementaciones para la versión 1.1</h2>
+                    <h2>Últimas novedades de BlackStone</h2>
                     <br>
-                    <h3> Funcionalidades aplicación </h3>
+                    <h3> Nuevas funcionalidades y mejoras </h3>
                     <ul>
-                      <li>Implantar campañas de phishing automatizadas con su panel de gestión.</li>
-                      <li>Descargar csv de usuarios y contraseñas que se han recolectado de la campaña de phishing.</li>
-                      <li>Implementar motor SHODAN para búsqueda de información en la ficha de la empresa.</li>
-                      <li>Añadir funcionalidad al buscador superior de la interfaz.</li>
+                      <li>Instalador propio y automatizado para despliegue de BlackStone en Kali Linux</li>
+                      <li>Reemplazar resultados de Hunter.io por resultados similaes nativos en la app.</li>
+                      <li>Solucionados numerosos campos sensibles a XSS almacenado.</li>
+                      <li>Limitación de acceso a la app BlackStone únicamente al equipo que la ejecuta (nadie en tu red que detecte tu puerto 80 levantado podrá acceder a esta app).</li>
+                      <li>Insertar imagen de logo para cada uno de los clientes, en vez de logo automático por favicon (no se conseguían buenos resultados).</li>
+                      <li>Búsqueda de subdominios automática en la ficha de cliente, dicha funcionalidad es nativa del propio código de BlackStone).</li>
+                      <li>Solucionadas diversas traducciones español/inglés</li>
+                      <li>Integración de icono del sistema para BlackStone, se añade la aplicación en Kali como una aplicación nativa con su propio lancuher.</li>
                     </ul>
                     <br>
-                    <h3> Funcionalidades reporte </h3>
-                    <ul>
-                      <li>Añadir información OSINT de la ficha de empresa de manera automática en el informe.</li>
-                      <li>Opción para cambiar color de cabeceras en el informe.</li>
-                      <li>Implementar resultados de campañas de phishing de la empresa en el informe de manera automática.</li>
-                      <li>Añadir gráficos de vulnerabilidades en el informe.</li>
-                      <li>Elegir entre texto justificado, centrado o alineado a la derecha.</li>
-                      <li>Elegir entre distintas fuentes de texto para generar el informe.</li>
-                      <li>Personalizar textos legales.</li>
-                    </ul>
+                    
                     <hr>
 
                     <button type="button" class="btn btn-social-icon-text btn-youtube"><a href="https://www.youtube.com/c/MicroJoan" class="text-white text-decoration-none"><i class="mdi mdi-youtube"></i>YouTube</a></button>

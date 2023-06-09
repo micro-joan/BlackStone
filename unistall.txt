@@ -1,0 +1,7 @@
+To uninstall BlackStone completely you must perform the following steps:
+
+-Delete the "blakstone" folder found in /opt/lampp/htdocs.
+
+-Delete the database, which you can find in the browser in the following path: "http://localhost/phpmyadmin/index.php?route=/database/structure&db=blackstone"
+
+-Delete the BlackStone icon found in the "/usr/local/bin/blackstone" directory
