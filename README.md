@@ -11,7 +11,7 @@ Buy me a coffee: https://www.buymeacoffee.com/microjoan
 </div>
 <hr>
 
-# BlackStone Project v1.0
+# BlackStone Project (For Kali Linux)
 
 BlackStone project or "BlackStone Project" is a tool created in order to automate the work of drafting and submitting a report on audits of
 ethical hacking or pentesting.
@@ -31,50 +31,62 @@ employee emails...
 
 </div>
 
-# Docker Install
-
-**Install Docker**
-
-```
-/bin/bash -c "$(curl -fsSL https://get.docker.com)"
-systemctl enable docker 
-systemctl start docker 
-```
-
-**Install docker-compose**
-
-```
-sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-chmod +x /usr/local/bin/docker-compose
-```
-
 ### Install BlackStone
 
+#### Step 1
+
 ```
+cd /opt
 git clone https://github.com/micro-joan/BlackStone
 cd BlackStone
-docker-compose up -d
+chmod +x installer.sh
+./installer.sh
+```
+The application will start automatically but if you log in you will get the 500 error so you must reboot the system and run the installer a second time (this is normal)
+
+#### Step 2
+
+```
+(reboot system)
+cd /opt
+./installer.sh
 ```
 
+## USE
+
+Once the installation is complete you can use blackstone from the terminal (with root):
+```
+blackstone
+```
+
+Or you can also look for the icon in the system:
+
+<div align="center" width="200" height="150"> 
+  
+  <!--![launcher](https://github.com/micro-joan/BlackStone/assets/55983491/87611bbf-f87d-4c41-8bc1-1c1f3a28080a)-->
+  
+  <img src="https://github.com/micro-joan/BlackStone/assets/55983491/87611bbf-f87d-4c41-8bc1-1c1f3a28080a" width="500">
+  
+</div>
+
+## LOGIN
 <h4>User: blackstone</h4>
 <h4>Password: blackstone</h4>
 
-# Manual Install
+## Latest news
 
 <ul>
-<li>First we must download an Apache server to host the tool, in my case I use Mamp (I recommend following these steps): https://www.mamp.info/en/downloads/</li>
-<li>We will download the content of this repository and we will have 2 folders (BlackStone and BBDD)</li>
-<li>Once the server starts we will go to c://MAMP/htdocs and paste all the contents of the downloaded folder "BlackStone"</li>
-<li>For the application to work we will have to import the database, we will go to our browser and write "localhost/phpMyAdmin/", you have the database connection file in the folder BlackStone/conexion.php</li>
-<li>We will create a database called blackstone and import the data from the downloaded BBDD folder</li>
-<li>Log in to BlackStone with the username and password "blackstone"</li>
+  <li>Own and automated installer for deployment of BlackStone in Kali Linux.</li>
+  <li>Replace Hunter.io results with similar results native to the app.</li>
+  <li>Fixed numerous fields sensitive to stored XSS.</li>
+  <li>Limitation of access to the BlackStone app only to the computer that runs it (no one on your network that detects your port 80 raised will be able to access this app).</li>
+  <li>Insert logo image for each of the clients, instead of automatic logo by favicon (good results were not achieved).</li>
+  <li>Automatic subdomain search in the client file, this functionality is native to the BlackStone code itself).</li>
+  <li>Fixed various Spanish/English translations.</li>
+  <li>System icon integration for BlackStone, the app is added in Kali as a native app with its own launcher.</li>
 </ul>
 
 # Use
-
-First you need to go to profile settings and add Hunter.io and haveibeenpwned.com tokens:
-
-![Untitled Project](https://user-images.githubusercontent.com/55983491/182502047-36e2b125-de44-463f-8c74-9b8b2cab14e4.gif)
 
 After having vulnerabilities in the database, we will go to the audited client and we will register a client along with their web page, once registered we can go
 to customer details and we can see the following information:
@@ -85,12 +97,8 @@ to customer details and we can see the following information:
 </div>
 <br>
 <ul>
-<li>Name of business owner</li>
-<li>Social networks of the company owner</li>
-<li>Email and telephone number of the owner of the company</li>
-<li>Exposed password check on the company owner's deep web</li>
 <li>Subdomains of the website as well as information of interest found in google</li>
-<li>Emails of company workers</li>
+<li>Emails of company workers or SMTP servers</li>
 </ul>
 
 ![Untitled Project](https://user-images.githubusercontent.com/55983491/182502564-02929088-2584-4cd9-9d1a-52ce6cb69f17.gif)
