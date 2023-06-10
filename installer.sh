@@ -31,8 +31,8 @@ sleep 3
 
 echo " "
 echo " "
-echo "Checking components for BLACKSTONE 2.0"
-echo "======================================"
+echo "Checking components for BLACKSTONE"
+echo "==================================="
 echo ""
 
 sleep 0.5
