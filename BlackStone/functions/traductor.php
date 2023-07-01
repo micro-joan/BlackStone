@@ -32,6 +32,7 @@ function lang($sentencia){
     if($sentencia == "Edit" && $_SESSION['idioma'] == "ES"){ $sentencia = "Editar";};
     if($sentencia == "Remove" && $_SESSION['idioma'] == "ES"){ $sentencia = "Eliminar";};
     if($sentencia == "Search vulnerabilities" && $_SESSION['idioma'] == "ES"){ $sentencia = "Buscar vulnerabilidades";};
+    if($sentencia == "NIST calculator" && $_SESSION['idioma'] == "ES"){ $sentencia = "Calculadora NIST";};
     if($sentencia == "Edit Vulnerability" && $_SESSION['idioma'] == "ES"){ $sentencia = "Editar vulnerabilidad";};
     if($sentencia == "Effort" && $_SESSION['idioma'] == "ES"){ $sentencia = "Esfuerzo";};
     if($sentencia == "Audit section" && $_SESSION['idioma'] == "ES"){ $sentencia = "Sección auditoria";};

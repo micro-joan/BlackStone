@@ -1,0 +1,44 @@
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" media="all" href="cvss.css">
+    <script src="cvss.js"></script>
+    <style>
+        body {  
+            font-family: arial;
+            padding: 1em;
+        }
+        #footer {
+            font-size: x-small;
+        }
+
+        #footer, sH3 {
+            color: gray;
+        }
+@media screen and (min-width: 720px) {
+        #cvssboard {
+            width: 640px;
+        }
+}
+    </style>
+</head>
+
+<body>
+    <div id="cvssboard"></div>
+    <script>
+        var c = new CVSS("cvssboard", {
+            onchange: function() {
+                window.location.hash = c.get().vector;
+                c.vector.setAttribute('href', '#' + c.get().vector)
+            }
+        });
+        if (window.location.hash.substring(1).length > 0) {
+            c.set(decodeURIComponent(window.location.hash.substring(1)));
+        }
+    </script>
+
+</body>
+
+</html>

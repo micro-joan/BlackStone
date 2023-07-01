@@ -23,7 +23,6 @@
               <span class="menu-title"><?php echo lang("Vulnerabilities");?></span>
             </a>
           </li>
-
           <li class="nav-item menu-items <?php if($section == "client"){echo "active";}?>">
             <a class="nav-link" href="clientes.php">
               <span class="menu-icon">
@@ -38,6 +37,14 @@
                 <i class="mdi mdi-file-document-box"></i>
               </span>
               <span class="menu-title"><?php echo lang("Reports");?></span>
+            </a>
+          </li>
+          <li class="nav-item menu-items <?php if($section == "nist"){echo "active";}?>">
+            <a class="nav-link" href="nist.php">
+              <span class="menu-icon">
+                <i class="mdi mdi-calculator"></i>
+              </span>
+              <span class="menu-title"><?php echo lang("NIST");?></span>
             </a>
           </li>
         </ul>
