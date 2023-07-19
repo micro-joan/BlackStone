@@ -1,10 +1,5 @@
 <?php
    
-    //bloquear acceso a equipos que no sean el local (ipv6 ::1 = localhost)
-    if ($_SERVER['REMOTE_ADDR'] !== '::1') {
-    header('HTTP/1.0 403 Forbidden');
-    exit('Access only to localhost.');
-    }
 
     session_start();
     if($_SESSION['login'] != "SI"){

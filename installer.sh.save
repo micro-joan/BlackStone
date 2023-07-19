@@ -1,5 +1,4 @@
 exec 2>/dev/null
-clear
 
 #COLORES
 green='\033[1;32m'
@@ -57,7 +56,9 @@ if [ -z $xampp_blackstone ] #si xampp_installed es vacío..
         wget https://github.com/micro-joan/BlackStone/releases/download/installer/xampp-installer.run -P /opt/blackstone/xampp_installer &
         pid_descarga=$!
 
-        wait $pid_descarga #Continuar con la siguiente acción después de que la descarga haya finalizado
+        while kill -0 $pid_descarga 2>/dev/null; do
+            sleep 1
+        done # Continuar con la siguiente acción después de que la descarga haya finalizado
 
     else
         echo "XAMPP INSTALLER ${green} OK ${endcolor}"
@@ -74,18 +75,9 @@ if [ -z $xampp_installed ] #si xampp_installed es vacío..
         echo "Installing Xampp..."
         echo ""
         chmod 777 /opt/blackstone/xampp_installer/xampp-installer.run
-        
-        # Cambiar los permisos del archivo .run
-        chmod +x /opt/blackstone/xampp_installer/xampp-installer.run
-
-        # Ejecutar el archivo .run en segundo plano y obtener el PID del proceso
-        /opt/blackstone/xampp_installer/xampp-installer.run &
-        pid=$!
-
-        # Esperar a que el proceso termine
-        wait $pid
-
-        clear
+        chmod +x /xampp_installer/xampp-installer.run & ./xampp_installer/xampp-installer.run
+       
+	z clear
     else
         echo "XAMPP ${green} OK ${endcolor}"
 fi
