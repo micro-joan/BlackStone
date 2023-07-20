@@ -17,8 +17,8 @@ bbdd_installed=`ls $PWD/xampp_installer/db_installed.txt`
 python3_installed=`which python3`
 created_icon=`ls /usr/share/applications/blackstone.desktop`
 
-chmod 777 /opt/blackstone/xampp_installer/icon/blackstone.png
-chmod 777 /opt/blackstone/xampp_installer/icon/blackstone.desktop
+chmod 777 /opt/BlackStone/xampp_installer/icon/blackstone.png
+chmod 777 /opt/BlackStone/xampp_installer/icon/blackstone.desktop
 
 echo ""
 echo "▄▄▄▄· ▄▄▌   ▄▄▄·  ▄▄· ▄ •▄ .▄▄ · ▄▄▄▄▄       ▐ ▄ ▄▄▄ . "
@@ -79,7 +79,7 @@ if [ -z $xampp_installed ] #si xampp_installed es vacío..
         chmod +x /opt/BlackStone/xampp_installer/xampp-installer.run
 
         # Ejecutar el archivo .run en segundo plano y obtener el PID del proceso
-        /opt/blackstone/xampp_installer/xampp-installer.run &
+        /opt/BlackStone/xampp_installer/xampp-installer.run &
         pid=$!
 
         # Esperar a que el proceso termine
