@@ -1,0 +1,23 @@
+version: '3'
+services:
+  web:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    volumes:
+      - ./BlackStone:/var/www/html/BlackStone
+    depends_on:
+      - db
+  db:
+    image: mysql:5.7
+    command: ['--default-authentication-plugin=mysql_native_password']
+    environment:
+     MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+     MYSQL_DATABASE: blackstone
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./xampp_installer/blackstone.sql:/docker-entrypoint-initdb.d/blackstone.sql
+volumes:
+  db_data:

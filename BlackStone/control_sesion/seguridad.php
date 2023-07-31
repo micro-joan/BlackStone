@@ -1,7 +1,5 @@
 <?php
-   
-
-    session_start();
+   session_start();
     if($_SESSION['login'] != "SI"){
 
         header("Location: login.php"); 

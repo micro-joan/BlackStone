@@ -1,12 +1,11 @@
-<!DOCTYPE html>
 <?php
-
 include("control_sesion/seguridad.php");
 include("functions/traductor.php");
 include("conexion.php");
 
 $section = "dashboard";
 ?>
+<!DOCTYPE html>
 
 <html>
   <head>
