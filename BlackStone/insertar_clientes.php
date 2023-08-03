@@ -218,6 +218,8 @@ $id_url = $urlArray[1];
 
               $consulta = mysqli_query($conexion, $sentencia)or die("Error de consulta");
 
+              echo "<script>alert('Saved')</script>";
+
               if (mysqli_affected_rows($conexion)!=0) {
                 header('Location: clientes.php');
               }

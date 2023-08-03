@@ -160,8 +160,7 @@ $section = "vulnerabilidades";
                       <table class="table" id="tabla_listado_cve">
                         <thead>
                           <tr>
-                            <th>ID</th>
-                            <th>CVE</th>
+                            <th><?php echo lang("Name");?></th>
                             <th><?php echo lang("Description");?></th>
                             <th><center><?php echo lang("Criticality");?></center></th>
                             <th></th>
@@ -171,32 +170,31 @@ $section = "vulnerabilidades";
 
                         <?php
 
-                        $sentencia = "select * from vulnerabilidades order by id";    
-                        $consulta = mysqli_query($conexion, $sentencia) or die("Error de conexión en tabla vulnerabilidades");
+                          $sentencia = "select * from vulnerabilidades order by id";    
+                          $consulta = mysqli_query($conexion, $sentencia) or die("Error de conexión en tabla vulnerabilidades");
 
-                        //vamos a recorrer la consulta y guardar los datos 
-                        while($fila= mysqli_fetch_array($consulta)){
+                            //vamos a recorrer la consulta y guardar los datos 
+                            while($fila= mysqli_fetch_array($consulta)){
                                 $id=$fila['id'];
-                                $cve=$fila['cve'];
+                                $nombre=$fila['nombre'];
                                 $descripcion=htmlspecialchars($fila['descripcion'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
                                 $nivel=$fila['nivel'];
 
-                          if($nivel == 1){
-                              $nivel = '<label class="badge badge-success">'.lang('Low').'</label>';
-                          }else if ($nivel == 2){
-                            $nivel = '<label class="badge badge-warning">'.lang('Medium').'</label>';
-                          }else if ($nivel == 3){
-                            $nivel = '<label class="badge badge-danger">'.lang('High').'</label>';
-                          }else if ($nivel == 4){
-                            $nivel = '<label class="badge badge-info">'.lang('Very High').'</label>';
-                          }
+                                if($nivel == 1){
+                                    $nivel = '<label class="badge badge-success">'.lang('Low').'</label>';
+                                }else if ($nivel == 2){
+                                  $nivel = '<label class="badge badge-warning">'.lang('Medium').'</label>';
+                                }else if ($nivel == 3){
+                                  $nivel = '<label class="badge badge-danger">'.lang('High').'</label>';
+                                }else if ($nivel == 4){
+                                  $nivel = '<label class="badge badge-info">'.lang('Very High').'</label>';
+                                }
                         ?>
 
                         <tbody>
                           <tr>
-                            <td><?php echo $id ?></td>
-                            <td><?php echo $cve ?></td>
-                            <td><?php echo substr($descripcion, 0, 100); ?>...</td>
+                            <td><i class="mdi mdi-bug" style="color:#8f5fe8"></i> &nbsp; <?php echo $nombre ?></td>
+                            <td><?php echo substr($descripcion, 0, 50); ?>...</td>
                             <td><center><?php echo $nivel ?></center></td>
                             <td><a href="editar_vulnerabilidades.php?id=<?php echo $id ?>"><i class="mdi mdi-border-color" style="font-size:20px"></i></a></td>
                             <td><a href="eliminar_vulnerabilidades.php?id=<?php echo $id ?>"><i class="mdi mdi-close-circle-outline" style="color:red; font-size:20px"></i></a></td>

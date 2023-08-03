@@ -152,13 +152,12 @@ $id_url = $urlArray[1];
                 <div class="card">
                   <div class="card-body">
                     <form class="form-sample" form action="" method="post">
-
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">CVE</label>
+                            <label class="col-sm-3 col-form-label"><?php echo lang("Name");?></label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" id="cve" name="cve" style="color:white;">
+                              <input type="text" class="form-control" id="nombre" name="nombre" placeholder="<?php echo lang("Name");?>" style="color:white;">
                             </div>
                           </div>
                         </div>
@@ -167,7 +166,6 @@ $id_url = $urlArray[1];
                             <label class="col-sm-3 col-form-label"><?php echo lang("Criticality");?></label> 
                             <div class="col-sm-8 col-8">
                               <select class="form-control" id="exampleSelectGender" style="color:white" name="nivel" required>
-                                <option value=""></option>
                                 <option value="1"><?php echo lang("Low");?></option>
                                 <option value="2"><?php echo lang("Medium");?></option>
                                 <option value="3"><?php echo lang("High");?></option>
@@ -179,56 +177,17 @@ $id_url = $urlArray[1];
                         </div>
                       </div>
 
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div class="form-group row ">
-                            <label class="col-sm-3 col-form-label"><?php echo lang("Effort");?></label> 
-                            <div class="col-sm-8 col-8">
-                            <select class="form-control" id="exampleSelectGender" style="color:white" name="esfuerzo" required> <i class="mdi mdi-format-list-bulleted-type"></i>
-                              <option value=""></option>
-                              <option value="1">Quick Win</option>
-                              <option value="2"><?php echo lang("Low");?></option>
-                              <option value="3"><?php echo lang("Medium");?></option>
-                              <option value="4"><?php echo lang("High");?></option>
-                              <option value="5"><?php echo lang("Very High");?></option>
-                            </select>
-                            </div>
-                            <label class="col-sm-1 col-1 col-form-label"><i class="mdi mdi-format-line-spacing fs-5"></i></label> 
-                          </div>
-                        </div>
-
-                        <div class="col-md-6">
-                          <div class="form-group row">
-                            <label class="col-sm-3 col-form-label"><?php echo lang("Audit section");?></label> 
-                            <div class="col-sm-8 col-8">
-                            <select class="form-control" id="exampleSelectGender" style="color:white" name="seccion_auditoria" required> <i class="mdi mdi-format-list-bulleted-type"></i>
-                              <option value=""></option>
-                              <option value="1"><?php echo lang("Internal audit");?></option>
-                              <option value="2"><?php echo lang("External audit");?></option>
-                              <option value="3"><?php echo lang("Wifi audit");?></option>
-                            </select>
-                            </div>
-                            <label class="col-sm-1 col-1 col-form-label"><i class="mdi mdi-format-line-spacing fs-5"></i></label> 
-                          </div>
-                        </div>
-                      </div>
                       <br>
                       <div class="row">
                         <div class="form-group row">
                           <label for="col-sm-3 col-form-label"><?php echo lang("Description");?></label>
-                          <textarea class="form-control m-3 text-white" name="descripcion" id="descripcion" required><?php echo $descripcion ?></textarea>
+                          <textarea class="form-control m-3 text-white" name="descripcion" id="descripcion" required style="height:150px;"></textarea>
                         </div>
                       </div>
                       <div class="row">
                         <div class="form-group row">
                           <label for="col-sm-3 col-form-label"><?php echo lang("Solution");?></label>
-                          <textarea class="form-control m-3 text-white" name="solucion" id="solucion" required><?php echo $solucion ?></textarea>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="form-group row">
-                          <label for="col-sm-3 col-form-label"><?php echo lang("Recommendation for criticality table");?></label>
-                          <textarea class="form-control m-3 text-white" name="recomendacion" id="recomendacion" placeholder="" required></textarea>
+                          <textarea class="form-control m-3 text-white" name="solucion" id="solucion" required style="height:150px;"></textarea>
                         </div>
                       </div>
                       <button type="submit" name="submit" class="btn btn-primary me-2"><?php echo lang("Save"); ?></button>
@@ -242,13 +201,11 @@ $id_url = $urlArray[1];
     
             if (isset($_POST['submit'])){
 
-              $cve = htmlspecialchars($_POST['cve'], ENT_QUOTES | ENT_HTML5, 'UTF-8');       
+              $nombre = htmlspecialchars($_POST['nombre'], ENT_QUOTES | ENT_HTML5, 'UTF-8');      
               $nivel = htmlspecialchars($_POST['nivel'], ENT_QUOTES | ENT_HTML5, 'UTF-8');      
               $descripcion = htmlspecialchars($_POST['descripcion'], ENT_QUOTES | ENT_HTML5, 'UTF-8'); 
               $solucion = htmlspecialchars($_POST['solucion'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
               $esfuerzo = htmlspecialchars($_POST['esfuerzo'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
-              $seccion_auditoria = htmlspecialchars($_POST['seccion_auditoria'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
-              $recomendacion = htmlspecialchars($_POST['recomendacion'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
 
               $ultimo_id = "SELECT * FROM `vulnerabilidades` ORDER BY id DESC LIMIT 1";
               $consulta_ultimo_id = mysqli_query($conexion, $ultimo_id)or die("Error al conseguir el ultimo id");
@@ -259,13 +216,14 @@ $id_url = $urlArray[1];
 
               $id = $id + 1;
               
-              $sentencia = "INSERT INTO `vulnerabilidades`(`id`, `nivel`, `cve`, `descripcion`, `solucion`, `esfuerzo`, `seccion_auditoria`, `recomendacion`)";
-              $sentencia .=" VALUES ($id, '$nivel', '$cve','$descripcion', '$solucion', '$esfuerzo', '$seccion_auditoria', '$recomendacion')";
+              $sentencia = "INSERT INTO `vulnerabilidades`(`id`, `nombre`, `nivel`, `descripcion`, `solucion`)";
+              $sentencia .=" VALUES ($id, '$nombre', '$nivel', '$descripcion', '$solucion')";
           
               $consulta = mysqli_query($conexion, $sentencia)or die("Error de consulta");
 
+              echo "<script>alert('Saved')</script>";
+
               if (mysqli_affected_rows($conexion)!=0) {
-                  
               }
             }
             ?>

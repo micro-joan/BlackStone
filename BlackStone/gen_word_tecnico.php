@@ -1,7 +1,11 @@
 <?php 
 
+
 include("control_sesion/seguridad.php");
 include("functions/traductor.php");
+
+$frase_inicial = lang("Guarda esta web en formato .mhtml y abrela en Word para editar el informe!!");
+echo "<script>alert('$frase_inicial')</script>";
 
 $uri = $_SERVER["REQUEST_URI"];
 $uriArray = explode('=', $uri);
@@ -21,6 +25,7 @@ while($fila= mysqli_fetch_array($consulta)){
   $fecha = $fila['fecha'];
   $estado = $fila['estado'];
   $recomendaciones = $fila['recomendaciones'];
+  $conclusiones = $fila['conclusiones'];
 
 }
 
@@ -43,9 +48,25 @@ while($fila= mysqli_fetch_array($consulta_empresa_auditada)){
     <link rel="stylesheet" href="estilos/estilos_informes.css">
     <title> <?php echo $nombre_doc; ?></title>
   </head>
+
+
+  <style>
+
+      body{
+          max-width: 750px;
+          margin: 0 auto;
+          padding: 20px;
+          background-color:#444d55;
+      }
+
+      .contenedor{
+          background-color:white;
+            padding:70px;
+      }
+  </style>
   
 <body lang=ES link="#0563C1" vlink="#954F72" style='word-wrap:break-word'>
-
+<div class="contenedor">
   <div class=WordSection1>
     <p class=MsoBodyText style='margin-top:.45pt;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:justify'><span style='font-size:11.5pt;font-family:"Times New Roman",serif'> </span></p>
 
@@ -74,8 +95,7 @@ while($fila= mysqli_fetch_array($consulta_empresa_auditada)){
                <br>
                <?php echo $fecha ?>
             </h1>
-              
-
+            
             </b>
           </p>
         </td>
@@ -200,7 +220,6 @@ while($fila= mysqli_fetch_array($consulta_empresa_auditada)){
     <p class=MsoBodyText style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:justify'><b><span style='font-size:13.0pt'>&nbsp;</span></b></p>
 
     <p>
-
         <?php echo lang("This report contains information regarding possible security breaches of ");?><?php echo $nombre_empresa_auditada?>
         <?php echo lang("and their systems.");?> BlackStone  <?php echo lang("recommends that special precautions be taken to");?>
         <?php echo lang(" protect the confidentiality of this document and the information contained in it.");?> 
@@ -215,8 +234,6 @@ while($fila= mysqli_fetch_array($consulta_empresa_auditada)){
       <?php echo lang("This report");?>
       <?php echo lang("may recommend that");?> <?php echo $nombre_empresa_auditada?> <?php echo lang("use certain software or hardware products manufactured");?>
       <?php echo lang("or maintained by other providers. BlackStone bases these recommendations on of your previous experience with the capabilities of these products. However, Blackstone cannot and should not guarantee that any particular product will perform as advertised by the seller.");?>
-      
-      
     </p>
 </div>
 
@@ -286,51 +303,42 @@ while($fila= mysqli_fetch_array($consulta_empresa_auditada)){
     </td>
     <td width=380 nowrap style='width:284.7pt;border:solid windowtext 1.0pt;border-left:none;background:#191c24;padding:0cm 3.5pt 0cm 3.5pt;height:23.9pt'>
       <p class=MsoNormal style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:justify'><b>
-        <span style='font-family:"Calibri",sans-serif;color:white'><?php echo lang("Description activities");?></span></b></p>
+        <span style='font-family:"Calibri",sans-serif;color:white'><?php echo lang("Objectives");?></span></b></p>
     </td>
   </tr>
 
-  <!--AUDITORIA INTERNA-->
-  <tr style='height:23.9pt'>
-    <td width=70 nowrap style='width:52.75pt;border:solid windowtext 1.0pt;border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:23.9pt'>
-      <p class=MsoNormal style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:justify'>
-        <span style='font-family:"Calibri",sans-serif;color:black'>1</span>
-      </p>
-    </td>
-    <td width=380 nowrap style='width:284.7pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 3.5pt 0cm 3.5pt;height:23.9pt'>
-      <p class=MsoNormal style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:justify'>
-        <span style='font-family:"Calibri",sans-serif;color:black'><?php echo lang("Internal audit");?></span>
-      </p>
-    </td>
-  </tr>
+  <?php 
+  
+        $cantidad_objetivos_informe = "select * from scope where id_informe=".$id_url;  
+        $consulta_objetivos_informe = mysqli_query($conexion, $cantidad_objetivos_informe) or die("Error de conexión");
+        
+        $contador_scope = 1;
 
-  <!--AUDITORIA EXTERNA-->
-  <tr style='height:23.9pt'>
-    <td width=70 nowrap style='width:52.75pt;border:solid windowtext 1.0pt;border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:23.9pt'>
-      <p class=MsoNormal style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:justify'>
-        <span style='font-family:"Calibri",sans-serif;color:black'>2</span>
-      </p>
-    </td>
-    <td width=380 nowrap style='width:284.7pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 3.5pt 0cm 3.5pt;height:23.9pt'>
-      <p class=MsoNormal style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:justify'>
-        <span style='font-family:"Calibri",sans-serif;color:black'><?php echo lang("External audit");?></span>
-      </p>
-    </td>
-  </tr>
+        while($fila_scope = mysqli_fetch_array($consulta_objetivos_informe)){
+            $id_scope=$fila_scope['id'];
+            $url_scope=$fila_scope['url'];
 
-  <!--AUDITORIA WIFI-->
-  <tr style='height:23.9pt'>
-    <td width=70 nowrap style='width:52.75pt;border:solid windowtext 1.0pt;border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:23.9pt'>
-      <p class=MsoNormal style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:justify'>
-        <span style='font-family:"Calibri",sans-serif;color:black'>3</span>
-      </p>
-    </td>
-    <td width=380 nowrap style='width:284.7pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 3.5pt 0cm 3.5pt;height:23.9pt'>
-      <p class=MsoNormal style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:justify'>
-        <span style='font-family:"Calibri",sans-serif;color:black'><?php echo lang("Wifi audit");?></span>
-      </p>
-    </td>
-  </tr>
+            echo"
+            
+            <tr style='height:23.9pt'>
+              <td width=70 nowrap style='width:52.75pt;border:solid windowtext 1.0pt;border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:23.9pt'>
+                <p class=MsoNormal style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:justify'>
+                  <span style='font-family:'Calibri',sans-serif;color:black'>$contador_scope</span>
+                </p>
+              </td>
+              <td width=380 nowrap style='width:284.7pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 3.5pt 0cm 3.5pt;height:23.9pt'>
+                <p class=MsoNormal style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:justify'>
+                  <span style='font-family:'Calibri',sans-serif;color:black'>$url_scope</span>
+                </p>
+              </td>
+            </tr>
+            ";
+
+            $contador_scope ++;
+        }
+  
+  ?>
+
 </table>
 
 </div>
@@ -343,6 +351,7 @@ while($fila= mysqli_fetch_array($consulta_empresa_auditada)){
   <h1 style="color:<?php echo $color; ?>" >
     2&nbsp;<?php echo lang("EXECUTIVE SUMMARY");?>
   </h1><br>
+  <p><?php echo lang("At the moment we will have to manually insert a graphic or image."); ?></p>
 
 <span style='font-size:12.0pt;font-family:"Times New Roman",serif'><br clear=all style='page-break-before:always'></span>
 
@@ -355,390 +364,186 @@ while($fila= mysqli_fetch_array($consulta_empresa_auditada)){
   </h2><br>
 
   <h2 style="color:<?php echo $color; ?>" >
-    3.1&nbsp;<?php echo lang("Internal audit");?>
+    3.1&nbsp;<?php echo lang("Objectives details");?>
   </h2><br>
 
-   <!--LISTAMOS LAS VULNERABILIDADES DE LA AUDITORÍA INTERNA-->
-   <?php 
-        
-        $sentencia = "select * from informes where id=".$id_url;
-        $consulta = mysqli_query($conexion, $sentencia) or die("4.1.2 error consulta=".$sentencia);
+<?php 
 
-        //vamos a recorrer la consulta y guardar los datos
-        while($fila= mysqli_fetch_array($consulta)){
-            $vulnerabilidades=$fila['vulnerabilidades'];
-            
-            $separador = ",";
-            $vulns_separadas = explode($separador, $vulnerabilidades);//aqui obtenemos los id de cada una de las vulns del informe
+      $cantidad_objetivos_informe = "select * from scope where id_informe=".$id_url;  
+      $consulta_objetivos_informe = mysqli_query($conexion, $cantidad_objetivos_informe) or die("Error de conexión");
+      
+      while($fila_scope = mysqli_fetch_array($consulta_objetivos_informe)){
+          $id_scope=$fila_scope['id'];
+          $nombre_scope=$fila_scope['url'];
 
-           foreach ($vulns_separadas as $vuln){//obtenemos el id de la vulnerabilidad
+          echo "<h3><u>$nombre_scope</u></h3><br>";
 
-            if($vuln > ''){
+          $cantidad_vulns_scope = "select * from scope_vulnerabilidades where id_scope=".$id_scope." order by nivel desc";  
+          $consulta_vulns_scope = mysqli_query($conexion, $cantidad_vulns_scope) or die("Error de conexión");
+      
+          while($fila_vulns_scope = mysqli_fetch_array($consulta_vulns_scope)){
 
-             $sentencia_vuln_1 = "select * from vulnerabilidades where id=".$vuln;
-             $consulta_vuln_1 = mysqli_query($conexion, $sentencia_vuln_1) or die("Error en listado de vulnerabilidades globales= ".$sentencia_vuln_1);
+            $desc_nombre  = lang("Name");
+            $criticidad_nivel  = lang("Criticality");
+            $desc_descripcion = lang("Description");
+            $desc_recomendacion  = lang("Recommendation");
 
-             while($fila_vuln= mysqli_fetch_array($consulta_vuln_1)){
-                $descripcion=$fila_vuln['descripcion'];
-                $solucion=$fila_vuln['solucion'];
-                $seccion_auditoria=$fila_vuln['seccion_auditoria'];
+            $id_scope=$fila_vulns_scope['id'];
+            $nivel_scope0=$fila_vulns_scope['nivel'];
+            $nivel_scope=$fila_vulns_scope['nivel'];
+            $nombre_scope=$fila_vulns_scope['nombre'];
+            $descripcion_scope=$fila_vulns_scope['descripcion'];
+            $recomendacion_scope=$fila_vulns_scope['solucion'];
 
-                if($seccion_auditoria == 1){//si la vulnerabilidad es de la sección 1 la listamos
-
-                  echo 
-                  "<p style='text-align:justify !important; '>
-                    ".$descripcion."<br>
-                  </p><br>";
-
-
-                  echo "
-                  <p class=MsoBodyText style='margin-top:.15pt;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:center'>
-                    <span style='position:relative;z-index:251655680'>
-                      <span style='left:0px;position:absolute;left:67px;top:-1060px;width:477px;height:199px'>
-                        <img width=450 height=120 src='assets/images/report/vuln_sample.png'>
-                      </span>
-                    </span>
-                  </p><br>";
-
-                  echo 
-                  "<p style='text-align:justify !important; '>
-                      <b>Se recomienda: </b>".$solucion."
-                  </p><br><br>";
-                  
-                  
-                  echo "<p class=MsoBodyText style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:1.0cm;margin-bottom:.0001pt;text-align:justify'><b><span style='font-size:17.0pt'>&nbsp;</span></b></p>
-
-                  ";
-                }
-              } 
+            if($nivel_scope == 1){
+              $nivel_scope = '<label>'.$nivel_scope0.' - '.lang('Low').'</label>';
+            }else if ($nivel_scope == 2){
+              $nivel_scope = '<label>'.$nivel_scope0.' - '.lang('Medium').'</label>';
+            }else if ($nivel_scope == 3){
+              $nivel_scope = '<label>'.$nivel_scope0.' - '.lang('High').'</label>';
+            }else if ($nivel_scope == 4){
+              $nivel_scope = '<label>'.$nivel_scope0.' - '.lang('Very High').'</label>';
             }
-           }
-        }
-    ?>
+
+            echo 
+            "<br>
+            <p style='text-align:justify !important;'>
+              <b>$desc_nombre:</b> ".$nombre_scope."<br>
+            </p>";
+
+            echo
+            "<p style='text-align:justify !important; '>
+              <b>$criticidad_nivel:</b> ".$nivel_scope."<br>
+            </p><br>";
+
+            echo 
+            "<p style='text-align:justify !important; '>
+              <b>$desc_descripcion</b><br><br>".$descripcion_scope."
+            </p><br><br>";
+            
+            $cantidad_vulns_imagen = "select * from pocs where id_scope_vulnerabilidad=".$id_scope;  
+            $consulta_vulns_imagen = mysqli_query($conexion, $cantidad_vulns_imagen) or die("Error de conexión");
+      
+            while($fila_vulns_imagen = mysqli_fetch_array($consulta_vulns_imagen)){
+              $scope_imagen=$fila_vulns_imagen['ruta'];
+            
+              if($scope_imagen > ''){
+                  echo "<center><img src='$scope_imagen' width=436 height=300 ><br></center>";
+              }
+            }
+
+            echo
+            "<br><p style='text-align:justify !important;'>
+              <b>$desc_recomendacion:</b> ".$recomendacion_scope."<br><br>
+            </p>";
+
+            echo "<hr>";
+          }
+      }
+  
+?>
 
   <span style='font-size:12.0pt;font-family:"Times New Roman",serif'><br clear=all style='page-break-before:always'></span>
 
-  <h2 style="color:<?php echo $color; ?>" >
-    3.2&nbsp;<?php echo lang("External audit");?>
-  </h2><br>
+  <!--RECOMENDACIONES-->
+  <h1 style="color:<?php echo $color; ?>" >
+    4&nbsp;<?php echo lang("Criticality table");?>
+  </h1><br>
+  
+<?php 
 
-  <!--LISTAMOS LAS VULNERABILIDADES DE LA AUDITORÍA EXTERNA-->
-   <?php 
-        $sentencia = "select * from informes where id=".$id_url;
-        $consulta = mysqli_query($conexion, $sentencia) or die("Error de Consulta");
+      $cantidad_objetivos_informe = "select * from scope where id_informe=".$id_url;  
+      $consulta_objetivos_informe = mysqli_query($conexion, $cantidad_objetivos_informe) or die("Error de conexión");
+      
+      while($fila_scope = mysqli_fetch_array($consulta_objetivos_informe)){
+          $id_scope=$fila_scope['id'];
+          $nombre_scope=$fila_scope['url'];
 
-        //vamos a recorrer la consulta y guardar los datos
-        while($fila= mysqli_fetch_array($consulta)){
-            $vulnerabilidades=$fila['vulnerabilidades'];
-            $separador = ",";
-            $vulns_separadas = explode($separador, $vulnerabilidades);//aqui obtenemos los id de cada una de las vulns del informe
+          echo "<br><h3>$nombre_scope</h3><br>";
 
-           foreach ($vulns_separadas as $vuln){//obtenemos el id de la vulnerabilidad
+          echo"
+          
+          <table>
+            <tr style='height:14.8pt'>
 
-            if($vuln > ''){
+              <!--CABECERAS-->
+                <td width=175 nowrap valign=bottom style='width:300.1pt;border:solid windowtext 1.0pt; background:#191c24;padding:0cm 3.5pt 0cm 3.5pt;height:14.8pt;color:white;'>
+                  <p class=MsoNormal style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:3.5pt;margin-bottom:.0001pt;'>
+                    <b>
+                      <span style='font-family:'Calibri',sans-serif;color:white'>$desc_nombre</span>
+                    </b>
+                  </p>
+                </td>
+                <td width=165 nowrap valign=bottom style='width:7.55pt;border:solid windowtext 1.0pt;border-left:none;background:#191c24;padding:0cm 3.5pt 0cm 3.5pt;height:14.8pt;color:white;'>
+                  <p class=MsoNormal style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:center'>
+                    <b>
+                      <span style='font-family:'Calibri',sans-serif;color:white'>$criticidad_nivel</span>
+                    </b>
+                  </p>
+                </td>
+              </tr>
+          ";
 
-             $sentencia_vuln_1 = "select * from vulnerabilidades where id=".$vuln;
-             $consulta_vuln_1 = mysqli_query($conexion, $sentencia_vuln_1) or die("Error de Consulta");
+          $cantidad_vulns_scope = "select * from scope_vulnerabilidades where id_scope=".$id_scope." order by nivel desc";  
+          $consulta_vulns_scope = mysqli_query($conexion, $cantidad_vulns_scope) or die("Error de conexión");
+      
+          while($fila_vulns_scope = mysqli_fetch_array($consulta_vulns_scope)){
 
-             while($fila_vuln= mysqli_fetch_array($consulta_vuln_1)){
-                $descripcion=$fila_vuln['descripcion'];
-                $solucion=$fila_vuln['solucion'];
-                $seccion_auditoria=$fila_vuln['seccion_auditoria'];
+            $desc_nombre  = lang("Name");
+            $criticidad_nivel  = lang("Criticality");
+            $desc_descripcion = lang("Description");
+            $desc_recomendacion  = lang("Recommendation");
 
-                if($seccion_auditoria == 2){//si la vulnerabilidad es de la sección 1 la listamos
+            $id_scope=$fila_vulns_scope['id'];
+            $nivel_scope0=$fila_vulns_scope['nivel'];
+            $nivel_scope=$fila_vulns_scope['nivel'];
+            $nombre_scope=$fila_vulns_scope['nombre'];
+            $descripcion_scope=$fila_vulns_scope['descripcion'];
+            $recomendacion_scope=$fila_vulns_scope['solucion'];
 
-                  echo 
-                  "<p style='text-align:justify !important; '>
-                    ".$descripcion."<br>
-                  </p><br>";
-
-
-                  echo "
-                  <p class=MsoBodyText style='margin-top:.15pt;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:center'>
-                    <span style='position:relative;z-index:251655680'>
-                      <span style='left:0px;position:absolute;left:67px;top:-1060px;width:477px;height:199px'>
-                        <img width=450 height=120 src='assets/images/report/vuln_sample.png'>
-                      </span>
-                    </span>
-                  </p><br>";
-
-                  echo 
-                  "<p style='text-align:justify !important; '>
-                      <b>Se recomienda: </b>".$solucion."
-                  </p><br><br>";
-                  
-                  
-                  echo "<p class=MsoBodyText style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:1.0cm;margin-bottom:.0001pt;text-align:justify'><b><span style='font-size:17.0pt'>&nbsp;</span></b></p>
-
-                  ";
-                }
-              } 
+            if($nivel_scope == 1){
+              $nivel_scope = '<label>'.$nivel_scope0.' - '.lang('Low').'</label>';
+            }else if ($nivel_scope == 2){
+              $nivel_scope = '<label>'.$nivel_scope0.' - '.lang('Medium').'</label>';
+            }else if ($nivel_scope == 3){
+              $nivel_scope = '<label>'.$nivel_scope0.' - '.lang('High').'</label>';
+            }else if ($nivel_scope == 4){
+              $nivel_scope = '<label>'.$nivel_scope0.' - '.lang('Very High').'</label>';
             }
-           }
-        }
-    ?>
+
+            echo "
+            
+            <tr>
+              <td width=175 nowrap style='width:300.1pt;border:solid windowtext 1.0pt;padding:0cm 3.5pt 0cm 3.5pt;height:14.8pt'>
+                <p class=MsoNormal style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-bottom:.0001pt;margin-left:3.5pt;'>
+                  <span style='font-size:10.0pt;font-family:'Calibri',sans-serif;color:black'>$nombre_scope</span>
+                </p>
+              </td>
+              
+              <td width=165 nowrap style='width:70.55pt;border:solid windowtext 1.0pt;padding:0cm 3.5pt 0cm 3.5pt;height:14.8pt'>
+                <p class=MsoNormal style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-bottom:.0001pt;margin-left:3.5pt;'>
+                  <span style='font-size:10.0pt;font-family:'Calibri',sans-serif;color:black'><center>$nivel_scope</center></span>
+                </p>
+              </td>
+            </tr>
+            ";
+          }
+          echo "</table>";
+      }
+  
+?>
 
 
-  <span style='font-size:11.0pt;font-family:"Verdana"'><br clear=all style='page-break-before:always'></span>
 
-  <h2 style="color:<?php echo $color; ?>" >
-        3.3&nbsp;<?php echo lang("Wifi audit");?>
-  </h2><br>
-
-  <p class=MsoBodyText style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:justify'>&nbsp;</p>
-
-  <!--LISTAMOS LAS VULNERABILIDADES DE LA AUDITORÍA WIFI-->
-  <?php 
-        $sentencia = "select * from informes where id=".$id_url;
-        $consulta = mysqli_query($conexion, $sentencia) or die("Error de Consulta");
-
-        //vamos a recorrer la consulta y guardar los datos
-        while($fila= mysqli_fetch_array($consulta)){
-            $vulnerabilidades=$fila['vulnerabilidades'];
-            $separador = ",";
-            $vulns_separadas = explode($separador, $vulnerabilidades);//aqui obtenemos los id de cada una de las vulns del informe
-
-           foreach ($vulns_separadas as $vuln){//obtenemos el id de la vulnerabilidad
-
-            if($vuln > ''){
-
-             $sentencia_vuln_1 = "select * from vulnerabilidades where id=".$vuln;
-             $consulta_vuln_1 = mysqli_query($conexion, $sentencia_vuln_1) or die("Error de Consulta");
-
-             while($fila_vuln= mysqli_fetch_array($consulta_vuln_1)){
-                $descripcion=$fila_vuln['descripcion'];
-                $solucion=$fila_vuln['solucion'];
-                $seccion_auditoria=$fila_vuln['seccion_auditoria'];
-
-                if($seccion_auditoria == 3){//si la vulnerabilidad es de la sección 1 la listamos
-
-                  echo 
-                  "<p style='text-align:justify !important; '>
-                    ".$descripcion."<br>
-                  </p><br>";
-
-
-                  echo "
-                  <p class=MsoBodyText style='margin-top:.15pt;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:center'>
-                    <span style='position:relative;z-index:251655680'>
-                      <span style='left:0px;position:absolute;left:67px;top:-1060px;width:477px;height:199px'>
-                        <img width=450 height=120 src='assets/images/report/vuln_sample.png'>
-                      </span>
-                    </span>
-                  </p><br>";
-
-                  echo 
-                  "<p style='text-align:justify !important; '>
-                      <b>Se recomienda: </b>".$solucion."
-                  </p><br><br>";
-                  
-                  
-                  echo "<p class=MsoBodyText style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:1.0cm;margin-bottom:.0001pt;text-align:justify'><b><span style='font-size:17.0pt'>&nbsp;</span></b></p>
-
-                  ";
-                }
-              } 
-            }
-           }
-        }
-    ?>
-
-  <span style='font-size:11.0pt;font-family:"Verdana",sans-serif'><br clear=all style='page-break-before:always'></span>
-
+<span style='font-size:11.0pt;font-family:"Verdana",sans-serif'><br clear=all style='page-break-before:always'></span>
 
   <!--CONCLUSIONES-->
   <h1 style="color:<?php echo $color; ?>" >
-    4&nbsp;<?php echo lang("CONCLUSIONS");?>
+    5&nbsp;<?php echo lang("Conclusions");?>
   </h1><br>
-
-  
-
-  <span style='font-size:11.0pt;font-family:"Verdana",sans-serif'><br clear=all style='page-break-before:always'></span>
-
-  <!--RECOMENDACIONES-->
-  <h1 style="color:<?php echo $color; ?>" >
-    5&nbsp;<?php echo lang("RECOMMENDATIONS");?>
-  </h1><br>
-
-  <ul>
-    <?php 
-        $sentencia = "select * from informes where id=".$id_url;
-        $consulta = mysqli_query($conexion, $sentencia) or die("Error de Consulta");
-
-        //vamos a recorrer la consulta y guardar los datos
-        while($fila= mysqli_fetch_array($consulta)){
-            $recomendaciones=$fila['recomendaciones'];
-            $recomendaciones = nl2br($recomendaciones);//convertimos el espacio de SQL por \n
-            $separador = "\n";
-            $recomendaciones_separadas = explode($separador, $recomendaciones);
-
-            foreach ($recomendaciones_separadas as $recomendacion){
-
-              if (strlen($recomendacion) != 7){
-
-                echo "
-                  <li style='margin-bottom: 9px; font-family:verdana; font-size:11pt'>
-                    <span>".$recomendacion."</span>
-                  </li>
-                ";
-
-              }
-              
-            }
-        }
-      ?>
-  </ul>
-  
-  <p class=MsoNormal style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:justify'>&nbsp;</p>
-
-  <h2 style="color:<?php echo $color; ?>" >
-    5.1&nbsp;<?php echo lang("Infrastructure improvement proposals");?>
-  </h2><br>
-
-  <ul>
-    <?php 
-        $sentencia = "select * from informes where id=".$id_url;
-        $consulta = mysqli_query($conexion, $sentencia) or die("Error de Consulta");
-
-        //vamos a recorrer la consulta y guardar los datos
-        while($fila= mysqli_fetch_array($consulta)){
-            $propuestas=$fila['propuestas'];
-            $propuestas = nl2br($propuestas);//convertimos el espacio de SQL por \n
-            $separador = "\n";
-            $propuestas_separadas = explode($separador, $propuestas);
-
-            foreach ($propuestas_separadas as $propuesta){
-
-              if (strlen($propuesta) != 7){
-
-                echo "
-                  <li style='margin-bottom: 9px; font-family:verdana; font-size:11pt'>
-                    <span>".$propuesta."</span>
-                  </li>
-                ";
-
-              }
-              
-            }
-        }
-      ?>
-  </ul>
-
-
-  <span style='font-size:11.0pt;font-family:"Verdana",sans-serif'><br clear=all style='page-break-before:always'></span>
-
-
-  <!--TABLA DE CRITICIDAD-->
-  <h2 style="color:<?php echo $color; ?>" >
-    5.2&nbsp;<?php echo lang("Criticality table");?>
-  </h2><br>
-
-<table>
-  <tr style='height:14.8pt'>
-
-    <!--CABECERAS-->
-      <td width=175 nowrap valign=bottom style='width:300.1pt;border:solid windowtext 1.0pt; background:#191c24;padding:0cm 3.5pt 0cm 3.5pt;height:14.8pt'>
-        <p class=MsoNormal style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:3.5pt;margin-bottom:.0001pt;'>
-          <b>
-            <span style='font-family:"Calibri",sans-serif;color:white'><?php echo lang("Recommendation");?></span>
-          </b>
-        </p>
-      </td>
-      <td width=165 nowrap valign=bottom style='width:7.55pt;border:solid windowtext 1.0pt;border-left:none;background:#191c24;padding:0cm 3.5pt 0cm 3.5pt;height:14.8pt'>
-        <p class=MsoNormal style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:center'>
-          <b>
-            <span style='font-family:"Calibri",sans-serif;color:white'><?php echo lang("Criticality");?></span>
-          </b>
-        </p>
-      </td>
-      <td width=187 nowrap valign=bottom style='width:90.55pt;border:solid windowtext 1.0pt;border-left:none;background:#191c24;padding:0cm 3.5pt 0cm 3.5pt;height:14.8pt'>
-        <p class=MsoNormal style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:center'>
-          <b>
-            <span style='font-family:"Calibri",sans-serif;color:white'><?php echo lang("Effort");?></span>
-          </b>
-        </p>
-      </td>
-    </tr>
-
-
-
-
-      <!--LISTAMOS LAS VULNERABILIDADES DE LA AUDITORÍA EXTERNA-->
-   <?php 
-        $sentencia = "select * from informes where id=".$id_url;
-        $consulta = mysqli_query($conexion, $sentencia) or die("Error de Consulta");
-
-        //vamos a recorrer la consulta y guardar los datos
-        while($fila= mysqli_fetch_array($consulta)){
-            $vulnerabilidades=$fila['vulnerabilidades'];
-            $separador = ",";
-            $vulns_separadas = explode($separador, $vulnerabilidades);//aqui obtenemos los id de cada una de las vulns del informe
-
-           foreach ($vulns_separadas as $vuln){//obtenemos el id de la vulnerabilidad
-
-            if($vuln > ''){
-
-             $sentencia_vuln_1 = "select * from vulnerabilidades where id=".$vuln;
-             $consulta_vuln_1 = mysqli_query($conexion, $sentencia_vuln_1) or die("Error de Consulta");
-
-             while($fila_vuln= mysqli_fetch_array($consulta_vuln_1)){
-                $descripcion=$fila_vuln['descripcion'];
-                $solucion=$fila_vuln['solucion'];
-                $seccion_auditoria=$fila_vuln['seccion_auditoria'];
-                $recomendacion=$fila_vuln['recomendacion'];
-                $criticidad = $fila_vuln['nivel'];
-                $esfuerzo = $fila_vuln['esfuerzo'];
-
-                if($criticidad == 1){
-                    $nivel = lang("Low");
-                }else if ($criticidad == 2){
-                    $nivel = lang("Medium");
-                }else if ($criticidad == 3){
-                    $nivel = lang("High");
-                }else if ($criticidad == 4){
-                    $nivel = lang("Very High");
-                }
-
-                if($esfuerzo == 1){
-                    $esfuerzo_desc = 'Quick Win';
-                }else if($esfuerzo == 2){
-                    $esfuerzo_desc = lang("Low");
-                }else if($esfuerzo == 3){
-                  $esfuerzo_desc = lang("Medium");
-                }else if($esfuerzo == 4){
-                  $esfuerzo_desc = lang("High");
-                }else if($esfuerzo == 5){
-                  $esfuerzo_desc = lang("Very High");
-                }
-
-                ?>
-
-                  <tr>
-                    <td width=175 nowrap style='width:300.1pt;border:solid windowtext 1.0pt;border-top:none;padding:0cm 3.5pt 0cm 3.5pt;height:14.8pt'>
-                      <p class=MsoNormal style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-bottom:.0001pt;margin-left:3.5pt;'>
-                        <span style='font-size:10.0pt;font-family:"Verdana";color:black'><?php echo $recomendacion ?></span>
-                      </p>
-                    </td>
-                    <td width=165 nowrap style='width:70.55pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 3.5pt 0cm 3.5pt;height:14.8pt;font-family:"Verdana";font-size:10pt;'>
-                      <p class=MsoNormal style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:center'>
-                        <span style='font-size:10.0pt;font-family:"Verdana";color:black'><?php echo $nivel ?></span>
-                      </p>
-                    </td>
-                      <td width=187 nowrap style='width:90.55pt;border-top:none;border-left:none;border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;padding:0cm 3.5pt 0cm 3.5pt;height:14.8pt'>
-                        <p class=MsoNormal style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:center'>
-                        <span style='font-size:9.0pt;font-family:"Verdana";color:black'><?php echo $esfuerzo_desc ?></span>
-                      </p>
-                    </td>
-                  </tr>
-                   
-              <?php
-              } 
-            }
-           }
-        }
-    ?>
-</table>
-
+  <p>
+      <?php echo $conclusiones; ?>
+  </p>
 
 <p class=Cabeceraypie>&nbsp;</p>
 

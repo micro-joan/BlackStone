@@ -228,7 +228,7 @@ $section = "dashboard";
               <div class="col-md-4 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title"><?php echo lang("Report Vulnerabilities");?></h4>
+                    <h4 class="card-title"><?php echo lang("Vulns in database");?></h4>
                     <canvas id="transaction-history" class="transaction-chart"></canvas>
                     <h4 class="card-title pt-5"><?php echo lang("Last two reports");?></h4>
                     <?php
@@ -256,7 +256,9 @@ $section = "dashboard";
                         
                         $fecha_texto = lang('Date:');
                         
-                        echo "<div class='bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3'>
+                        echo "
+                          <center>
+                            <div class='d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3' style='background: #12151e; width:350px'>
                               <div class='text-md-center text-xl-left'>
                                 <h6 class='mb-1'><a class='text-decoration-none text-white' href='editar_informe.php?id=".$id_infor."'>".$nombre_doc."</a></h6>
                                 <p class='text-muted mb-0'>".$fecha_texto." ".$fecha_proy."</p>
@@ -264,8 +266,8 @@ $section = "dashboard";
                               <div class='align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0'>
                                 <h6 class='font-weight-bold mb-0'><i class='mdi mdi-file-document-box' style='font-size: 15pt; color: #ffab00;' ></i></h6>
                               </div>
-                            </div>";
-
+                            </div>
+                          </center>";
                       }
                     ?>
                   
@@ -287,11 +289,11 @@ $section = "dashboard";
                             <?php
                               $sentencia = "select * from empresas order by id";    
                               $consulta = mysqli_query($conexion, $sentencia) or die("Error de conexión en tabla clientes");
-                      
+
                               //vamos a recorrer la consulta y guardar los datos 
                               while($fila3= mysqli_fetch_array($consulta)){
 
-                                  $id=$fila3['id'];
+                                  $id_empresa=$fila3['id'];
                                   $nombre=$fila3['nombre'];
                                   $web=$fila3['web'];
                                   $logo=$fila3['logo'];
@@ -307,28 +309,35 @@ $section = "dashboard";
                                   }
 
                                   
-                                  $sentencia_infor = "select * from informes where id_empresa_auditada=".$id." limit 6";  
+                                  $sentencia_infor = "select * from informes where id_empresa_auditada=".$id_empresa;  
                                   $consulta_infor = mysqli_query($conexion, $sentencia_infor) or die("Error de conexión");
                                   
+                                  $vulnerabilidades_scopes = 0;
                                   $cantidad_informes = 0;
-                                  $cantidad_vulnerabilidades_informe = 0;
 
                                   while($fila_infor = mysqli_fetch_array($consulta_infor)){
-                                    $vulnerabilidades=$fila_infor['vulnerabilidades'];
-                                    
-                                    $separador = ",";
-                                    $vulns_separadas = explode($separador, $vulnerabilidades);//aqui obtenemos los id de cada una de las vulns del informe
-                        
-                                    foreach ($vulns_separadas as $vuln){//obtenemos el id de la vulnerabilidad
-
-                                      $cantidad_vulnerabilidades_informe ++;
-                                      
-                                    }
-
+                                    $id_informe=$fila_infor['id'];
                                     $cantidad_informes ++;
+                                    
+                                    $cantidad_objetivos_informe = "select * from scope where id_informe=".$id_informe;  
+                                    $consulta_objetivos_informe = mysqli_query($conexion, $cantidad_objetivos_informe) or die("Error de conexión");
+                                    
+                                    while($fila_scope = mysqli_fetch_array($consulta_objetivos_informe)){
+                                        $id_scope=$fila_scope['id'];
+
+                                        $cantidad_vulns_scope = "select * from scope_vulnerabilidades where id_scope=".$id_scope;  
+                                        $consulta_vulns_scope = mysqli_query($conexion, $cantidad_vulns_scope) or die("Error de conexión");
+                                    
+                                        while($fila_vulns_scope = mysqli_fetch_array($consulta_vulns_scope)){
+                                          $id_scope=$fila_vulns_scope['id'];
+
+                                          $vulnerabilidades_scopes ++;
+                                        }
+                                    }
                                   }
 
                                 
+                                  
                                   $vulnerabilidades_encontradas = lang("Vulnerabilities found");
 
                                   echo $listado_clientes ="<div class='preview-item border-bottom'>
@@ -339,12 +348,12 @@ $section = "dashboard";
                                             </div>
                                             <div class='preview-item-content d-sm-flex flex-grow'>
                                               <div class='flex-grow'>
-                                                <h6 class='preview-subject'><a class='text-decoration-none text-white' href='editar_clientes.php?id=".$id."'>".$nombre."</a></h6>
+                                                <h6 class='preview-subject'><a class='text-decoration-none text-white' href='editar_clientes.php?id=".$id_empresa."'>".$nombre."</a></h6>
                                                 <p class='text-muted mb-0'>".$web."</p>
                                               </div>
                                               <div class='me-auto text-sm-right pt-2 pt-sm-0'>
                                                 <p class='text-muted'>".$cantidad_informes." ".lang("Reports made")."</p>
-                                                <p class='text-muted mb-0'>".$cantidad_vulnerabilidades_informe." ".$vulnerabilidades_encontradas."</p>
+                                                <p class='text-muted mb-0'>".$vulnerabilidades_scopes." ".$vulnerabilidades_encontradas."</p>
                                               </div>
                                             </div>
                                           </div>";
@@ -359,9 +368,10 @@ $section = "dashboard";
                 </div>
               </div>
             </div>
-            
-            
+          
           </div>
+
+          
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <footer class="footer">

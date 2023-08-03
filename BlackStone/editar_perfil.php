@@ -72,25 +72,37 @@ $id_url = $urlArray[1];
               <div class="col-12 grid-margin">
                 <div class="card">
                   <div class="card-body">
-                    <h1>Soon...</h1>
+                  <form class="form-sample" form action="" method="post" enctype="multipart/form-data">
+                      <div class="row">
+
+                        <div class="col-md-6">
+                          <div class="form-group row">
+                            <label class="col-sm-3 col-form-label"><?php echo lang("Change password");?></label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control" id="pass" name="pass"  value="" style="color:white;">
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                      <button type="submit" name="submit" class="btn btn-primary me-2"><?php echo lang("Save"); ?></button>
+                    </form>
                   </div>
                 </div>
               </div>
             </div>
-          
+
             <?php
     
             if (isset($_POST['submit'])){
-              $hunter = $_POST['hunter'];
-              $haveibeenpwned = $_POST['pwned'];
-              
-              $sentencia = "UPDATE `tokens` SET `hunter`='$hunter',`haveibeenpwned`='$haveibeenpwned' WHERE id=1 ;";
-          
+
+              $pass = htmlspecialchars($_POST['pass'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+              $contra_hash = password_hash($pass, PASSWORD_DEFAULT);
+
+              $sentencia = "UPDATE `usuarios` SET `contra`='$contra_hash' WHERE id=1";
               $consulta = mysqli_query($conexion, $sentencia)or die("Error de consulta");
 
-              if (mysqli_affected_rows($conexion)!=0) {
-                  echo '<script type="text/JavaScript"> location.reload(); </script>';
-              }
+              echo "<script>alert('Saved')</script>";
             }
             ?>
 

@@ -146,8 +146,19 @@ $id_url = $urlArray[1];
                 $id=$fila['id'];
                 $nombre=htmlspecialchars($fila['nombre'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
                 $web=htmlspecialchars($fila['web'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
-                $logo=htmlspecialchars($fila['logo'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
-                $logo_last=htmlspecialchars($fila['logo'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                $logo=$fila['logo'];
+                $logo_last=$fila['logo'];
+
+                if($logo > ''){
+                  
+                }else{
+                  $logo = "logos_clientes/bksnologo.jpg";
+                }
+
+                if($logo == "logos_clientes/"){
+                  $logo = "logos_clientes/bksnologo.jpg";
+                }
+
               }
             ?>  
 
@@ -389,9 +400,8 @@ $id_url = $urlArray[1];
                 $consulta = mysqli_query($conexion, $sentencia)or die("Error de consulta");
               }
 
-              
-
               if (mysqli_affected_rows($conexion)!=0) {
+                  echo "<script>alert('Saved')</script>";
                   echo '<script type="text/JavaScript"> location.reload(); </script>';
               }
             }

@@ -1,11 +1,5 @@
 <?php
 
-//bloquear acceso a equipos que no sean el local (ipv6 ::1 = localhost)
-if ($_SERVER['REMOTE_ADDR'] !== '::1') {
-  header('HTTP/1.0 403 Forbidden');
-  exit('Access only to localhost.');
-}
-
 $url = $_SERVER["REQUEST_URI"];
 $urlArray = explode('=', $url);
 $error = $urlArray[1];
@@ -50,12 +44,12 @@ if($error == "si"){
               </center>
                 <form action="control_sesion/control_usuarios.php" method="post">
                   <div class="form-group">
-                    <label>Username*</label>
-                    <input type="text" name="usuario" class="form-control p_input">
+                    <label>Username</label>
+                    <input type="text" name="usuario" class="form-control p_input" style="color:white;">
                   </div>
                   <div class="form-group">
-                    <label>Password *</label>
-                    <input type="password" name="pass" class="form-control p_input">
+                    <label>Password</label>
+                    <input type="password" name="pass" class="form-control p_input" style="color:white;">
                   </div>
                   <div class="form-group">
                       <label>Select languaje</label>

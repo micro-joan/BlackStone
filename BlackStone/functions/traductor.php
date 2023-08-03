@@ -3,7 +3,28 @@
 
 function lang($sentencia){
 
-    //SYSTEM
+    //SYSTEM    if($sentencia == "Saved vulnerability" && $_SESSION['idioma'] == "ES"){ $sentencia = "Vulnerabilidad guardada";};
+    if($sentencia == "Edit asset" && $_SESSION['idioma'] == "ES"){ $sentencia = "Editar objetivo";};
+    if($sentencia == "Objectives details" && $_SESSION['idioma'] == "ES"){ $sentencia = "Detalles de los objetivos";};
+    if($sentencia == "At the moment we will have to manually insert a graphic or image." && $_SESSION['idioma'] == "ES"){ $sentencia = "Por el momento deberemos insertar manualmente un gráfico o imagen.";};
+    if($sentencia == "Delete" && $_SESSION['idioma'] == "ES"){ $sentencia = "Eliminar";};
+    if($sentencia == "Vulnerability images" && $_SESSION['idioma'] == "ES"){ $sentencia = "Imágenes de vulnerabilidad";};
+    if($sentencia == "Manage vulnerabilities" && $_SESSION['idioma'] == "ES"){ $sentencia = "Gestionar vulnerabilidades";};
+    if($sentencia == "Search Vulnerabilities..." && $_SESSION['idioma'] == "ES"){ $sentencia = "Buscar Vulnerabilidades...";};
+    if($sentencia == "Order" && $_SESSION['idioma'] == "ES"){ $sentencia = "Orden";};
+    if($sentencia == "Add vulns" && $_SESSION['idioma'] == "ES"){ $sentencia = "Añadir vulns";};
+    if($sentencia == "Add image" && $_SESSION['idioma'] == "ES"){ $sentencia = "Añadir imagen";};
+    if($sentencia == "Edit values" && $_SESSION['idioma'] == "ES"){ $sentencia = "Editar valores";};
+    if($sentencia == "Vulnerabilities associated with" && $_SESSION['idioma'] == "ES"){ $sentencia = "Vulnerabilidades asociadas a";};
+    if($sentencia == "Are you interested in cybersecurity?" && $_SESSION['idioma'] == "ES"){ $sentencia = "Estás interesado en ciberseguridad?";};
+    if($sentencia == "Go now" && $_SESSION['idioma'] == "ES"){ $sentencia = "Ver ahora";};
+    if($sentencia == "Visit all my links!" && $_SESSION['idioma'] == "ES"){ $sentencia = "Visita todos mis links!";};
+    if($sentencia == "Report Objectives" && $_SESSION['idioma'] == "ES"){ $sentencia = "Objetivos de la auditoría";};
+    if($sentencia == "Add objective" && $_SESSION['idioma'] == "ES"){ $sentencia = "Añadir objetivo";};
+    if($sentencia == "Add objectives" && $_SESSION['idioma'] == "ES"){ $sentencia = "Añadir objetivos";};
+    if($sentencia == "Objectives" && $_SESSION['idioma'] == "ES"){ $sentencia = "Objetivos";};
+    if($sentencia == "Deadline" && $_SESSION['idioma'] == "ES"){ $sentencia = "Fecha de entrega";};
+    if($sentencia == "Saved vulnerability" && $_SESSION['idioma'] == "ES"){ $sentencia = "Vulnerabilidad guardada";};
     if($sentencia == "Account settings" && $_SESSION['idioma'] == "ES"){ $sentencia = "Ajustes de cuenta";};
     if($sentencia == "System Member" && $_SESSION['idioma'] == "ES"){ $sentencia = "Usuario de sistema";};
     if($sentencia == "Dashboard" && $_SESSION['idioma'] == "ES"){ $sentencia = "Dashboard";};
@@ -18,12 +39,15 @@ function lang($sentencia){
     if($sentencia == "Vulnerabilities" && $_SESSION['idioma'] == "ES"){ $sentencia = "Vulnerabilidades";};
     if($sentencia == "Audited Client" && $_SESSION['idioma'] == "ES"){ $sentencia = "Clientes registrados";};
     if($sentencia == "Auditors" && $_SESSION['idioma'] == "ES"){ $sentencia = "Auditores";};
+    if($sentencia == "Report" && $_SESSION['idioma'] == "ES"){ $sentencia = "Informe";};
     if($sentencia == "Reports" && $_SESSION['idioma'] == "ES"){ $sentencia = "Informes";};
     if($sentencia == "Report Vulnerabilities" && $_SESSION['idioma'] == "ES"){ $sentencia = "Vulnerabilidades reportadas";};
+    if($sentencia == "Vulns in database" && $_SESSION['idioma'] == "ES"){ $sentencia = "Vulns en base de datos";};
     if($sentencia == "Free Hacking reporting tool from " && $_SESSION['idioma'] == "ES"){ $sentencia = "Herramienta gratuita de reporting, creada por: ";};
-    if($sentencia == "List of vulnerabilities" && $_SESSION['idioma'] == "ES"){ $sentencia = "Listado De vulnerabilidades";};
+    if($sentencia == "List of vulnerabilities" && $_SESSION['idioma'] == "ES"){ $sentencia = "Listado de vulnerabilidades";};
     if($sentencia == "List" && $_SESSION['idioma'] == "ES"){ $sentencia = "Listado";};
     if($sentencia == "Description" && $_SESSION['idioma'] == "ES"){ $sentencia = "Descripción";};
+    if($sentencia == "Description image" && $_SESSION['idioma'] == "ES"){ $sentencia = "Descripción de la imágen";};
     if($sentencia == "Criticality" && $_SESSION['idioma'] == "ES"){ $sentencia = "Criticidad";};
     if($sentencia == "Low" && $_SESSION['idioma'] == "ES"){ $sentencia = "Baja";};
     if($sentencia == "Medium" && $_SESSION['idioma'] == "ES"){ $sentencia = "Media";};
@@ -46,8 +70,8 @@ function lang($sentencia){
     if($sentencia == "Vulnerability removed from the system" && $_SESSION['idioma'] == "ES"){ $sentencia = "Vulnerabilidad eliminada del sistema";};
     if($sentencia == "Return" && $_SESSION['idioma'] == "ES"){ $sentencia = "Volver";};
     if($sentencia == "Customers" && $_SESSION['idioma'] == "ES"){ $sentencia = "Clientes";};
-    if($sentencia == "List of companies" && $_SESSION['idioma'] == "ES"){ $sentencia = "Listado de empresas";};
-    if($sentencia == "Search companies" && $_SESSION['idioma'] == "ES"){ $sentencia = "Buscar empresas";};
+    if($sentencia == "List of customers" && $_SESSION['idioma'] == "ES"){ $sentencia = "Listado de clientes";};
+    if($sentencia == "Search customers" && $_SESSION['idioma'] == "ES"){ $sentencia = "Buscar clientes";};
     if($sentencia == "Name" && $_SESSION['idioma'] == "ES"){ $sentencia = "Nombre";};
     if($sentencia == "Web page" && $_SESSION['idioma'] == "ES"){ $sentencia = "Página web";};
     if($sentencia == "Logo" && $_SESSION['idioma'] == "ES"){ $sentencia = "Logo";};
@@ -77,12 +101,15 @@ function lang($sentencia){
     if($sentencia == "Add report" && $_SESSION['idioma'] == "ES"){ $sentencia = "Añadir informe";};
     if($sentencia == "Delete company" && $_SESSION['idioma'] == "ES"){ $sentencia = "Eliminar empresa";};
     if($sentencia == "Company removed from the system" && $_SESSION['idioma'] == "ES"){ $sentencia = "Empresa eliminada del sistema";};
+    if($sentencia == "Save this web in .mhtml format and open it in Word to edit the report!!" && $_SESSION['idioma'] == "ES"){ $sentencia = "Guarda esta web en formato .mhtml y abrela en Word para editar el informe!!";};
     if($sentencia == "Document name" && $_SESSION['idioma'] == "ES"){ $sentencia = "Nombre del documento";};
-    if($sentencia == "Company to audit" && $_SESSION['idioma'] == "ES"){ $sentencia = "Empresa a auditar";};
+    if($sentencia == "Customer name" && $_SESSION['idioma'] == "ES"){ $sentencia = "Nombre cliente";};
     if($sentencia == "Discharge date" && $_SESSION['idioma'] == "ES"){ $sentencia = "Fecha de alta";};
     if($sentencia == "Edit report" && $_SESSION['idioma'] == "ES"){ $sentencia = "Editar informe";};
     if($sentencia == "State" && $_SESSION['idioma'] == "ES"){ $sentencia = "Estado";};
     if($sentencia == "Recommendations" && $_SESSION['idioma'] == "ES"){ $sentencia = "Recomendaciones";};
+    if($sentencia == "Recommendation" && $_SESSION['idioma'] == "ES"){ $sentencia = "Recomendación";};
+    if($sentencia == "Conclusions" && $_SESSION['idioma'] == "ES"){ $sentencia = "Conclusiones";};
     if($sentencia == "Proposals" && $_SESSION['idioma'] == "ES"){ $sentencia = "Propuestas";};
     if($sentencia == "Add" && $_SESSION['idioma'] == "ES"){ $sentencia = "Añadir";};
     if($sentencia == "Description" && $_SESSION['idioma'] == "ES"){ $sentencia = "Descripción";};

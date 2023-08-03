@@ -13,7 +13,7 @@ $section = "client";
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>BlackStone - <?php echo lang("Companies");?></title>
+    <title>BlackStone - <?php echo lang("Customers");?></title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
@@ -136,10 +136,10 @@ $section = "client";
           <div class="content-wrapper">
 
             <div class="page-header">
-              <h3 class="page-title"> <?php echo lang("List of companies");?> </h3>
+              <h3 class="page-title"> <?php echo lang("List of customers");?> </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#"><?php echo lang("Companies");?></a></li>
+                  <li class="breadcrumb-item"><a href="#"><?php echo lang("Customers");?></a></li>
                   <li class="breadcrumb-item active" aria-current="page"><?php echo lang("List");?></li>
                 </ol>
               </nav>
@@ -147,20 +147,19 @@ $section = "client";
             
             <div class="row" style="--bs-gutter-x: 1.9rem !important;">
               <form class="nav-link mt-md-0 d-lg-flex search">
-                  <input type="text" class="form-control" id="busqueda" placeholder="<?php echo lang("Search companies"); ?>" style="color:white;">
+                  <input type="text" class="form-control" id="busqueda" placeholder="<?php echo lang("Search customers"); ?>" style="color:white;">
               </form>
             </div>
             <div class="row">
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title"><?php echo lang("Companies");?></h4>
+                    <h4 class="card-title"><?php echo lang("Customers");?></h4>
                     </p>
                     <div class="table-responsive">
                       <table class="table" id="tabla_listado_cve">
                         <thead>
                           <tr>
-                            <th>ID</th>
                             <th><center><?php echo lang("Logo");?></center></th>
                             <th><?php echo lang("Name");?></th>
                             <th><?php echo lang("Web page");?></th>
@@ -183,7 +182,6 @@ $section = "client";
                                 $dominio_correo=htmlspecialchars($fila['descripcion'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
                                 $logo=$fila['logo'];
 
-                            
                                 if($logo > ''){
                                   $logo_listado = "<img src='".$logo."'>";
                                 }else{
@@ -198,7 +196,6 @@ $section = "client";
 
                         <tbody>
                           <tr>
-                            <td><?php echo $id ?></td>
                             <td><center><?php echo $logo_listado ?></center></td>
                             <td><?php echo $nombre ?></td>
                             <td><?php echo $web ?></td>

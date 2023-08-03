@@ -146,11 +146,12 @@ if [ -z $bbdd_installed ] #si bbdd_installed es vacío..
         ROUTE_FILE="$PWD/xampp_installer/$SQL_FILE"
 
         # Comando para importar el archivo SQL en la base de datos
+        /opt/lampp/bin/mysql -u${USER} -e "DROP DATABASE $DB_NAME;"
         /opt/lampp/bin/mysql -u${USER} -e "CREATE DATABASE $DB_NAME;" 
         /opt/lampp/bin/mysql -u${USER} $DB_NAME < $ROUTE_FILE
 
         sleep 2
-        echo "database installed" > xampp_installer/db_installed.txt #creamos archivo para verificar que se ha instalado la db
+        # echo "database installed" > xampp_installer/db_installed.txt #creamos archivo para verificar que se ha instalado la db
         echo ""
         clear
         echo ""
