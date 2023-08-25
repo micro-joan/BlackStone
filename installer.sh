@@ -9,7 +9,7 @@ install_library='\033[1;31m'
 PWD=`pwd`
 
 #LIBRERIAS
-xampp_blackstone=`ls /opt/blackstone/xampp_installer/xampp-installer.run`
+xampp_blackstone=`ls /opt/BlackStone/xampp_installer/xampp-installer.run`
 xampp_installed=`ls /opt/lampp/xampp`
 blackstone_installed=`ls /opt/lampp/htdocs/BlackStone`
 bbdd_installed=`ls $PWD/xampp_installer/db_installed.txt`
@@ -53,7 +53,7 @@ if [ -z $xampp_blackstone ] #si xampp_installed es vacío..
         sleep 1
         echo "Downloading Xampp installer on BlackStone..."
         echo ""
-        wget https://github.com/micro-joan/BlackStone/releases/download/installer/xampp-installer.run -P /opt/blackstone/xampp_installer &
+        wget https://github.com/micro-joan/BlackStone/releases/download/installer/xampp-installer.run -P /opt/BlackStone/xampp_installer &
         pid_descarga=$!
 
         while kill -0 $pid_descarga 2>/dev/null; do
@@ -74,8 +74,8 @@ if [ -z $xampp_installed ] #si xampp_installed es vacío..
         sleep 1
         echo "Installing Xampp..."
         echo ""
-        chmod 777 /opt/blackstone/xampp_installer/xampp-installer.run
-        chmod +x /xampp_installer/xampp-installer.run & ./xampp_installer/xampp-installer.run
+        chmod 777 /opt/BlackStone/xampp_installer/xampp-installer.run
+        chmod +x /opt/BlackStone/xampp_installer/xampp-installer.run & ./xampp_installer/xampp-installer.run
         clear
     else
         echo "XAMPP ${green} OK ${endcolor}"
