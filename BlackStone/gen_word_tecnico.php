@@ -37,6 +37,7 @@ $consulta_empresa_auditada = mysqli_query($conexion, $sentencia_empresa_auditada
 while($fila= mysqli_fetch_array($consulta_empresa_auditada)){
     $id_empresa_audit=$fila['id'];
     $nombre_empresa_auditada=$fila['nombre'];   
+    $logo_empresa=$fila['logo']; 
 }
 
 ?>
@@ -61,18 +62,48 @@ while($fila= mysqli_fetch_array($consulta_empresa_auditada)){
 
       .contenedor{
           background-color:white;
-            padding:70px;
+          padding:70px;
       }
   </style>
   
 <body lang=ES link="#0563C1" vlink="#954F72" style='word-wrap:break-word'>
 <div class="contenedor">
   <div class=WordSection1>
-    <p class=MsoBodyText style='margin-top:.45pt;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:justify'><span style='font-size:11.5pt;font-family:"Times New Roman",serif'> </span></p>
+    
+    <p class=MsoBodyText >
+      <center><img src="assets/images/report/top-banner.jpg"></center>
+    </p>
+          
+          <p style="margin-left:-3.0cm;text-align:center;font-size:25px;">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <?php echo lang("Penetration Test Report for");?> 
+                
+                <br>
+                <center>
+                  <span style="font-family:'Verdana',sans-serif; font-size: 20px;">
+                    <b><?php echo $nombre_empresa_auditada; ?></b>
+                  </span>
+                </center>
+                <br>
+                <hr>
+                <br>
+                <span style="font-family:'Verdana',sans-serif;"><?php echo lang("Date");?>: <?php echo $fecha ?></span><br>
+                <span style="font-family:'Verdana',sans-serif;"><?php echo lang("Document name");?>: <?php echo $nombre_doc ?></span>
+                <br><br><br><br>
+          </p>
 
-    <p class=MsoBodyText align=center style='margin-top:0cm;margin-right:23.05pt;
-    margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:center'><img
-    width=300 height=300 id=image1.jpeg src="assets/images/report/logo_portada.png"></p>
+    <p class=MsoBodyText align=center style='margin-top:0cm;margin-right:23.05pt; margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:center'>
+      <img width=200 height=200 id=image1.jpeg src="<?php echo $logo_empresa?>" style="border-radius:100px;">
+      <img width=100 height=100 id=image1.jpeg src="assets/images/report/logo_portada2.png" style="margin-left:-75px;">
+      <br><br><br>
+    </p>
+    <center>
+    <?php $anioActual = date("Y"); ?>
+
+    <span style="font-family:'Verdana',sans-serif; font-size: 12px;">
+      Copyright &copy; <?php echo $anioActual; ?> BlackStone Project. All rights reserved.
+    </span>
+    </center>
 
     <p class=MsoBodyText style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:justify'><span style='font-size:10.0pt;font-family:"Times New Roman",serif'>&nbsp;</span></p>
     <p class=MsoBodyText style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:justify'><span style='font-size:10.0pt;font-family:"Times New Roman",serif'>&nbsp;</span></p>
@@ -84,37 +115,49 @@ while($fila= mysqli_fetch_array($consulta_empresa_auditada)){
 
   <!-- TITULO DEL INFORME -->
   <div class=WordSection2>
-    <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=662 style='width:496.5pt;margin-left:11.55pt;border-collapse:collapse'>
-      <tr style='height:200.55pt'>
-        <td width=662 valign=top style='width:496.5pt;padding:0cm 5.4pt 0cm 5.4pt;height:200.55pt'>
-            <p class=TableParagraph align=center style='margin-top:0cm;margin-right:90.05pt; margin-bottom:0cm;margin-bottom:.0001pt;text-align:center;line-height:26.8pt'>
-            <b>
-              
-            <h1 style="align:center; margin-left:-3.0cm;text-align:center">
-              <?php echo $nombre_doc; ?><br>
-               <br>
-               <?php echo $fecha ?>
-            </h1>
-            
-            </b>
-          </p>
-        </td>
-      </tr>
-    </table>
+    
     <p class=MsoBodyText style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:justify'><b><span style='font-size:13.0pt'>&nbsp;</span></b></p>
     <p class=MsoBodyText style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:justify'><b><span style='font-size:13.0pt'>&nbsp;</span></b></p>
     <p class=MsoBodyText style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:justify'><b><span style='font-size:13.0pt'>&nbsp;</span></b></p>
     <p class=MsoBodyText style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:justify'><b><span style='font-size:13.0pt'>&nbsp;</span></b></p>
-    <p class=MsoBodyText style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:justify'><b><span style='font-size:13.0pt'>&nbsp;</span></b></p>
-    <p class=MsoBodyText style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:justify'><b><span style='font-size:13.0pt'>&nbsp;</span></b></p>
-    <p class=MsoBodyText style='margin-top:0cm;margin-right:23.05pt;margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:justify'><b><span style='font-size:13.0pt'>&nbsp;</span></b></p>
-
-    <p class=TableParagraph style='margin-top:0cm;margin-right:23.05pt;
-    margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:justify'> 
-    <img width=220 height=67 id=image2.jpeg src="assets/images/report/banner-mini.png"
-    alt=""></p>
+    
+    <p class=TableParagraph style='margin-top:0cm;margin-right:23.05pt; margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:justify'> 
+    <img width=220 height=67 id=image2.jpeg src="assets/images/report/banner-mini.png">
+  </p>
   </td>
   </div>
+
+  <span style='font-size:12.0pt;font-family:"Times New Roman",serif'>
+    <br clear=all style='page-break-before:always'>
+  </span>
+
+
+  <div style="height: 10px; background-color: #444d55; margin-left: -75px; margin-right: -75px;"></div>
+
+
+  <!--SE AÑADE PUBLICIDAD DE LA HERRAMIENTA-->
+  <span style='font-size:12.0pt;font-family:"Times New Roman",serif'><br clear=all style='page-break-before:auto'></span>
+
+  <p style='margin-top:0cm;margin-right:23.05pt; margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:center'>
+      <img width=200 height=200 id=image1.jpeg src="assets/images/report/logo_portada2.png" style="margin-left:-75px;">
+      <br><br><br>
+  </p>
+
+  <p style='margin-top:0cm;margin-right:23.05pt; margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:center'>
+      <?php echo lang("YOU CAN MAKE REPORTS ON AUDITS AND CERTIFICATION EXAMS WITH THE FREE REPORTING TOOL FOR KALI AND PARROT");?> "<b>BLACKSTONE</b>"
+      <br><br>
+  </p>
+
+  <p style='margin-top:0cm;margin-right:23.05pt; margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:center'>
+      <img width=600 height=330 id=image1.jpeg src="assets/images/report/example_interface.png" style="margin-left:-75px;">
+      <br><br><br>
+  </p>
+
+  <p style='margin-top:0cm;margin-right:23.05pt; margin-bottom:0cm;margin-left:14.2pt;margin-bottom:.0001pt;text-align:center'>
+      <a href="https://github.com/micro-joan/BlackStone" style="color:blue;">https://github.com/micro-joan/BlackStone</a>
+      <br><br>
+  </p>
+  
   <span style='font-size:12.0pt;font-family:"Times New Roman",serif'>
     <br clear=all style='page-break-before:always'>
   </span>
@@ -351,7 +394,128 @@ while($fila= mysqli_fetch_array($consulta_empresa_auditada)){
   <h1 style="color:<?php echo $color; ?>" >
     2&nbsp;<?php echo lang("EXECUTIVE SUMMARY");?>
   </h1><br>
-  <p><?php echo lang("At the moment we will have to manually insert a graphic or image."); ?></p>
+
+  <!--DESARROLLO DE GRAFICO EJECUTIVO--->
+  <?php
+      $cantidad_criticas = 0;
+      $cantidad_altas = 0;
+      $cantidad_medias = 0;
+      $cantidad_bajas = 0;
+
+      $cantidad_objetivos_informe = "select * from scope where id_informe=".$id_url;  
+      $consulta_objetivos_informe = mysqli_query($conexion, $cantidad_objetivos_informe) or die("Error de conexión");
+      
+      
+      while($fila_scope = mysqli_fetch_array($consulta_objetivos_informe)){
+
+          $id_scope=$fila_scope['id'];
+          $nombre_scope=$fila_scope['url'];
+
+          $cantidad_vulns_scope = "select * from scope_vulnerabilidades where id_scope=".$id_scope." order by nivel desc";  
+          $consulta_vulns_scope = mysqli_query($conexion, $cantidad_vulns_scope) or die("Error de conexión");
+      
+          while($fila_vulns_scope = mysqli_fetch_array($consulta_vulns_scope)){
+
+            $nivel_scope=$fila_vulns_scope['nivel'];
+           
+            if($nivel_scope == 1){
+              $cantidad_bajas ++;
+            }else if ($nivel_scope == 2){
+              $cantidad_medias ++;
+            }else if ($nivel_scope == 3){
+              $cantidad_altas ++;
+            }else if ($nivel_scope == 4){
+              $cantidad_criticas ++;
+            }
+          }
+      }
+
+      $total_vulnerabilidades = $cantidad_altas + $cantidad_bajas + $cantidad_medias + $cantidad_criticas;
+
+      $porcentaje_criticas = $cantidad_criticas * 100 / $total_vulnerabilidades;
+      $porcentaje_altas = $cantidad_altas * 100 / $total_vulnerabilidades;
+      $porcentaje_medias = $cantidad_medias * 100 / $total_vulnerabilidades;
+      $porcentaje_bajas = $cantidad_bajas * 100 / $total_vulnerabilidades;
+
+      $porcentaje_criticas = round($porcentaje_criticas, 1);
+      $porcentaje_altas = round($porcentaje_altas, 1);
+      $porcentaje_medias = round($porcentaje_medias, 1);
+      $porcentaje_bajas = round($porcentaje_bajas, 1);
+    ?>
+
+  <span style='font-size:11.0pt;font-family:"Verdana",sans-serif'>
+    <?php echo lang("You have to capture a screenshot of this graphic to insert it into Word.");?>
+  </span>
+  <br><br>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>td{border: 1px black solid} th{border: 1px black solid; background-color:black; color:white;}</style>
+  <center><canvas id="grafico" width="400" height="300"></canvas></center>
+  <br>
+  <table id="tabla" style='font-size:11.0pt;font-family:"Verdana",sans-serif;'>
+    <tr>
+      <th><center><?php echo lang("Vulnerability");?></center></th>
+      <th><center><?php echo lang("Amount");?></center></th>
+      <th><center><?php echo lang("Percentage");?></center></th>
+    </tr>
+    <tr>
+      <td><center><?php echo lang("Very High");?></center></td>
+      <td id="cantidad-criticas"><center><?php echo $cantidad_criticas;?></center></td>
+      <td id="porcentaje-criticas"><center><?php echo $porcentaje_criticas;?>%</center></td>
+    </tr>
+    <tr>
+      <td><center><?php echo lang("High");?></center></td>
+      <td id="cantidad-altas"><center><?php echo $cantidad_altas;?></center></td>
+      <td id="porcentaje-altas"><center><?php echo $porcentaje_altas;?>%</center></td>
+    </tr>
+    <tr>
+      <td><center><?php echo lang("Medium");?></center></td>
+      <td id="cantidad-medias"><center><?php echo $cantidad_medias;?></center></td>
+      <td id="porcentaje-medias"><center><?php echo $porcentaje_medias;?>%</center></td>
+    </tr>
+    <tr>
+      <td><center><?php echo lang("Low");?></center></td>
+      <td id="cantidad-bajas"><center><?php echo $cantidad_bajas;?></center></td>
+      <td id="porcentaje-bajas"><center>0%</center></td>
+    </tr>
+  </table>
+
+<script>
+  const datos = {
+    labels: ['<?php echo lang("Very High");?>', '<?php echo lang("High");?>', '<?php echo lang("Medium");?>', '<?php echo lang("Low");?>'],
+    datasets: [{
+      data: [<?php echo $cantidad_criticas;?>, <?php echo $cantidad_altas;?>, <?php echo $cantidad_medias;?>, <?php echo $cantidad_bajas;?>], // Reemplaza estos valores con tus datos reales
+      backgroundColor: ['#ff1e16', '#ff8018', '#faef22', '#00a933']
+    }]
+  };
+
+  const ctx = document.getElementById('grafico').getContext('2d');
+  const myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: datos,
+    options: {
+      responsive: false,
+      maintainAspectRatio: false
+    }
+  });
+
+  // Función para calcular y mostrar porcentajes en la tabla
+  function mostrarPorcentajes() {
+    const cantidadTotal = datos.datasets[0].data.reduce((acc, val) => acc + val, 0);
+    datos.labels.forEach((label, index) => {
+      const cantidad = datos.datasets[0].data[index];
+      const porcentaje = ((cantidad / cantidadTotal) * 100).toFixed(2) + '%';
+      document.getElementById(`cantidad-${label.toLowerCase()}`).innerText = cantidad;
+      document.getElementById(`porcentaje-${label.toLowerCase()}`).innerText = porcentaje;
+    });
+  }
+
+  // Mostrar porcentajes al cargar la página
+  mostrarPorcentajes();
+</script>
+
+
+<!--###############################################-->
 
 <span style='font-size:12.0pt;font-family:"Times New Roman",serif'><br clear=all style='page-break-before:always'></span>
 
@@ -396,13 +560,13 @@ while($fila= mysqli_fetch_array($consulta_empresa_auditada)){
             $recomendacion_scope=$fila_vulns_scope['solucion'];
 
             if($nivel_scope == 1){
-              $nivel_scope = '<label>'.$nivel_scope0.' - '.lang('Low').'</label>';
+              $nivel_scope = '<label>'.lang('Low').'</label>';
             }else if ($nivel_scope == 2){
-              $nivel_scope = '<label>'.$nivel_scope0.' - '.lang('Medium').'</label>';
+              $nivel_scope = '<label>'.lang('Medium').'</label>';
             }else if ($nivel_scope == 3){
-              $nivel_scope = '<label>'.$nivel_scope0.' - '.lang('High').'</label>';
+              $nivel_scope = '<label>'.lang('High').'</label>';
             }else if ($nivel_scope == 4){
-              $nivel_scope = '<label>'.$nivel_scope0.' - '.lang('Very High').'</label>';
+              $nivel_scope = '<label>'.lang('Very High').'</label>';
             }
 
             echo 
@@ -426,9 +590,11 @@ while($fila= mysqli_fetch_array($consulta_empresa_auditada)){
       
             while($fila_vulns_imagen = mysqli_fetch_array($consulta_vulns_imagen)){
               $scope_imagen=$fila_vulns_imagen['ruta'];
+              $descripcion_imagen=$fila_vulns_imagen['descripcion'];
             
               if($scope_imagen > ''){
                   echo "<center><img src='$scope_imagen' width=436 height=300 ><br></center>";
+                  echo "<br><p>$descripcion_imagen</p><br>";
               }
             }
 
@@ -502,13 +668,13 @@ while($fila= mysqli_fetch_array($consulta_empresa_auditada)){
             $recomendacion_scope=$fila_vulns_scope['solucion'];
 
             if($nivel_scope == 1){
-              $nivel_scope = '<label>'.$nivel_scope0.' - '.lang('Low').'</label>';
+              $nivel_scope = '<label>'.lang('Low').'</label>';
             }else if ($nivel_scope == 2){
-              $nivel_scope = '<label>'.$nivel_scope0.' - '.lang('Medium').'</label>';
+              $nivel_scope = '<label>'.lang('Medium').'</label>';
             }else if ($nivel_scope == 3){
-              $nivel_scope = '<label>'.$nivel_scope0.' - '.lang('High').'</label>';
+              $nivel_scope = '<label>'.lang('High').'</label>';
             }else if ($nivel_scope == 4){
-              $nivel_scope = '<label>'.$nivel_scope0.' - '.lang('Very High').'</label>';
+              $nivel_scope = '<label>'.lang('Very High').'</label>';
             }
 
             echo "

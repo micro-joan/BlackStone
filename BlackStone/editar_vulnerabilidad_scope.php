@@ -269,8 +269,19 @@ $id_url = $urlArray[1];
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <img src="'.$url_imagen.'" style="width:400px;">
+                                        <img src="'.$url_imagen.'" style="width:350px;">
                                     </div>
+                                </div>
+
+                                <div class="col-sm-8">
+                                  <textarea class="form-control text-white" name="descripcion_poc" id="descripcion_poc" style="height:150px;">'.$descripcion_imagen.'</textarea>
+                                </div>
+                            </div> 
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <a href="editar_poc.php?id='.$id_imagen.'" style="text-decoration: none;" target="_blank"> 
+                                      <i class="mdi mdi-lead-pencil" style="background-color: green; color: white; padding: 10px 20px; border: none; border-radius: 5px; text-align: center; font-size: 14px; cursor: pointer;"></i>
+                                    </a>
                                     <button type="submit" class="btn btn-danger" name="eliminar" value="'.$id_imagen.'" style="height: 35px;">'.$texto_boton.'</button>
                                 </div>
                             </div><br>
@@ -285,6 +296,12 @@ $id_url = $urlArray[1];
                                         <input id="imagen" name="imagen" type="file">
                                     </div>
                                 </div>
+                               
+                              <div class="form-group row">
+                                <label for="col-sm-7 col-form-label"><?php echo lang("Description");?></label>
+                                <textarea class="form-control m-3 text-white" name="descripcion_poc" id="descripcion_poc" style="height:150px;"></textarea>
+                              </div>
+                      
                                 <div class="col-sm-3 pt-5">
                                     <div class="form-group d-flex">
                                         <button type="submit" class="btn btn-success" name="boton" value="Añadir" style="height: 35px;"><?php echo lang("Add image");?></button>
@@ -307,7 +324,7 @@ $id_url = $urlArray[1];
               $nivel = htmlspecialchars($_POST['nivel'], ENT_QUOTES | ENT_HTML5, 'UTF-8');      
               $descripcion = htmlspecialchars($_POST['descripcion'], ENT_QUOTES | ENT_HTML5, 'UTF-8'); 
               $solucion = htmlspecialchars($_POST['solucion'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
-              
+            
               $sentencia = "UPDATE `scope_vulnerabilidades` SET `nombre`='$nombre',`descripcion`='$descripcion',`solucion`='$solucion',";
               $sentencia .= " `nivel`='$nivel' WHERE id=".$id_url.";";
           
@@ -346,11 +363,9 @@ $id_url = $urlArray[1];
             //funcionalidad para añadir nuevos scopes en cada sección de la auditoría.
             if (isset($_POST['boton']) && ($_POST['boton'] == 'Añadir')){
 
-              error_reporting(E_ALL);
-              ini_set('display_errors', '1');
-
                 $nombreOriginal = $_FILES['imagen']['name'];
                 $nombreTemporal = $_FILES['imagen']['tmp_name'];
+                $descripcion_poc = htmlspecialchars($_POST['descripcion_poc'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
 
                 // Obtener la extensión del archivo
                 $extension = pathinfo($nombreOriginal, PATHINFO_EXTENSION);
@@ -374,10 +389,9 @@ $id_url = $urlArray[1];
 
                 $ultimo_orden = $orden +=1; 
 
-                
                 //insertamos datos en scope
-                $sentencia_externa = "INSERT INTO `pocs` (`ruta`, `id_scope_vulnerabilidad`, `orden`)";
-                $sentencia_externa .= " VALUES ('$rutaDestino', '$id_url', '$ultimo_orden')";
+                $sentencia_externa = "INSERT INTO `pocs` (`ruta`, `id_scope_vulnerabilidad`, `orden`, `descripcion`)";
+                $sentencia_externa .= " VALUES ('$rutaDestino', '$id_url', '$ultimo_orden', '$descripcion_poc')";
 
                 $consulta_externa = mysqli_query($conexion, $sentencia_externa) or die("error");
 

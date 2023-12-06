@@ -168,6 +168,15 @@ function lang($sentencia){
     if($sentencia == "Criticality table" && $_SESSION['idioma'] == "ES"){ $sentencia = "Tabla de criticidad";};
     if($sentencia == "Recommendation" && $_SESSION['idioma'] == "ES"){ $sentencia = "Recomendación";};
     if($sentencia == "DOCUMENT CONTROL" && $_SESSION['idioma'] == "ES"){ $sentencia = "CONTROL DE DOCUMENTO";};
+    if($sentencia == "Vulnerability" && $_SESSION['idioma'] == "ES"){ $sentencia = "vulnerabilidad";};
+    if($sentencia == "Amount" && $_SESSION['idioma'] == "ES"){ $sentencia = "Cantidad";};
+    if($sentencia == "Percentage" && $_SESSION['idioma'] == "ES"){ $sentencia = "Porcentaje";};
+    if($sentencia == "Critics" && $_SESSION['idioma'] == "ES"){ $sentencia = "Críticas";};
+    if($sentencia == "Penetration Test Report for" && $_SESSION['idioma'] == "ES"){ $sentencia = "Informe de Pentesting para";};
+    if($sentencia == "YOU CAN MAKE REPORTS ON AUDITS AND CERTIFICATION EXAMS WITH THE FREE REPORTING TOOL FOR KALI AND PARROT" && $_SESSION['idioma'] == "ES"){ $sentencia = "PUEDES REALIZAR INFORMES DE AUDITORÍAS Y EXÁMENES DE CERTIFICACIONES CON LA HERRAMIENTA GRATUITA DE REPORTING PARA KALI Y PARROT";};
+
+
+    if($sentencia == "You have to capture a screenshot of this graphic to insert it into Word." && $_SESSION['idioma'] == "ES"){ $sentencia = "Tienes que capturar pantalla de este gráfico para insertarlo dentro del Word.";};
 
     return $sentencia;
 };

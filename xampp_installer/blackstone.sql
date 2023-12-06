@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 03-08-2023 a las 21:32:21
+-- Tiempo de generación: 06-12-2023 a las 14:39:42
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.1.17
 
@@ -86,7 +86,6 @@ CREATE TABLE `pocs` (
 --
 
 INSERT INTO `pocs` (`id`, `ruta`, `descripcion`, `id_scope_vulnerabilidad`, `orden`) VALUES
-(1, 'elementos_poc/64cbe2c371943_4.png', NULL, 4, 1),
 (2, 'elementos_poc/64cbe79c76423_5.png', NULL, 5, 1),
 (3, 'elementos_poc/64cbe8e4a4794_6.png', NULL, 6, 1),
 (4, 'elementos_poc/64cbe922de8b3_7.png', NULL, 7, 1),
@@ -97,7 +96,9 @@ INSERT INTO `pocs` (`id`, `ruta`, `descripcion`, `id_scope_vulnerabilidad`, `ord
 (9, 'elementos_poc/64cbeb0591386_17.png', NULL, 17, 1),
 (10, 'elementos_poc/64cbfc357495b_10.webp', NULL, 10, 1),
 (11, 'elementos_poc/64cbfc68a1091_14.png', NULL, 14, 1),
-(12, 'elementos_poc/64cbfcc8c3603_15.png', NULL, 15, 1);
+(12, 'elementos_poc/64cbfcc8c3603_15.png', NULL, 15, 1),
+(17, 'elementos_poc/656e31a8e4ad3_4.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 4, 1),
+(18, 'elementos_poc/656e3dfa6c473_4.png', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 4, 2);
 
 -- --------------------------------------------------------
 
@@ -470,7 +471,7 @@ ALTER TABLE `vulnerabilidades`
 -- AUTO_INCREMENT de la tabla `pocs`
 --
 ALTER TABLE `pocs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `scope`

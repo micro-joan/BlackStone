@@ -5,7 +5,7 @@ include("control_sesion/seguridad.php");
 include("functions/traductor.php");
 include("conexion.php");
 
-$section = "";
+$section = "reports";
 
 $url = $_SERVER["REQUEST_URI"];
 $urlArray = explode('=', $url);
@@ -17,7 +17,7 @@ $id_url = $urlArray[1];
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>BlackStone - <?php echo lang("Companies");?></title>
+    <title>BlackStone - <?php echo lang("Vulnerabilities");?></title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
@@ -127,48 +127,85 @@ $id_url = $urlArray[1];
         <div class="main-panel">
           <div class="content-wrapper">
 
+          <?php 
+            $sentencia = "select * from scope_vulnerabilidades where id=".$id_url;    
+            $consulta = mysqli_query($conexion, $sentencia) or die("Error de Consulta");
+
+            //vamos a recorrer la consulta y guardar los datos 
+            while($fila= mysqli_fetch_array($consulta)){
+              
+              $nombre=$fila['nombre'];
+            }
+          ?>
+
             <div class="page-header">
-              <h3 class="page-title"> <?php echo lang("Seguimos mejorando BlackStone"); ?> </h3>
+              <h3 class="page-title"> <?php echo lang("Edit Vulnerability"); echo " '".$nombre."'"?> </h3>
               <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="vulnerabilidades.php"><?php echo lang("Vulnerabilities");?></a></li>
+                  <li class="breadcrumb-item active" aria-current="page"><?php echo lang("Edit Vulnerability");?></li>
+                </ol>
               </nav>
-            </div>  
+            </div>
+            
+            <?php
+                $sentencia_fotos = "select * from pocs where id=".$id_url;    
+                $consulta_fotos = mysqli_query($conexion, $sentencia_fotos) or die("Error de Consulta");
+
+                //vamos a recorrer la consulta y guardar los datos 
+                while($fila_fotos = mysqli_fetch_array($consulta_fotos)){
+
+                    $id_imagen=$fila_fotos['id'];
+                    $url_imagen=$fila_fotos['ruta'];
+                    $descripcion_imagen=$fila_fotos['descripcion'];
+                }
+            ?>    
 
             <div class="row">
+
               <div class="col-12 grid-margin">
                 <div class="card">
                   <div class="card-body">
-                    <h3> Nuevas funcionalidades y mejoras </h3>
-                    <ul>
-                      <li>Instalador propio y automatizado para despliegue de BlackStone en Kali Linux</li>
-                      <li>Reemplazar resultados de Hunter.io por resultados similaes nativos en la app.</li>
-                      <li>Solucionados numerosos campos sensibles a XSS almacenado.</li>
-                      <li>Limitación de acceso a la app BlackStone únicamente al equipo que la ejecuta (nadie en tu red que detecte tu puerto 80 levantado podrá acceder a esta app).</li>
-                      <li>Insertar imagen de logo para cada uno de los clientes, en vez de logo automático por favicon (no se conseguían buenos resultados).</li>
-                      <li>Búsqueda de subdominios automática en la ficha de cliente, dicha funcionalidad es nativa del propio código de BlackStone).</li>
-                      <li>Solucionadas diversas traducciones español/inglés.</li>
-                      <li>Integración de icono del sistema para BlackStone, se añade la aplicación en Kali como una aplicación nativa con su propio lancuher.</li>
-                      <li>Rediseño de informe técnico.</li>
-                      <li>Implantación de un nuevo informe ejecutivo.</li>
-                      <li>Ahora se pueden añadir descripciones a las imágenes de las evidencias.</li>
+                    <form class="form-sample" form action="" method="post">
 
+                    <div class="row">
+                          <div class="col-sm-4">
+                              <div class="form-group">
+                                  <img src="<?php echo $url_imagen; ?>" style="width:350px;">
+                              </div>
+                          </div>
+                    </div><br>
 
-
-                    </ul>
-                    <br>
-                    
-                    <hr>
-
-                    <button type="button" class="btn btn-social-icon-text btn-youtube"><a href="https://www.youtube.com/c/MicroJoan" class="text-white text-decoration-none"><i class="mdi mdi-youtube"></i>YouTube</a></button>
-                    <button type="button" class="btn btn-social-icon-text btn-twitter"><a href="https://twitter.com/joan_micro" class="text-white text-decoration-none"><i class="mdi mdi-twitter"></i>Twitter</a></button>
-                    <button type="button" class="btn btn-social-icon-text btn-linkedin"><a href="https://www.linkedin.com/in/joan-moya-torremocha/" class="text-white text-decoration-none"><i class="mdi mdi-linkedin"></i>LinkedIn</a></button>
-                    <button type="button" class="btn btn-social-icon-text btn-dribbble"><a href="https://www.instagram.com/microjoan_youtube/?hl=es" class="text-white text-decoration-none"><i class="mdi mdi-instagram"></i>Instagram</a></button>
-                    <button type="button" class="btn btn-social-icon-text btn-github"><a href="https://github.com/micro-joan" class="text-white text-decoration-none"><i class="mdi mdi-git"></i>GitHub</a></button>
-
+                      <div class="row">
+                        <div class="form-group row">
+                          <label for="col-sm-3 col-form-label"><?php echo lang("Description");?></label>
+                          <textarea class="form-control m-3 text-white" name="descripcion" id="descripcion" required style="height:150px;"><?php echo $descripcion_imagen; ?></textarea>
+                        </div>
+                      </div>
+                      
+                      <button type="submit" name="submit" class="btn btn-primary me-2"><?php echo lang("Save"); ?></button>
+                    </form>
                   </div>
                 </div>
               </div>
             </div>
+          
+            <?php
+              if (isset($_POST['submit'])){
+                      
+                $descripcion = htmlspecialchars($_POST['descripcion'], ENT_QUOTES | ENT_HTML5, 'UTF-8'); 
+              
+                $sentencia = "UPDATE `pocs` SET `descripcion`='$descripcion'";
+                $sentencia .= "WHERE id=".$id_url.";";
+            
+                $consulta = mysqli_query($conexion, $sentencia)or die("Error de consulta");
 
+                if (mysqli_affected_rows($conexion)!=0) {
+                    echo "<script>alert('Saved')</script>";
+                    echo '<script type="text/JavaScript"> location.reload(); </script>';
+                }
+              }
+            ?>
 
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
@@ -206,21 +243,5 @@ $id_url = $urlArray[1];
     <script src="assets/js/dashboard.js"></script>
     <!-- End custom js for this page -->
 
-    <script>
-      // Write on keyup event of keyword input element
-      $(document).ready(function(){
-      $("#busqueda").keyup(function(){
-      _this = this;
-      // Show only matching TR, hide rest of them
-      $.each($("#tabla_listado_cve tbody tr"), function() {
-
-          if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
-          $(this).hide();
-          else
-              $(this).show();
-            });
-        });
-      });
-      </script>
   </body>
 </html>
