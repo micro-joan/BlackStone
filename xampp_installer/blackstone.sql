@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 06-12-2023 a las 14:39:42
+-- Tiempo de generación: 06-12-2023 a las 17:40:43
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.1.17
 
@@ -40,7 +40,8 @@ CREATE TABLE `empresas` (
 --
 
 INSERT INTO `empresas` (`id`, `nombre`, `web`, `dominio_correo`, `logo`) VALUES
-(1, 'Royal Tech', 'https://royaltech.com', NULL, 'logos_clientes/logo_example.png');
+(1, 'Royal Tech', 'https://royaltech.com', NULL, 'logos_clientes/logo_example.png'),
+(2, 'OffSec - Proving Grounds', '', NULL, 'logos_clientes/offfsec.png');
 
 -- --------------------------------------------------------
 
@@ -65,7 +66,8 @@ CREATE TABLE `informes` (
 --
 
 INSERT INTO `informes` (`id`, `nombre_doc`, `id_empresa_auditada`, `vulnerabilidades`, `estado`, `fecha`, `recomendaciones`, `propuestas`, `conclusiones`) VALUES
-(2, 'Pentesting Royal Tech', 1, NULL, 'En proceso', '2023-08-03', NULL, NULL, 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas \"Letraset\", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.\r\n\r\n<br><br>\r\n\r\nLorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas \"Letraset\", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.');
+(2, 'Pentesting Royal Tech', 1, NULL, 'En proceso', '2023-08-03', NULL, NULL, 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas \"Letraset\", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.\r\n\r\n<br><br>\r\n\r\nLorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas \"Letraset\", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.'),
+(3, 'Write-Up Hunit', 2, NULL, 'En proceso', '2023-12-06', NULL, NULL, '');
 
 -- --------------------------------------------------------
 
@@ -121,7 +123,8 @@ INSERT INTO `scope` (`id`, `url`, `id_informe`, `orden`) VALUES
 (15, 'royaltech.com', 2, 1),
 (16, 'subdomain.royaltech.com', 2, 2),
 (17, '192.168.0.1 - DC', 2, 3),
-(18, '192.168.0.15 - Server', 2, 4);
+(18, '192.168.0.15 - Server', 2, 4),
+(20, 'Hunit - 192.168.166.125', 3, 5);
 
 -- --------------------------------------------------------
 
@@ -158,7 +161,8 @@ INSERT INTO `scope_vulnerabilidades` (`id_vulnerabilidad`, `descripcion`, `nivel
 (98, 'Allows attackers to use stolen Kerberos tickets to gain unauthorized access.', 4.0, 13, 'Pass-the-Ticket (PtT) Attack', 17, 'Regularly rotate Kerberos tickets, limit user privileges, and implement account logon restrictions.'),
 (99, 'Allows attackers to forge Kerberos tickets to gain unauthorized access.', 4.0, 14, 'Golden Ticket Attack', 17, 'Regularly rotate domain controller KRBTGT password and monitor for suspicious activity.'),
 (82, 'Allows unauthorized access to certain functionalities or resources.', 2.0, 15, 'Insufficient Authorization', 18, 'Implement proper access controls and authorization mechanisms.'),
-(137, 'Exposes sensitive information about AD objects.', 3.0, 17, 'Active Directory Information Disclosure', 18, 'Control access to AD information and limit the information exposed to users.');
+(137, 'Exposes sensitive information about AD objects.', 3.0, 17, 'Active Directory Information Disclosure', 18, 'Control access to AD information and limit the information exposed to users.'),
+(269, 'Se exponen los pasos que se han realizado para enumerar el objetivo.', 0.0, 18, 'Dummy', 20, '.');
 
 -- --------------------------------------------------------
 
@@ -421,7 +425,8 @@ INSERT INTO `vulnerabilidades` (`id`, `descripcion`, `solucion`, `nivel`, `nombr
 (265, 'Permite a los atacantes evadir la detección alterando los registros de auditoría', 'Configurar y proteger de forma segura la configuración de auditoría del Directorio Activo', 3, 'Abuso de la auditoría privilegiada'),
 (266, 'Permite modificaciones no autorizadas de registros DNS', 'Restringir las actualizaciones dinámicas del DNS y supervisar los cambios del DNS', 3, 'Vulnerabilidad de actualización dinámica del DNS'),
 (267, 'Permite a los atacantes acceder y manipular datos del Directorio Activo sin conexión', 'Proteger el acceso físico a los controladores de dominio y cifrar los datos confidenciales', 4, 'Robo de controlador de dominio'),
-(268, 'Permite a los atacantes robar y abusar de las credenciales almacenadas', 'Almacenar credenciales de forma segura y usar soluciones de administración de credenciales seguras', 3, 'Almacenamiento de credenciales no confiables');
+(268, 'Permite a los atacantes robar y abusar de las credenciales almacenadas', 'Almacenar credenciales de forma segura y usar soluciones de administración de credenciales seguras', 3, 'Almacenamiento de credenciales no confiables'),
+(269, 'Dummy', 'Dummy', 0, 'Example Description');
 
 --
 -- Índices para tablas volcadas
@@ -477,13 +482,13 @@ ALTER TABLE `pocs`
 -- AUTO_INCREMENT de la tabla `scope`
 --
 ALTER TABLE `scope`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `vulnerabilidades`
 --
 ALTER TABLE `vulnerabilidades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=269;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=270;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

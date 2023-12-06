@@ -357,10 +357,12 @@ $id_url = $urlArray[1];
                                         }else if ($nivel == 4){
                                           $nivel = '<label class="badge badge-info">'.lang('Very High').'</label>';
                                         }
+                                        $descripcion = substr($descripcion, 0, 90);
+
                                         echo'
                                           <tr>
                                             <td class="col-md-1">'.$nombre.'</td>
-                                            <td>'.$descripcion.'</td>
+                                            <td>'.$descripcion.'...</td>
                                             <td><center>'.$nivel.'</center></td>
                                             <td><a href="editar_vulnerabilidad_scope.php?id='.$id_vuln_scope.'" target="_blank"><i class="mdi mdi-border-color" style="font-size:20px"></i></a></td>
                                             <td><a href="eliminar_vulnerabilidad_scope.php?id='.$id_vuln_scope.'='.$id_url.'"><i class="mdi mdi-close-circle-outline" style="color:red; font-size:20px"></i></a></td>

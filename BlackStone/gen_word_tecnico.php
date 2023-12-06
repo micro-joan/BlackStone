@@ -397,10 +397,15 @@ while($fila= mysqli_fetch_array($consulta_empresa_auditada)){
 
   <!--DESARROLLO DE GRAFICO EJECUTIVO--->
   <?php
+  ini_set('display_errors', 1);
+  ini_set('display_startup_errors', 1);
+  error_reporting(E_ALL);
+
       $cantidad_criticas = 0;
       $cantidad_altas = 0;
       $cantidad_medias = 0;
       $cantidad_bajas = 0;
+      $total_vulnerabilidades = 0;
 
       $cantidad_objetivos_informe = "select * from scope where id_informe=".$id_url;  
       $consulta_objetivos_informe = mysqli_query($conexion, $cantidad_objetivos_informe) or die("Error de conexión");
@@ -418,6 +423,10 @@ while($fila= mysqli_fetch_array($consulta_empresa_auditada)){
 
             $nivel_scope=$fila_vulns_scope['nivel'];
            
+            if($nivel_scope == 0){
+              $total_vulnerabilidades ++;
+            }
+
             if($nivel_scope == 1){
               $cantidad_bajas ++;
             }else if ($nivel_scope == 2){
@@ -432,15 +441,25 @@ while($fila= mysqli_fetch_array($consulta_empresa_auditada)){
 
       $total_vulnerabilidades = $cantidad_altas + $cantidad_bajas + $cantidad_medias + $cantidad_criticas;
 
-      $porcentaje_criticas = $cantidad_criticas * 100 / $total_vulnerabilidades;
-      $porcentaje_altas = $cantidad_altas * 100 / $total_vulnerabilidades;
-      $porcentaje_medias = $cantidad_medias * 100 / $total_vulnerabilidades;
-      $porcentaje_bajas = $cantidad_bajas * 100 / $total_vulnerabilidades;
+      if($cantidad_altas > 0 || $cantidad_criticas > 0 || $cantidad_medias > 0 || $cantidad_bajas > 0){
 
-      $porcentaje_criticas = round($porcentaje_criticas, 1);
-      $porcentaje_altas = round($porcentaje_altas, 1);
-      $porcentaje_medias = round($porcentaje_medias, 1);
-      $porcentaje_bajas = round($porcentaje_bajas, 1);
+        $porcentaje_criticas = $cantidad_criticas * 100 / $total_vulnerabilidades;
+        $porcentaje_altas = $cantidad_altas * 100 / $total_vulnerabilidades;
+        $porcentaje_medias = $cantidad_medias * 100 / $total_vulnerabilidades;
+        $porcentaje_bajas = $cantidad_bajas * 100 / $total_vulnerabilidades;
+
+        $porcentaje_criticas = round($porcentaje_criticas, 1);
+        $porcentaje_altas = round($porcentaje_altas, 1);
+        $porcentaje_medias = round($porcentaje_medias, 1);
+        $porcentaje_bajas = round($porcentaje_bajas, 1);
+
+      }else{
+        $porcentaje_criticas = 0;
+        $porcentaje_altas = 0;
+        $porcentaje_medias = 0;
+        $porcentaje_bajas = 0;
+      }
+      
     ?>
 
   <span style='font-size:11.0pt;font-family:"Verdana",sans-serif'>
@@ -476,7 +495,7 @@ while($fila= mysqli_fetch_array($consulta_empresa_auditada)){
     <tr>
       <td><center><?php echo lang("Low");?></center></td>
       <td id="cantidad-bajas"><center><?php echo $cantidad_bajas;?></center></td>
-      <td id="porcentaje-bajas"><center>0%</center></td>
+      <td id="porcentaje-bajas"><center><?php echo $porcentaje_bajas;?></center></td>
     </tr>
   </table>
 
