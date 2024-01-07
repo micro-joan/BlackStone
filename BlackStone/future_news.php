@@ -137,8 +137,6 @@ $id_url = $urlArray[1];
               <div class="col-12 grid-margin">
                 <div class="card">
                   <div class="card-body">
-                    <h2>Últimas novedades de BlackStone</h2>
-                    <br>
                     <h3> Nuevas funcionalidades y mejoras </h3>
                     <ul>
                       <li>Instalador propio y automatizado para despliegue de BlackStone en Kali Linux</li>
@@ -147,8 +145,14 @@ $id_url = $urlArray[1];
                       <li>Limitación de acceso a la app BlackStone únicamente al equipo que la ejecuta (nadie en tu red que detecte tu puerto 80 levantado podrá acceder a esta app).</li>
                       <li>Insertar imagen de logo para cada uno de los clientes, en vez de logo automático por favicon (no se conseguían buenos resultados).</li>
                       <li>Búsqueda de subdominios automática en la ficha de cliente, dicha funcionalidad es nativa del propio código de BlackStone).</li>
-                      <li>Solucionadas diversas traducciones español/inglés</li>
+                      <li>Solucionadas diversas traducciones español/inglés.</li>
                       <li>Integración de icono del sistema para BlackStone, se añade la aplicación en Kali como una aplicación nativa con su propio lancuher.</li>
+                      <li>Rediseño de informe técnico.</li>
+                      <li>Implantación de un nuevo informe ejecutivo.</li>
+                      <li>Ahora se pueden añadir descripciones a las imágenes de las evidencias.</li>
+
+
+
                     </ul>
                     <br>
                     

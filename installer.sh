@@ -10,7 +10,7 @@ install_library='\033[1;31m'
 PWD=`pwd`
 
 #LIBRERIAS
-xampp_blackstone=`ls /opt/blackstone/xampp_installer/xampp-installer.run`
+xampp_blackstone=`ls /opt/BlackStone/xampp_installer/xampp-installer.run`
 xampp_installed=`ls /opt/lampp/xampp`
 blackstone_installed=`ls /opt/lampp/htdocs/BlackStone`
 bbdd_installed=`ls $PWD/xampp_installer/db_installed.txt`
@@ -74,17 +74,7 @@ if [ -z $xampp_installed ] #si xampp_installed es vacío..
         echo "Installing Xampp..."
         echo ""
         chmod 777 /opt/BlackStone/xampp_installer/xampp-installer.run
-        
-        # Cambiar los permisos del archivo .run
-        chmod +x /opt/BlackStone/xampp_installer/xampp-installer.run
-
-        # Ejecutar el archivo .run en segundo plano y obtener el PID del proceso
-        /opt/BlackStone/xampp_installer/xampp-installer.run &
-        pid=$!
-
-        # Esperar a que el proceso termine
-        wait $pid
-
+        chmod +x /opt/BlackStone/xampp_installer/xampp-installer.run & ./xampp_installer/xampp-installer.run
         clear
     else
         echo "XAMPP ${green} OK ${endcolor}"
@@ -155,11 +145,12 @@ if [ -z $bbdd_installed ] #si bbdd_installed es vacío..
         ROUTE_FILE="$PWD/xampp_installer/$SQL_FILE"
 
         # Comando para importar el archivo SQL en la base de datos
+        /opt/lampp/bin/mysql -u${USER} -e "DROP DATABASE $DB_NAME;"
         /opt/lampp/bin/mysql -u${USER} -e "CREATE DATABASE $DB_NAME;" 
         /opt/lampp/bin/mysql -u${USER} $DB_NAME < $ROUTE_FILE
 
         sleep 2
-        echo "database installed" > xampp_installer/db_installed.txt #creamos archivo para verificar que se ha instalado la db
+        # echo "database installed" > xampp_installer/db_installed.txt #creamos archivo para verificar que se ha instalado la db
         echo ""
         clear
         echo ""

@@ -165,7 +165,7 @@ $id_url = $urlArray[1];
                         </div>
                         <div class="col-md-6">
                           <div class="form-group row">
-                            <label class="col-sm-3 col-form-label"><?php echo lang("Company to audit");?></label> 
+                            <label class="col-sm-3 col-form-label"><?php echo lang("Customer name");?></label> 
                             <div class="col-sm-8 col-8">
                               <select class="form-control" id="empresa" style="color:white" name="empresa" required>
                                 <option value=""></option>
@@ -230,6 +230,8 @@ $id_url = $urlArray[1];
               $consulta = mysqli_query($conexion, $sentencia)or die("Error de Consulta".$sentencia);
 
               if (mysqli_affected_rows($conexion)!=0){}
+
+              echo "<script>alert('Saved')</script>";
             }   
             ?>
 

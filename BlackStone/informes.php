@@ -160,10 +160,9 @@ $section = "reports";
                       <table class="table" id="tabla_listado_cve">
                         <thead>
                           <tr>
-                            <th>ID</th>
                             <th><?php echo lang("Report name"); ?></th>
                             <th><?php echo lang("Client name");?></th>
-                            <th><center><?php echo lang("Date");?></center></th>
+                            <th><center><?php echo lang("Deadline");?></center></th>
                             <th><center><?php echo lang("State");?></center></th>
                             <th></th>
                             <th></th>
@@ -200,7 +199,6 @@ $section = "reports";
 
                         <tbody>
                           <tr>
-                            <td><?php echo $id ?></td>
                             <td><?php echo $nombre_doc ?></td>
                             <td><?php echo $nombre_empresa_auditada?></td>
                             <td><center><?php echo $fecha?></center></td>

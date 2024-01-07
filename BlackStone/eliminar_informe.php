@@ -128,7 +128,7 @@ $id_url = $urlArray[1];
           <div class="content-wrapper">
 
             <div class="page-header">
-              <h3 class="page-title"> <?php echo lang("Delete report"); echo " ".$id_url?> </h3>
+              <h3 class="page-title"> <?php echo lang("Delete report"); ?> </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="informes.php"><?php echo lang("Reports");?></a></li>
@@ -140,11 +140,38 @@ $id_url = $urlArray[1];
               <div class="col-12 grid-margin">
                 <div class="card">
                   <div class="card-body">
+
                     <?php
-                      $sentencia = "DELETE FROM `informes` WHERE id=".$id_url;    
-                      $consulta = mysqli_query($conexion, $sentencia) or die("Error de Consulta");
+
+                      $sentencia_cantidad = "SELECT * FROM scope WHERE id_informe=".$id_url;
+                      $consulta_cantidad = mysqli_query($conexion, $sentencia_cantidad) or die("Error de Consulta");
+
+                      $numero = 0;
+
+                      while($fila_cantidad = mysqli_fetch_array($consulta_cantidad)){
+
+                        $id_scope = $fila_cantidad['id'];
+                        $numero = $numero +1;
+                      }
+
+                      if($numero >= 1){
+                        
+                        echo "<script>alert('Delete objectives from this report')</script>";
+
+                      }else{
+
+                        $sentencia = "DELETE FROM `informes` WHERE id=".$id_url;    
+                        $consulta = mysqli_query($conexion, $sentencia) or die("Error de Consulta");
+
+                        echo '<h1>';
+                        echo lang("Report removed from the system"); 
+                        echo'</h1>';
+                      }
+
+                      
                     ?>
-                    <h1><?php echo lang("Report removed from the system")?></h1>
+
+                    
                     <a class="nav-link btn btn-info col-lg-1 col-12 create-new-button" aria-expanded="false" href="informes.php"><?php echo lang("Return");?></a>
                   </div>
                 </div>

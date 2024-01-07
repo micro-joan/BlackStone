@@ -11,7 +11,7 @@ Buy me a coffee: https://www.buymeacoffee.com/microjoan
 </div>
 <hr>
 
-# BlackStone Project (For Kali Linux and Parrot)
+# BlackStone Project 2.0 (For Kali Linux)
 
 BlackStone project or "BlackStone Project" is a tool created in order to automate the work of drafting and submitting a report on audits of
 ethical hacking or pentesting.
