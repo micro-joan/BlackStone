@@ -1,4 +1,5 @@
 exec 2>/dev/null
+clear
 
 #COLORES
 green='\033[1;32m'
@@ -16,8 +17,8 @@ bbdd_installed=`ls $PWD/xampp_installer/db_installed.txt`
 python3_installed=`which python3`
 created_icon=`ls /usr/share/applications/blackstone.desktop`
 
-chmod 777 /opt/blackstone/xampp_installer/icon/blackstone.png
-chmod 777 /opt/blackstone/xampp_installer/icon/blackstone.desktop
+chmod 777 /opt/BlackStone/xampp_installer/icon/blackstone.png
+chmod 777 /opt/BlackStone/xampp_installer/icon/blackstone.desktop
 
 echo ""
 echo "▄▄▄▄· ▄▄▌   ▄▄▄·  ▄▄· ▄ •▄ .▄▄ · ▄▄▄▄▄       ▐ ▄ ▄▄▄ . "
@@ -56,9 +57,7 @@ if [ -z $xampp_blackstone ] #si xampp_installed es vacío..
         wget https://github.com/micro-joan/BlackStone/releases/download/installer/xampp-installer.run -P /opt/BlackStone/xampp_installer &
         pid_descarga=$!
 
-        while kill -0 $pid_descarga 2>/dev/null; do
-            sleep 1
-        done # Continuar con la siguiente acción después de que la descarga haya finalizado
+        wait $pid_descarga #Continuar con la siguiente acción después de que la descarga haya finalizado
 
     else
         echo "XAMPP INSTALLER ${green} OK ${endcolor}"
@@ -165,15 +164,15 @@ fi
 sleep 1
 
 #creamos alias en sistema
-cp /opt/blackstone/xampp_installer/icon/blackstone /usr/local/bin/blackstone
+cp /opt/BlackStone/xampp_installer/icon/blackstone /usr/local/bin/blackstone
 chmod +x /usr/local/bin/blackstone
 
 #copiamos el icono en sistema
-cp /opt/blackstone/xampp_installer/icon/blackstone.desktop /usr/share/applications/blackstone.desktop
+cp /opt/BlackStone/xampp_installer/icon/blackstone.desktop /usr/share/applications/blackstone.desktop
 chmod +x /usr/share/applications/blackstone.desktop
 
 #configuramos arranque desde alias/icono
-chmod +x /opt/blackstone/xampp_installer/icon/simple_launch.sh
+chmod +x /opt/BlackStone/xampp_installer/icon/simple_launch.sh
 
 echo " "
 echo "Launching BlackStone..."

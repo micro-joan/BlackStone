@@ -36,6 +36,7 @@ employee emails...
 #### Step 1
 
 ```
+sudo su
 cd /opt
 git clone https://github.com/micro-joan/BlackStone
 cd BlackStone
@@ -48,6 +49,7 @@ The application will start automatically but if you log in you will get the 500 
 
 ```
 (reboot system)
+sudo su
 cd /opt/blackstone
 ./installer.sh
 ```
