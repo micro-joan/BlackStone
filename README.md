@@ -48,7 +48,7 @@ The application will start automatically but if you log in you will get the 500 
 
 ```
 (reboot system)
-cd /opt/blackstone
+cd /opt/BlackStone
 ./installer.sh
 ```
 
