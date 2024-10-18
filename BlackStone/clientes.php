@@ -171,7 +171,7 @@ $section = "client";
 
                         <?php
 
-                        $sentencia = "select * from empresas order by id";    
+                        $sentencia = "select * from empresas order by id desc";    
                         $consulta = mysqli_query($conexion, $sentencia) or die("Error de conexión en tabla empresas");
 
                         //vamos a recorrer la consulta y guardar los datos 

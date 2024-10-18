@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 06-12-2023 a las 17:40:43
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.1.17
+-- Host: localhost
+-- Generation Time: Oct 18, 2024 at 01:16 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.1.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `blackstone`
+-- Database: `blackstone`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `empresas`
+-- Table structure for table `empresas`
 --
 
 CREATE TABLE `empresas` (
@@ -36,17 +36,16 @@ CREATE TABLE `empresas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Volcado de datos para la tabla `empresas`
+-- Dumping data for table `empresas`
 --
 
 INSERT INTO `empresas` (`id`, `nombre`, `web`, `dominio_correo`, `logo`) VALUES
-(1, 'Royal Tech', 'https://royaltech.com', NULL, 'logos_clientes/logo_example.png'),
-(2, 'OffSec - Proving Grounds', '', NULL, 'logos_clientes/offfsec.png');
+(1, 'Royal Tech', 'https://royaltech.com', NULL, 'logos_clientes/logo_example.png');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `informes`
+-- Table structure for table `informes`
 --
 
 CREATE TABLE `informes` (
@@ -62,17 +61,16 @@ CREATE TABLE `informes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Volcado de datos para la tabla `informes`
+-- Dumping data for table `informes`
 --
 
 INSERT INTO `informes` (`id`, `nombre_doc`, `id_empresa_auditada`, `vulnerabilidades`, `estado`, `fecha`, `recomendaciones`, `propuestas`, `conclusiones`) VALUES
-(2, 'Pentesting Royal Tech', 1, NULL, 'En proceso', '2023-08-03', NULL, NULL, 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas \"Letraset\", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.\r\n\r\n<br><br>\r\n\r\nLorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas \"Letraset\", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.'),
-(3, 'Write-Up Hunit', 2, NULL, 'En proceso', '2023-12-06', NULL, NULL, '');
+(2, 'Pentesting Royal Tech', 1, NULL, 'En proceso', '2023-08-03', NULL, NULL, 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas \"Letraset\", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.\r\n\r\n<br><br>\r\n\r\nLorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas \"Letraset\", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `pocs`
+-- Table structure for table `pocs`
 --
 
 CREATE TABLE `pocs` (
@@ -84,7 +82,7 @@ CREATE TABLE `pocs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `pocs`
+-- Dumping data for table `pocs`
 --
 
 INSERT INTO `pocs` (`id`, `ruta`, `descripcion`, `id_scope_vulnerabilidad`, `orden`) VALUES
@@ -105,7 +103,7 @@ INSERT INTO `pocs` (`id`, `ruta`, `descripcion`, `id_scope_vulnerabilidad`, `ord
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `scope`
+-- Table structure for table `scope`
 --
 
 CREATE TABLE `scope` (
@@ -116,20 +114,19 @@ CREATE TABLE `scope` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `scope`
+-- Dumping data for table `scope`
 --
 
 INSERT INTO `scope` (`id`, `url`, `id_informe`, `orden`) VALUES
 (15, 'royaltech.com', 2, 1),
 (16, 'subdomain.royaltech.com', 2, 2),
 (17, '192.168.0.1 - DC', 2, 3),
-(18, '192.168.0.15 - Server', 2, 4),
-(20, 'Hunit - 192.168.166.125', 3, 5);
+(18, '192.168.0.15 - Server', 2, 4);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `scope_vulnerabilidades`
+-- Table structure for table `scope_vulnerabilidades`
 --
 
 CREATE TABLE `scope_vulnerabilidades` (
@@ -143,7 +140,7 @@ CREATE TABLE `scope_vulnerabilidades` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `scope_vulnerabilidades`
+-- Dumping data for table `scope_vulnerabilidades`
 --
 
 INSERT INTO `scope_vulnerabilidades` (`id_vulnerabilidad`, `descripcion`, `nivel`, `id`, `nombre`, `id_scope`, `solucion`) VALUES
@@ -161,13 +158,12 @@ INSERT INTO `scope_vulnerabilidades` (`id_vulnerabilidad`, `descripcion`, `nivel
 (98, 'Allows attackers to use stolen Kerberos tickets to gain unauthorized access.', 4.0, 13, 'Pass-the-Ticket (PtT) Attack', 17, 'Regularly rotate Kerberos tickets, limit user privileges, and implement account logon restrictions.'),
 (99, 'Allows attackers to forge Kerberos tickets to gain unauthorized access.', 4.0, 14, 'Golden Ticket Attack', 17, 'Regularly rotate domain controller KRBTGT password and monitor for suspicious activity.'),
 (82, 'Allows unauthorized access to certain functionalities or resources.', 2.0, 15, 'Insufficient Authorization', 18, 'Implement proper access controls and authorization mechanisms.'),
-(137, 'Exposes sensitive information about AD objects.', 3.0, 17, 'Active Directory Information Disclosure', 18, 'Control access to AD information and limit the information exposed to users.'),
-(269, 'Se exponen los pasos que se han realizado para enumerar el objetivo.', 0.0, 18, 'Dummy', 20, '.');
+(137, 'Exposes sensitive information about AD objects.', 3.0, 17, 'Active Directory Information Disclosure', 18, 'Control access to AD information and limit the information exposed to users.');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -177,7 +173,7 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Dumping data for table `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `contra`) VALUES
@@ -186,7 +182,7 @@ INSERT INTO `usuarios` (`id`, `nombre`, `contra`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `vulnerabilidades`
+-- Table structure for table `vulnerabilidades`
 --
 
 CREATE TABLE `vulnerabilidades` (
@@ -198,7 +194,7 @@ CREATE TABLE `vulnerabilidades` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Volcado de datos para la tabla `vulnerabilidades`
+-- Dumping data for table `vulnerabilidades`
 --
 
 INSERT INTO `vulnerabilidades` (`id`, `descripcion`, `solucion`, `nivel`, `nombre`) VALUES
@@ -429,63 +425,63 @@ INSERT INTO `vulnerabilidades` (`id`, `descripcion`, `solucion`, `nivel`, `nombr
 (269, 'Dummy', 'Dummy', 0, 'Example Description');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `empresas`
+-- Indexes for table `empresas`
 --
 ALTER TABLE `empresas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `informes`
+-- Indexes for table `informes`
 --
 ALTER TABLE `informes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `pocs`
+-- Indexes for table `pocs`
 --
 ALTER TABLE `pocs`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `scope`
+-- Indexes for table `scope`
 --
 ALTER TABLE `scope`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `scope_vulnerabilidades`
+-- Indexes for table `scope_vulnerabilidades`
 --
 ALTER TABLE `scope_vulnerabilidades`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `vulnerabilidades`
+-- Indexes for table `vulnerabilidades`
 --
 ALTER TABLE `vulnerabilidades`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `pocs`
+-- AUTO_INCREMENT for table `pocs`
 --
 ALTER TABLE `pocs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT de la tabla `scope`
+-- AUTO_INCREMENT for table `scope`
 --
 ALTER TABLE `scope`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT de la tabla `vulnerabilidades`
+-- AUTO_INCREMENT for table `vulnerabilidades`
 --
 ALTER TABLE `vulnerabilidades`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=270;

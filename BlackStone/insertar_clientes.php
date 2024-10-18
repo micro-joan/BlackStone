@@ -199,11 +199,35 @@ $id_url = $urlArray[1];
               $nombre = htmlspecialchars($_POST['nombre'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
               $web = htmlspecialchars($_POST['web'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
               $nombre_img = $_FILES['imagen']['name'];
+              $nombreOriginal = $_FILES['imagen']['name'];
+	      $nombreTemporal = $_FILES['imagen']['tmp_name'];
 
-              $directorio ='logos_clientes/';
-              move_uploaded_file($_FILES['imagen']['tmp_name'],$directorio.$nombre_img);
+	      $file_extension = pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION);
+	      
+	      // Comprobar si la extensión es png
+		if (strtolower($file_extension) == 'png') {
+		  
+		  echo "Archivo subido correctamente.";
+		} else {
+		    
+		    echo "<script>alert('Only PNG images.')</script>";
+		    exit;
+		}
 
-              $logo = $directorio.$nombre_img;
+		//=============================================================
+        	// Obtener la extensión del archivo
+	      $extension = pathinfo($nombreOriginal, PATHINFO_EXTENSION);
+        
+                // Generar un nuevo nombre para la imagen
+	      $nuevoNombre = uniqid(bin2hex(openssl_random_pseudo_bytes(10)), true).".".$extension;
+		
+		// Ruta donde se guardará la imagen
+	      $rutaDestino = 'logos_clientes/';
+
+		// Mover la imagen al directorio de destino con el nuevo nombre
+	      move_uploaded_file($_FILES['imagen']['tmp_name'],$rutaDestino.$nuevoNombre);
+		
+	      $logo = $rutaDestino.$nuevoNombre;
               
               $ultimo_id = "SELECT * FROM `empresas` ORDER BY id DESC LIMIT 1";
               $consulta_ultimo_id = mysqli_query($conexion, $ultimo_id)or die("Error al conseguir el ultimo id");

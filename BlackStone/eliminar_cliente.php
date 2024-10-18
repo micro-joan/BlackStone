@@ -11,6 +11,15 @@ $url = $_SERVER["REQUEST_URI"];
 $urlArray = explode('=', $url);
 $id_url = $urlArray[1];
 
+if (is_numeric($id_url)) {
+  // Aquí puedes continuar con el procesamiento si $id_url es numérico
+  //"OK";
+} else {
+  // Mostrar un mensaje si $id_url no es numérico
+  echo "<script>alert('The value entered is not correct.')</script>";
+  exit;
+}
+
 ?>
 <html>
   <head>
@@ -141,8 +150,20 @@ $id_url = $urlArray[1];
                 <div class="card">
                   <div class="card-body">
                     <?php
+                    
+                    $sentencia = "select * from empresas where id=".$id_url;    
+      		    $consulta = mysqli_query($conexion, $sentencia) or die("Error de Consulta");
+
+		      //vamos a recorrer la consulta y guardar los datos 
+		      while($fila= mysqli_fetch_array($consulta)){
+			 $logo=$fila['logo'];
+		      }
+                
                       $sentencia = "DELETE FROM `empresas` WHERE id=".$id_url;    
                       $consulta = mysqli_query($conexion, $sentencia) or die("Error de Consulta");
+                      
+                      unlink($logo);
+                      
                     ?>
                     <h1><?php echo lang("Company removed from the system")?></h1>
                     <a class="nav-link btn btn-info col-lg-1 col-12 create-new-button" aria-expanded="false" href="clientes.php"><?php echo lang("Return");?></a>

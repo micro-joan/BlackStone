@@ -165,15 +165,15 @@ fi
 sleep 1
 
 #creamos alias en sistema
-cp /opt/blackstone/xampp_installer/icon/blackstone /usr/local/bin/blackstone
+cp /opt/BlackStone/xampp_installer/icon/blackstone /usr/local/bin/blackstone
 chmod +x /usr/local/bin/blackstone
 
 #copiamos el icono en sistema
-cp /opt/blackstone/xampp_installer/icon/blackstone.desktop /usr/share/applications/blackstone.desktop
+cp /opt/BlackStone/xampp_installer/icon/blackstone.desktop /usr/share/applications/blackstone.desktop
 chmod +x /usr/share/applications/blackstone.desktop
 
 #configuramos arranque desde alias/icono
-chmod +x /opt/blackstone/xampp_installer/icon/simple_launch.sh
+chmod +x /opt/BlackStone/xampp_installer/icon/simple_launch.sh
 
 echo " "
 echo "Launching BlackStone..."

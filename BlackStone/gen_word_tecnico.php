@@ -12,6 +12,14 @@ $uriArray = explode('=', $uri);
 
 $id_url = $uriArray[1];
 
+if (is_numeric($id_url)) {
+  // Aquí puedes continuar con el procesamiento si $id_url es numérico
+  //"OK";
+} else {
+  // Mostrar un mensaje si $id_url no es numérico
+  echo "<script>alert('The value entered is not correct.')</script>";
+  exit;
+}
 
 include("conexion.php");
 $sentencia = "select * from informes where id=".$id_url;

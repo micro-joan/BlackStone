@@ -11,6 +11,15 @@ $url = $_SERVER["REQUEST_URI"];
 $urlArray = explode('=', $url);
 $id_url = $urlArray[1];
 
+if (is_numeric($id_url)) {
+  // Aquí puedes continuar con el procesamiento si $id_url es numérico
+  //"OK";
+} else {
+  // Mostrar un mensaje si $id_url no es numérico
+  echo "<script>alert('The value entered is not correct.')</script>";
+  exit;
+}
+
 ?>
 <html>
   <head>
@@ -366,6 +375,18 @@ $id_url = $urlArray[1];
                 $nombreOriginal = $_FILES['imagen']['name'];
                 $nombreTemporal = $_FILES['imagen']['tmp_name'];
                 $descripcion_poc = htmlspecialchars($_POST['descripcion_poc'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                
+                $file_extension = pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION);
+	      
+	        // Comprobar si la extensión es png
+		if (strtolower($file_extension) == 'png') {
+		  
+		  echo "Archivo subido correctamente.";
+		} else {
+		    
+		    echo "<script>alert('Only PNG images.')</script>";
+		    exit;
+		}
 
                 // Obtener la extensión del archivo
                 $extension = pathinfo($nombreOriginal, PATHINFO_EXTENSION);

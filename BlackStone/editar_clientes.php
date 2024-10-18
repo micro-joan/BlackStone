@@ -11,6 +11,15 @@ $url = $_SERVER["REQUEST_URI"];
 $urlArray = explode('=', $url);
 $id_url = $urlArray[1];
 
+if (is_numeric($id_url)) {
+  // Aquí puedes continuar con el procesamiento si $id_url es numérico
+  //"OK";
+} else {
+  // Mostrar un mensaje si $id_url no es numérico
+  echo "<script>alert('The value entered is not correct.')</script>";
+  exit;
+}
+
 ?>
 <html>
   <head>
@@ -160,6 +169,7 @@ $id_url = $urlArray[1];
                 }
 
               }
+              
             ?>  
 
             <div class="page-header">
@@ -211,183 +221,62 @@ $id_url = $urlArray[1];
                         </div>
                         
                       </div>
-                      <button type="submit" name="submit" class="btn btn-primary me-2"><?php echo lang("Save"); ?></button>
+                      
+                      <input type="submit" class="btn btn-block bg-gradient-success mb-2 col-lg-1 float-right" id="boton2" name="boton2" value="<?php echo lang('Save'); ?>" style="background-color: #4CAF50; color: white; border: none; padding: 10px 20px; font-size: 16px; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease;">
                     </form>
 
                   </div>
                 </div>
               </div>
             </div>
-
-            <div class="row">
-              <div class="col-12 grid-margin">
-                <div class="card">
-                  <div class="card-body">
-                  <h4 class="card-title"><?php echo lang("WHOIS") ?></h4>
-                    <div class="table-responsive">
                       
-                    <?php
-
-                      function whois_query($domain) {
-                        $server = 'whois.verisign-grs.com'; // Servidor WHOIS para dominios .com
-                        $port = 43; // Puerto WHOIS predeterminado
-
-                        $socket = fsockopen($server, $port, $errno, $errstr, 30);
-                        if (!$socket) {
-                            die("$errstr ($errno)");
-                        }
-
-                        fputs($socket, $domain . "\r\n");
-
-                        $response = '';
-                        while (!feof($socket)) {
-                            $response .= fgets($socket, 4096);
-                        }
-
-                        fclose($socket);
-
-                        return $response;
-                      }
-
-                      // Ejemplo de uso
-                      $domain = $web;
-                      $whois_response = whois_query($domain);
-
-                      // Expresión regular para buscar propiedades de WHOIS
-                      $property_regex = '/^([^:]+):\s+(.*)$/m';
-
-                      $properties = array();
-
-                      if (preg_match_all($property_regex, $whois_response, $matches, PREG_SET_ORDER)) {
-                        foreach ($matches as $match) {
-                            $key = trim($match[1]);
-                            $value = trim($match[2]);
-                            $properties[$key] = $value;
-                        }
-                      }
-
-                  
-                      foreach ($properties as $key => $value) {
-                        echo $key . ": " . $value . "<br>";
-                      }
-                    ?>
-                        
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          
-            <div class="row">
-              <div class="col-lg-6 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title"><?php echo lang("Links and subdomains") ?></h4>
-                    <div class="table-responsive" style="overflow:scroll; height:500px; background-color:#191c24; overflow-x:hidden !important;">
-                      <table class="table" style="background-color:#191c24;">
-                        <thead>
-                          <tr>
-                            <th><?php echo lang("Domain") ?></th>
-                            <th><center>Link</center></th>
-                          </tr>
-                            
-                          <?php
-                            $dominio = $web;
-                            $subdominios = array("www", "blog", "mail", "ftp", "intranet", "vpn", "old", "admin", "webmail", "ftp", "blog", "forums", "shop", "cdn", "pruebas", "demo", "*", "nginx", "apache");
-
-                            foreach($subdominios as $subdominio) {
-                                $host = $subdominio . "." . $dominio;
-                                $ip = gethostbyname($host);
-                                if($ip != $host) {
-                                    echo "<tr>";
-                                    echo "<th>".$subdominio.".".$web."</th>";
-                                    echo "<th><center><a href='http://".$subdominio.".".$web."' target='_blank'>link</a></center></th>";
-                                    echo "</tr>";
-                                }
-                            }
-                          ?>    
-                        
-                        </thead>
-                        
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-lg-6 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title"><?php echo lang("MX Records") ?></h4>
-                    <div class="table-responsive" style="overflow:scroll; height:500px; background-color:#191c24; overflow-x:hidden !important;">
-                    <table class="table" style="background-color:#191c24;">
-                        <thead>
-                          
-                          <?php
-                          ?>
-
-                        </thead>
-                        <?php 
-                            function obtenerCorreosTrabajadores($dominio) {
-                              $correos = array();
-                            
-                              // Verificar la existencia de registros MX para el dominio
-                              if (checkdnsrr($dominio, 'MX')) {
-                                // Obtener registros MX del dominio
-                                $mxRecords = dns_get_record($dominio, DNS_MX);
-                                foreach ($mxRecords as $mxRecord) {
-                                  $host = $mxRecord['target'];
-                                  
-                                  // Construir la dirección de correo de contacto
-                                  $correo = $host;
-                                  
-                                  $correos[] = $correo;
-                                }
-                              }
-                            
-                              return $correos;
-                            }
-                            
-                            // Ejemplo de uso
-                            $dominio = $dominio;
-                            $correos = obtenerCorreosTrabajadores($dominio);
-                            
-                            foreach ($correos as $correo) {
-                              echo "<tbody>
-                                      <tr>
-                                        <td>".$correo."</td>
-                                      </tr>
-                                    </tbody>";
-                            }
-                     
-                        ?>
-                        
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
             </div>
 
             <?php
     
-            if (isset($_POST['submit'])){
-
+            if (filter_input(INPUT_POST, 'boton2')) {
+    	      
               $nombre = htmlspecialchars($_POST['nombre'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
               $web = htmlspecialchars($_POST['web'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
               $nombre = $_POST['nombre'];
               $nombre_img = $_FILES['imagen']['name'];
+	      $nombreOriginal = $_FILES['imagen']['name'];
+              $nombreTemporal = $_FILES['imagen']['tmp_name'];
+              
+              
+              $file_extension = pathinfo($_FILES['imagen']['name'], PATHINFO_EXTENSION);
 
-              //si tenemos una foto ya insertada la eliminamos
-              if($logo_last > '' && $nombre_img > ''){
-                unlink($logo_last);
-              }
+            //si tenemos una foto ya insertada la eliminamos
+            if ($logo_last > '' && $nombreOriginal > '') {
+            
+            // Comprobar si la extensión es xml
+            if (strtolower($file_extension) == 'png') {
+                
+                //echo "Image ok.";
+            } else {
+                
+                echo "<script>alert('Only PNG images.')</script>";
+                exit;
+            }
+            
+            unlink($logo_last);   
+            
+                
+            // Obtener la extensión del archivo
+            $extension = pathinfo($nombreOriginal, PATHINFO_EXTENSION);
 
-              $directorio ='logos_clientes/';
-              move_uploaded_file($_FILES['imagen']['tmp_name'],$directorio.$nombre_img);
+            // Generar un nuevo nombre para la imagen
+            $nuevoNombre = uniqid(bin2hex(openssl_random_pseudo_bytes(10)), true).".".$extension;
+            
+            // Ruta donde se guardará la imagen
+            $rutaDestino = 'logos_clientes/';
 
-              $logo = $directorio.$nombre_img;
+            // Mover la imagen al directorio de destino con el nuevo nombre
+            //move_uploaded_file($nombreTemporal, $rutaDestino);
+            move_uploaded_file($_FILES['imagen']['tmp_name'],$rutaDestino.$nuevoNombre);
+        }
+
+	      $logo = $rutaDestino.$nuevoNombre;
 
               //en el caso de que no se inserte una foto nueva que no se altere el parametro en la BBBDD
               if($nombre_img == "" || $nombre_img == "null"){
@@ -402,8 +291,12 @@ $id_url = $urlArray[1];
 
               if (mysqli_affected_rows($conexion)!=0) {
                   echo "<script>alert('Saved')</script>";
-                  echo '<script type="text/JavaScript"> location.reload(); </script>';
+                 
               }
+               echo '<script type="text/javascript">
+		window.location.href = "clientes.php";
+	      </script>';
+
             }
             ?>
 

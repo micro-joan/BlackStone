@@ -11,6 +11,17 @@ $url = $_SERVER["REQUEST_URI"];
 $urlArray = explode('=', $url);
 $id_url = $urlArray[1];
 $id_informe = $urlArray[2];
+
+if (is_numeric($id_url)) {
+  // Aquí puedes continuar con el procesamiento si $id_url es numérico
+  //"OK";
+} else {
+  // Mostrar un mensaje si $id_url no es numérico
+  echo "<script>alert('The value entered is not correct.')</script>";
+  exit;
+}
+
+
 ?>
 <html>
   <head>
