@@ -10,4 +10,4 @@ echo "·▀▀▀▀ .▀▀▀  ▀  ▀ ·▀▀▀ ·▀  ▀ ▀▀▀▀  �
 echo "======================================================="
 echo "Created by Joan Moya (Aka. MicroJoan)"
 echo ""
-sudo /opt/blackstone/xampp_installer/icon/simple_launch.sh
+sudo /opt/BlackStone/xampp_installer/icon/simple_launch.sh
